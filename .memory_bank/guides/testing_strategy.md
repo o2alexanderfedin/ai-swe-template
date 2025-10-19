@@ -2,18 +2,18 @@
 
 ## Testing Pyramid
 
-Наша стратегия тестирования следует классической пирамиде тестов:
+Our testing strategy follows the classic testing pyramid:
 
-1. **Unit Tests (70%)**: Тестирование отдельных функций и классов
-2. **Integration Tests (20%)**: Тестирование взаимодействия между модулями
-3. **End-to-End Tests (10%)**: Тестирование полных пользовательских сценариев
+1. **Unit Tests (70%)**: Testing individual functions and classes
+2. **Integration Tests (20%)**: Testing interactions between modules
+3. **End-to-End Tests (10%)**: Testing complete user scenarios
 
 ## Unit Testing Requirements
 
 ### Coverage Goals
-- Минимальное покрытие кода: **80%**
-- Критические модули (обработка платежей, безопасность): **95%+**
-- Утилиты и helpers: **90%+**
+- Minimum code coverage: **80%**
+- Critical modules (payment processing, security): **95%+**
+- Utilities and helpers: **90%+**
 
 ### Test File Naming
 ```
@@ -23,7 +23,7 @@ company_checker.py → test_company_checker.py
 
 ### Test Structure (AAA Pattern)
 
-Все тесты должны следовать паттерну **Arrange-Act-Assert**:
+All tests should follow the **Arrange-Act-Assert** pattern:
 
 ```python
 import pytest
@@ -32,7 +32,7 @@ from company_checker import CompanyChecker
 
 @pytest.mark.asyncio
 async def test_check_company_success():
-    # Arrange - настройка тестовых данных и моков
+    # Arrange - setup test data and mocks
     mock_client = AsyncMock()
     mock_client.get.return_value = Mock(
         status_code=200,
@@ -40,10 +40,10 @@ async def test_check_company_success():
     )
     checker = CompanyChecker(api_client=mock_client)
 
-    # Act - выполнение тестируемого действия
+    # Act - execute the action being tested
     result = await checker.check_company("Test Company")
 
-    # Assert - проверка результатов
+    # Assert - verify the results
     assert result.name == "Test Company"
     assert result.inn == "1234567890"
     mock_client.get.assert_called_once()
@@ -86,8 +86,8 @@ async def test_with_async_mock():
 ## Mocking Strategy
 
 ### External Dependencies Must Be Mocked
-- Mock все внешние API calls
-- Mock database операции
+- Mock all external API calls
+- Mock database operations
 - Mock file system operations
 - Mock time-dependent functions
 

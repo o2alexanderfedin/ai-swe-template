@@ -1,16 +1,16 @@
-# Текущие задачи
+# Current Tasks
 
 ## To Do
-- [ ] [SETUP-01] Инициализация проекта с Poetry и настройка зависимостей
-- [ ] [SETUP-02] Настройка базы данных PostgreSQL и миграций
-- [ ] [BOT-01] Реализация базовых handlers для Telegram бота
-- [ ] [CORE-01] Создание модели данных для хранения результатов due diligence
-- [ ] [INT-01] Интеграция с OpenAI API для анализа текста
-- [ ] [SCRAPE-01] Реализация модуля для сбора данных из открытых источников
+- [ ] [SETUP-01] Initialize project with Poetry and configure dependencies
+- [ ] [SETUP-02] Configure PostgreSQL database and migrations
+- [ ] [BOT-01] Implement basic handlers for Telegram bot
+- [ ] [CORE-01] Create data model for storing due diligence results
+- [ ] [INT-01] Integrate with OpenAI API for text analysis
+- [ ] [SCRAPE-01] Implement module for collecting data from open sources
 
 ## In Progress
-- [x] [SETUP-00] Создание Memory Bank структуры для проекта
+- [x] [SETUP-00] Create Memory Bank structure for the project
 
 ## Done
-- [x] [INIT-01] Инициализация Git репозитория
-- [x] [DOCS-01] Создание базовой документации проекта
+- [x] [INIT-01] Initialize Git repository
+- [x] [DOCS-01] Create basic project documentation

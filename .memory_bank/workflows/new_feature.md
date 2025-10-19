@@ -1,71 +1,71 @@
-# Процесс разработки новой фичи
+# New Feature Development Process
 
-## 1. Подготовка и планирование
+## 1. Preparation and Planning
 
 ### 1.1 Git Branch Setup
-- [ ] Создать ветку от `develop` по шаблону `feature/TICKET-NUMBER-short-description`
-  - Пример: `feature/DD-45-company-financial-analysis`
-  - Следовать конвенции из **[../tech_stack.md](../tech_stack.md#version-control)**
+- [ ] Create a branch from `develop` following the template `feature/TICKET-NUMBER-short-description`
+  - Example: `feature/DD-45-company-financial-analysis`
+  - Follow the convention from **[../tech_stack.md](../tech_stack.md#version-control)**
 
 ### 1.2 Task Tracking
-- [ ] Обновить статус задачи в **[../current_tasks.md](../current_tasks.md)** на "In Progress"
-- [ ] Добавить метку `[FEATURE]` к задаче
+- [ ] Update task status in **[../current_tasks.md](../current_tasks.md)** to "In Progress"
+- [ ] Add `[FEATURE]` label to the task
 
 ### 1.3 Read Specification
-- [ ] Прочитать полную спецификацию в **[../specs/](../specs/)** для понимания объема работ
-- [ ] Убедиться, что понятны:
-  - Бизнес-цели фичи (ЗАЧЕМ)
-  - Критерии приемки (acceptance criteria)
-  - API contracts (если применимо)
-  - Структуры данных
-  - Зависимости от других компонентов
-- [ ] Задать уточняющие вопросы, если что-то неясно
+- [ ] Read the full specification in **[../specs/](../specs/)** to understand the scope of work
+- [ ] Ensure the following are clear:
+  - Business goals of the feature (WHY)
+  - Acceptance criteria
+  - API contracts (if applicable)
+  - Data structures
+  - Dependencies on other components
+- [ ] Ask clarifying questions if anything is unclear
 
 ### 1.4 Study Context
-- [ ] Изучить **[стандарты кодирования](../guides/coding_standards.md)**
-- [ ] Изучить **[архитектурные паттерны](../patterns/)** релевантные для фичи
-- [ ] Изучить **[стратегию тестирования](../guides/testing_strategy.md)**
-- [ ] Проверить **[../product_brief.md](../product_brief.md)** для понимания бизнес-контекста
+- [ ] Study **[coding standards](../guides/coding_standards.md)**
+- [ ] Study **[architectural patterns](../patterns/)** relevant to the feature
+- [ ] Study **[testing strategy](../guides/testing_strategy.md)**
+- [ ] Check **[../product_brief.md](../product_brief.md)** to understand business context
 
-## 2. Анализ и проектирование
+## 2. Analysis and Design
 
 ### 2.1 Identify Existing Components
-- [ ] Найти существующие компоненты для переиспользования:
-  - Pydantic модели в `core/models/`
-  - API clients в `integrations/`
-  - Utility функции
+- [ ] Find existing components to reuse:
+  - Pydantic models in `core/models/`
+  - API clients in `integrations/`
+  - Utility functions
   - Database models
-- [ ] Проверить **[../tech_stack.md](../tech_stack.md)** на список доступных библиотек
-- [ ] Убедиться, что не дублируется существующий функционал
+- [ ] Check **[../tech_stack.md](../tech_stack.md)** for the list of available libraries
+- [ ] Ensure no duplication of existing functionality
 
 ### 2.2 Technology Check
-- [ ] Проверить, что все необходимые технологии разрешены в **[../tech_stack.md](../tech_stack.md)**
-- [ ] Если нужна новая зависимость:
-  - Обосновать необходимость
-  - Проверить совместимость с существующим стеком
-  - Согласовать добавление
-  - **ОБЯЗАТЕЛЬНО** обновить **[../tech_stack.md](../tech_stack.md)**
+- [ ] Verify that all necessary technologies are approved in **[../tech_stack.md](../tech_stack.md)**
+- [ ] If a new dependency is needed:
+  - Justify the necessity
+  - Check compatibility with existing stack
+  - Get approval for addition
+  - **MUST** update **[../tech_stack.md](../tech_stack.md)**
 
 ### 2.3 Design Plan
-- [ ] Составить список файлов для создания/изменения:
+- [ ] Create a list of files to create/modify:
   - Models (Pydantic schemas)
   - Business logic (core/)
   - API integrations (integrations/)
   - Bot handlers (bot/)
   - Database migrations (if needed)
   - Tests
-- [ ] Определить public API новых модулей
-- [ ] Спроектировать структуры данных
-- [ ] Определить error handling strategy для фичи
+- [ ] Define the public API of new modules
+- [ ] Design data structures
+- [ ] Define error handling strategy for the feature
 
-## 3. Разработка
+## 3. Development
 
 ### 3.1 Data Models
-- [ ] Создать/обновить Pydantic модели для валидации данных
-- [ ] Следовать паттернам из **[../guides/coding_standards.md](../guides/coding_standards.md#pydantic-models-for-data-validation)**
-- [ ] Добавить validators для business rules
-- [ ] Использовать type hints для всех полей
-- [ ] Пример структуры:
+- [ ] Create/update Pydantic models for data validation
+- [ ] Follow patterns from **[../guides/coding_standards.md](../guides/coding_standards.md#pydantic-models-for-data-validation)**
+- [ ] Add validators for business rules
+- [ ] Use type hints for all fields
+- [ ] Example structure:
   ```python
   from pydantic import BaseModel, Field, validator
 
@@ -82,21 +82,21 @@
   ```
 
 ### 3.2 Business Logic Implementation
-- [ ] Реализовать core бизнес-логику согласно спецификации
-- [ ] Следовать **[архитектурным паттернам](../patterns/)**
-- [ ] Использовать async/await для всех I/O операций
-- [ ] Добавить proper error handling согласно **[../patterns/error_handling.md](../patterns/error_handling.md)**
-- [ ] Переиспользовать существующие утилиты и компоненты
-- [ ] Максимальная длина функции: 50 строк (если больше - декомпозировать)
+- [ ] Implement core business logic according to specification
+- [ ] Follow **[architectural patterns](../patterns/)**
+- [ ] Use async/await for all I/O operations
+- [ ] Add proper error handling according to **[../patterns/error_handling.md](../patterns/error_handling.md)**
+- [ ] Reuse existing utilities and components
+- [ ] Maximum function length: 50 lines (if longer - decompose)
 
 ### 3.3 External API Integration (if applicable)
-- [ ] Создать client класс в `integrations/`
-- [ ] Использовать `httpx.AsyncClient` для async HTTP requests
-- [ ] Обернуть все responses в Pydantic модели
-- [ ] Следовать **[../patterns/api_standards.md](../patterns/api_standards.md)**
-- [ ] Добавить retry логику для transient errors
-- [ ] Добавить circuit breaker для предотвращения cascading failures
-- [ ] Пример структуры:
+- [ ] Create client class in `integrations/`
+- [ ] Use `httpx.AsyncClient` for async HTTP requests
+- [ ] Wrap all responses in Pydantic models
+- [ ] Follow **[../patterns/api_standards.md](../patterns/api_standards.md)**
+- [ ] Add retry logic for transient errors
+- [ ] Add circuit breaker to prevent cascading failures
+- [ ] Example structure:
   ```python
   from tenacity import retry, stop_after_attempt, wait_exponential
 
@@ -123,13 +123,13 @@
   ```
 
 ### 3.4 Telegram Bot Handlers (if applicable)
-- [ ] Создать/обновить handlers в `bot/`
-- [ ] Использовать async handlers
-- [ ] Добавить proper error handling для user-facing errors
-- [ ] Все сообщения на русском языке
-- [ ] Генерировать `correlation_id` для трейсинга
-- [ ] Добавить валидацию пользовательского ввода
-- [ ] Пример структуры:
+- [ ] Create/update handlers in `bot/`
+- [ ] Use async handlers
+- [ ] Add proper error handling for user-facing errors
+- [ ] All messages in Russian
+- [ ] Generate `correlation_id` for tracing
+- [ ] Add user input validation
+- [ ] Example structure:
   ```python
   async def handle_financial_analysis(
       update: Update,
@@ -142,8 +142,8 @@
 
           if not company_name:
               await update.message.reply_text(
-                  "Пожалуйста, укажите название компании.\n"
-                  "Пример: /financial ООО Ромашка"
+                  "Please specify the company name.\n"
+                  "Example: /financial LLC Romashka"
               )
               return
 
@@ -152,37 +152,37 @@
           await update.message.reply_text(format_financial_report(result))
 
       except ValidationError as e:
-          await update.message.reply_text(f"Ошибка: {e.message}")
+          await update.message.reply_text(f"Error: {e.message}")
       except ExternalAPIError:
           await update.message.reply_text(
-              "Не удалось получить данные. Попробуйте позже."
+              "Failed to retrieve data. Please try again later."
           )
   ```
 
 ### 3.5 Database Operations (if applicable)
-- [ ] Создать/обновить database models
-- [ ] Использовать parameterized queries (НИКОГДА не конкатенировать SQL)
-- [ ] Добавить proper transaction management
-- [ ] Добавить logging для всех DB operations
-- [ ] Создать database migration (если нужно)
+- [ ] Create/update database models
+- [ ] Use parameterized queries (NEVER concatenate SQL)
+- [ ] Add proper transaction management
+- [ ] Add logging for all DB operations
+- [ ] Create database migration (if needed)
 
 ### 3.6 Code Quality During Development
-- [ ] Все функции имеют type hints
-- [ ] Все public функции имеют docstrings (Google style)
-- [ ] Следовать Single Responsibility Principle
-- [ ] Нет "магических" чисел - использовать именованные константы
-- [ ] Нет дублирования кода
-- [ ] Async code не содержит blocking operations
+- [ ] All functions have type hints
+- [ ] All public functions have docstrings (Google style)
+- [ ] Follow Single Responsibility Principle
+- [ ] No "magic" numbers - use named constants
+- [ ] No code duplication
+- [ ] Async code contains no blocking operations
 
-## 4. Тестирование
+## 4. Testing
 
 ### 4.1 Unit Tests
-- [ ] Написать unit-тесты для всех новых функций
-- [ ] Следовать AAA паттерну (Arrange-Act-Assert)
-- [ ] Следовать **[стратегии тестирования](../guides/testing_strategy.md)**
-- [ ] Использовать pytest для всех тестов
-- [ ] Для async кода использовать `pytest-asyncio`
-- [ ] Пример структуры теста:
+- [ ] Write unit tests for all new functions
+- [ ] Follow AAA pattern (Arrange-Act-Assert)
+- [ ] Follow **[testing strategy](../guides/testing_strategy.md)**
+- [ ] Use pytest for all tests
+- [ ] For async code use `pytest-asyncio`
+- [ ] Example test structure:
   ```python
   import pytest
   from unittest.mock import AsyncMock, patch
@@ -210,157 +210,157 @@
   ```
 
 ### 4.2 Integration Tests
-- [ ] Написать integration тесты для проверки взаимодействия компонентов
-- [ ] Тестировать end-to-end flows
-- [ ] Использовать test fixtures для setup/teardown
+- [ ] Write integration tests to verify component interaction
+- [ ] Test end-to-end flows
+- [ ] Use test fixtures for setup/teardown
 
 ### 4.3 Test Coverage
-- [ ] Запустить тесты: `pytest`
-- [ ] Проверить coverage: `pytest --cov=. --cov-report=html`
-- [ ] Убедиться, что coverage >= 80% для нового кода
-- [ ] Все тесты проходят без warnings
+- [ ] Run tests: `pytest`
+- [ ] Check coverage: `pytest --cov=. --cov-report=html`
+- [ ] Ensure coverage >= 80% for new code
+- [ ] All tests pass without warnings
 
 ### 4.4 Manual Testing
-- [ ] Протестировать фичу вручную в development окружении
-- [ ] Проверить все user flows
-- [ ] Проверить edge cases
-- [ ] Для Telegram bot - протестировать в тестовом боте
+- [ ] Test the feature manually in development environment
+- [ ] Check all user flows
+- [ ] Check edge cases
+- [ ] For Telegram bot - test in the test bot
 
 ## 5. Code Quality
 
 ### 5.1 Linting and Formatting
-- [ ] Запустить Black: `poetry run black .`
-- [ ] Запустить Ruff: `poetry run ruff check .`
-- [ ] Запустить mypy: `poetry run mypy .`
-- [ ] Исправить все найденные проблемы
+- [ ] Run Black: `poetry run black .`
+- [ ] Run Ruff: `poetry run ruff check .`
+- [ ] Run mypy: `poetry run mypy .`
+- [ ] Fix all found issues
 
 ### 5.2 Security Review
-- [ ] Нет hardcoded secrets, API keys, паролей
-- [ ] Пользовательский ввод валидируется
-- [ ] Нет SQL injection уязвимостей
-- [ ] Логи не содержат sensitive data
+- [ ] No hardcoded secrets, API keys, passwords
+- [ ] User input is validated
+- [ ] No SQL injection vulnerabilities
+- [ ] Logs don't contain sensitive data
 - [ ] Async resources properly managed (using context managers)
 
 ### 5.3 Performance Review
-- [ ] Нет N+1 queries
-- [ ] Нет избыточных API calls
-- [ ] Большие данные обрабатываются эффективно
-- [ ] Используется async для параллельных операций
+- [ ] No N+1 queries
+- [ ] No excessive API calls
+- [ ] Large data is processed efficiently
+- [ ] Async is used for parallel operations
 
-## 6. Документация
+## 6. Documentation
 
 ### 6.1 Code Documentation
-- [ ] Все public функции имеют docstrings
-- [ ] Сложные алгоритмы имеют пояснительные комментарии
-- [ ] Комментарии объясняют WHY, а не WHAT
-- [ ] TODO комментарии содержат имя автора и контекст
+- [ ] All public functions have docstrings
+- [ ] Complex algorithms have explanatory comments
+- [ ] Comments explain WHY, not WHAT
+- [ ] TODO comments contain author name and context
 
 ### 6.2 Update Memory Bank
-- [ ] Обновить **[../tech_stack.md](../tech_stack.md)** если добавлены новые зависимости
-- [ ] Создать/обновить guide в **[../guides/](../guides/)** если это новая подсистема
-- [ ] Создать/обновить pattern в **[../patterns/](../patterns/)** если введен новый архитектурный паттерн
-- [ ] Добавить примеры использования новой фичи
+- [ ] Update **[../tech_stack.md](../tech_stack.md)** if new dependencies were added
+- [ ] Create/update guide in **[../guides/](../guides/)** if this is a new subsystem
+- [ ] Create/update pattern in **[../patterns/](../patterns/)** if a new architectural pattern was introduced
+- [ ] Add usage examples for the new feature
 
 ### 6.3 API Documentation (if applicable)
-- [ ] Документировать все новые API endpoints
-- [ ] Добавить примеры запросов/ответов
-- [ ] Документировать error codes
+- [ ] Document all new API endpoints
+- [ ] Add request/response examples
+- [ ] Document error codes
 
-## 7. Завершение
+## 7. Completion
 
 ### 7.1 Acceptance Criteria Check
-- [ ] Проверить, что все критерии приемки из спецификации выполнены
-- [ ] Пройтись по чек-листу из спецификации
-- [ ] Убедиться, что нет missing requirements
+- [ ] Verify that all acceptance criteria from the specification are met
+- [ ] Go through the checklist from the specification
+- [ ] Ensure there are no missing requirements
 
 ### 7.2 Architecture Review
-- [ ] Убедиться, что не нарушены архитектурные принципы
-- [ ] Проверить, что нет дублирования кода
-- [ ] Убедиться, что используются существующие компоненты
-- [ ] Проверить, что новый код следует установленным паттернам
+- [ ] Ensure architectural principles are not violated
+- [ ] Check that there's no code duplication
+- [ ] Ensure existing components are used
+- [ ] Verify that new code follows established patterns
 
 ### 7.3 Task Status Update
-- [ ] Обновить статус задачи в **[../current_tasks.md](../current_tasks.md)** на "Done"
-- [ ] Добавить краткое описание реализации
+- [ ] Update task status in **[../current_tasks.md](../current_tasks.md)** to "Done"
+- [ ] Add a brief description of the implementation
 
 ### 7.4 Commit and Push
-- [ ] Создать коммиты с осмысленными сообщениями (Conventional Commits):
+- [ ] Create commits with meaningful messages (Conventional Commits):
   ```
-  feat(module): краткое описание фичи
+  feat(module): brief description of the feature
 
-  - Детали реализации
-  - Основные изменения
+  - Implementation details
+  - Main changes
   - Closes #TICKET-NUMBER
   ```
-- [ ] Push ветки: `git push -u origin feature/TICKET-NUMBER-short-description`
+- [ ] Push the branch: `git push -u origin feature/TICKET-NUMBER-short-description`
 
 ### 7.5 Pull Request
-- [ ] Создать Pull Request с подробным описанием:
-  - **Описание фичи**: Что реализовано?
-  - **Бизнес-ценность**: Зачем это нужно?
-  - **Техническое решение**: Как реализовано?
-  - **Тестирование**: Как протестировано?
-  - **Скриншоты/примеры**: Визуальные примеры работы (если применимо)
-  - **Чек-лист**: Все критерии приемки выполнены
-- [ ] Перечислить все измененные/созданные файлы и их назначение
-- [ ] Связать PR с ticket/issue
+- [ ] Create a Pull Request with detailed description:
+  - **Feature Description**: What was implemented?
+  - **Business Value**: Why is this needed?
+  - **Technical Solution**: How was it implemented?
+  - **Testing**: How was it tested?
+  - **Screenshots/examples**: Visual examples of functionality (if applicable)
+  - **Checklist**: All acceptance criteria met
+- [ ] List all modified/created files and their purpose
+- [ ] Link PR to ticket/issue
 
 ### 7.6 Self Review
-- [ ] Провести self-review по чек-листу из **[code_review.md](./code_review.md)**
-- [ ] Убедиться, что код готов к review другими разработчиками
+- [ ] Conduct self-review using the checklist from **[code_review.md](./code_review.md)**
+- [ ] Ensure the code is ready for review by other developers
 
-## 8. Специфичные для проекта проверки
+## 8. Project-Specific Checks
 
-### Для Telegram Bot Features
-- [ ] Все user-facing сообщения на русском языке
-- [ ] Добавлены help текста для новых команд
-- [ ] Реализована graceful error handling для user errors
-- [ ] Добавлено логирование с correlation_id для всех операций
-- [ ] Протестировано поведение при некорректном вводе
-- [ ] User не видит internal error details
+### For Telegram Bot Features
+- [ ] All user-facing messages in Russian
+- [ ] Help texts added for new commands
+- [ ] Graceful error handling implemented for user errors
+- [ ] Logging with correlation_id added for all operations
+- [ ] Behavior tested with incorrect input
+- [ ] User doesn't see internal error details
 
-### Для External API Integration
-- [ ] Все responses обернуты в Pydantic модели
-- [ ] Реализован retry mechanism для transient errors
-- [ ] Добавлен timeout handling
-- [ ] Логируются все API calls с correlation_id
-- [ ] Добавлен circuit breaker (если применимо)
-- [ ] API keys хранятся в environment variables
+### For External API Integration
+- [ ] All responses wrapped in Pydantic models
+- [ ] Retry mechanism implemented for transient errors
+- [ ] Timeout handling added
+- [ ] All API calls logged with correlation_id
+- [ ] Circuit breaker added (if applicable)
+- [ ] API keys stored in environment variables
 
-### Для Async Code
-- [ ] Нет blocking I/O в async функциях
-- [ ] Используются async context managers для resources
+### For Async Code
+- [ ] No blocking I/O in async functions
+- [ ] Async context managers used for resources
 - [ ] Proper cleanup of resources
-- [ ] Нет race conditions
-- [ ] Используется `asyncio.gather()` для параллельных операций
+- [ ] No race conditions
+- [ ] `asyncio.gather()` used for parallel operations
 
-### Для Database Features
-- [ ] Используются parameterized queries
+### For Database Features
+- [ ] Parameterized queries used
 - [ ] Proper transaction management
-- [ ] Connection pooling настроен правильно
-- [ ] Все DB operations логируются
-- [ ] Созданы необходимые indexes
-- [ ] Database migration создан и протестирован
+- [ ] Connection pooling configured correctly
+- [ ] All DB operations logged
+- [ ] Necessary indexes created
+- [ ] Database migration created and tested
 
-### Для AI/LLM Integration
-- [ ] API keys в environment variables
-- [ ] Реализован rate limiting
-- [ ] Добавлен retry mechanism
-- [ ] Логируются все LLM calls с correlation_id и token usage
-- [ ] Реализован fallback для случаев недоступности API
-- [ ] User prompts sanitized для предотвращения injection
+### For AI/LLM Integration
+- [ ] API keys in environment variables
+- [ ] Rate limiting implemented
+- [ ] Retry mechanism added
+- [ ] All LLM calls logged with correlation_id and token usage
+- [ ] Fallback implemented for API unavailability cases
+- [ ] User prompts sanitized to prevent injection
 
-## Чек-лист готовности к merge
-- [ ] Все тесты проходят
-- [ ] Code coverage >= 80% для нового кода
-- [ ] Все linters проходят без ошибок
-- [ ] Type checking (mypy) проходит без ошибок
-- [ ] Все критерии приемки из спецификации выполнены
-- [ ] Документация обновлена (code docs + Memory Bank)
-- [ ] Self-review выполнен
-- [ ] Pull Request создан с полным описанием
-- [ ] Нет TODO комментариев (или они задокументированы в issues)
-- [ ] Нет дублирования существующего функционала
-- [ ] Используются существующие компоненты где возможно
-- [ ] Новые зависимости добавлены в **[../tech_stack.md](../tech_stack.md)**
-- [ ] Архитектурные принципы не нарушены
+## Merge Readiness Checklist
+- [ ] All tests pass
+- [ ] Code coverage >= 80% for new code
+- [ ] All linters pass without errors
+- [ ] Type checking (mypy) passes without errors
+- [ ] All acceptance criteria from specification met
+- [ ] Documentation updated (code docs + Memory Bank)
+- [ ] Self-review completed
+- [ ] Pull Request created with full description
+- [ ] No TODO comments (or they are documented in issues)
+- [ ] No duplication of existing functionality
+- [ ] Existing components used where possible
+- [ ] New dependencies added to **[../tech_stack.md](../tech_stack.md)**
+- [ ] Architectural principles not violated

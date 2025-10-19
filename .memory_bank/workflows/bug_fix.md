@@ -1,171 +1,171 @@
-# Процесс исправления бага
+# Bug Fix Process
 
-## 1. Подготовка и анализ
+## 1. Preparation and Analysis
 
 ### 1.1 Git Branch Setup
-- [ ] Создать ветку от `develop` по шаблону `bugfix/TICKET-NUMBER-short-description`
-  - Пример: `bugfix/DD-123-telegram-handler-crash`
-  - Следовать конвенции из [../tech_stack.md](../tech_stack.md#version-control)
+- [ ] Create a branch from `develop` following the template `bugfix/TICKET-NUMBER-short-description`
+  - Example: `bugfix/DD-123-telegram-handler-crash`
+  - Follow the convention from [../tech_stack.md](../tech_stack.md#version-control)
 
 ### 1.2 Task Tracking
-- [ ] Обновить статус задачи в **[../current_tasks.md](../current_tasks.md)** на "In Progress"
-- [ ] Добавить метку `[BUG]` к задаче для визуального выделения
+- [ ] Update task status in **[../current_tasks.md](../current_tasks.md)** to "In Progress"
+- [ ] Add `[BUG]` label to the task for visual distinction
 
 ### 1.3 Bug Analysis
-- [ ] Изучить описание бага и воспроизвести проблему
-- [ ] Собрать всю доступную информацию:
-  - Логи ошибок с correlation_id для трейсинга
-  - Шаги для воспроизведения
-  - Ожидаемое vs. фактическое поведение
-  - Информация об окружении (Python version, dependencies)
-- [ ] Сгенерировать гипотезы о причинах бага:
-  - Логические ошибки в коде
-  - Проблемы с асинхронностью (race conditions, deadlocks)
-  - Неправильная обработка edge cases
-  - Проблемы с внешними API
+- [ ] Study the bug description and reproduce the problem
+- [ ] Gather all available information:
+  - Error logs with correlation_id for tracing
+  - Reproduction steps
+  - Expected vs. actual behavior
+  - Environment information (Python version, dependencies)
+- [ ] Generate hypotheses about the bug causes:
+  - Logical errors in code
+  - Concurrency issues (race conditions, deadlocks)
+  - Incorrect edge case handling
+  - Issues with external APIs
 
 ### 1.4 Code Localization
-- [ ] Локализовать проблему в кодовой базе
-- [ ] Найти все релевантные файлы:
-  - Основной модуль с багом
-  - Зависимые модули
-  - Тесты для затронутых модулей
-- [ ] Проанализировать связанные документы:
-  - **[../guides/](../guides/)** - для понимания подсистемы
-  - **[../patterns/error_handling.md](../patterns/error_handling.md)** - если баг связан с обработкой ошибок
-  - **[../patterns/api_standards.md](../patterns/api_standards.md)** - если баг в API integration
+- [ ] Localize the problem in the codebase
+- [ ] Find all relevant files:
+  - Main module with the bug
+  - Dependent modules
+  - Tests for affected modules
+- [ ] Analyze related documents:
+  - **[../guides/](../guides/)** - for understanding the subsystem
+  - **[../patterns/error_handling.md](../patterns/error_handling.md)** - if bug is related to error handling
+  - **[../patterns/api_standards.md](../patterns/api_standards.md)** - if bug is in API integration
 
-## 2. Разработка исправления
+## 2. Development
 
 ### 2.1 Write Fix
-- [ ] Внести исправления в код, следуя **[стандартам кодирования](../guides/coding_standards.md)**:
-  - Использовать type hints для всех функций
-  - Добавить docstrings для новых/измененных функций
-  - Обеспечить правильную обработку ошибок согласно **[../patterns/error_handling.md](../patterns/error_handling.md)**
-  - Для async кода - проверить отсутствие blocking operations
-- [ ] Добавить логирование с `correlation_id` для отладки
-- [ ] Убедиться, что исправление решает root cause, а не симптом
+- [ ] Make fixes to the code following **[coding standards](../guides/coding_standards.md)**:
+  - Use type hints for all functions
+  - Add docstrings for new/modified functions
+  - Ensure proper error handling according to **[../patterns/error_handling.md](../patterns/error_handling.md)**
+  - For async code - verify no blocking operations
+- [ ] Add logging with `correlation_id` for debugging
+- [ ] Ensure the fix addresses the root cause, not just the symptom
 
 ### 2.2 Code Review Self-Check
-- [ ] Проверить, что исправление:
-  - Минимально - не меняет больше, чем нужно
-  - Не создает новых багов в смежных областях
-  - Не нарушает существующие API contracts
-  - Следует архитектурным паттернам проекта
+- [ ] Verify that the fix:
+  - Is minimal - doesn't change more than necessary
+  - Doesn't create new bugs in adjacent areas
+  - Doesn't break existing API contracts
+  - Follows project architectural patterns
 
-## 3. Тестирование
+## 3. Testing
 
 ### 3.1 Add/Update Tests
-- [ ] Написать тест, который воспроизводит баг (должен падать до исправления)
-- [ ] Убедиться, что тест проходит после исправления
-- [ ] Добавить edge case тесты для предотвращения регрессии
-- [ ] Следовать **[стратегии тестирования](../guides/testing_strategy.md)**
+- [ ] Write a test that reproduces the bug (should fail before the fix)
+- [ ] Ensure the test passes after the fix
+- [ ] Add edge case tests to prevent regression
+- [ ] Follow the **[testing strategy](../guides/testing_strategy.md)**
 
 ### 3.2 Run Full Test Suite
-- [ ] Запустить все тесты: `pytest`
-- [ ] Для async кода: `pytest -v tests/ --asyncio-mode=auto`
-- [ ] Убедиться, что:
-  - Все тесты проходят
-  - Нет новых warnings
-  - Code coverage не снизился
+- [ ] Run all tests: `pytest`
+- [ ] For async code: `pytest -v tests/ --asyncio-mode=auto`
+- [ ] Ensure that:
+  - All tests pass
+  - No new warnings
+  - Code coverage hasn't decreased
 
 ### 3.3 Manual Testing
-- [ ] Протестировать исправление вручную в development окружении
-- [ ] Воспроизвести оригинальную проблему и убедиться, что она решена
-- [ ] Проверить граничные случаи
-- [ ] Для Telegram bot - протестировать в тестовом боте
+- [ ] Test the fix manually in development environment
+- [ ] Reproduce the original problem and ensure it's resolved
+- [ ] Check edge cases
+- [ ] For Telegram bot - test in the test bot
 
 ## 4. Code Quality
 
 ### 4.1 Linting and Formatting
-- [ ] Запустить Black: `poetry run black .`
-- [ ] Запустить Ruff: `poetry run ruff check .`
-- [ ] Запустить mypy: `poetry run mypy .`
-- [ ] Исправить все найденные проблемы
+- [ ] Run Black: `poetry run black .`
+- [ ] Run Ruff: `poetry run ruff check .`
+- [ ] Run mypy: `poetry run mypy .`
+- [ ] Fix all found issues
 
 ### 4.2 Security Check
-- [ ] Убедиться, что исправление не вводит:
-  - SQL injection уязвимости
-  - Утечки секретов в логи
-  - Небезопасную десериализацию
-  - Проблемы с async resource management
+- [ ] Ensure the fix doesn't introduce:
+  - SQL injection vulnerabilities
+  - Secret leaks in logs
+  - Unsafe deserialization
+  - Issues with async resource management
 
-## 5. Документация
+## 5. Documentation
 
 ### 5.1 Code Documentation
-- [ ] Обновить docstrings, если изменилось поведение функций
-- [ ] Добавить комментарии для сложной логики исправления
-- [ ] Объяснить WHY, а не WHAT в комментариях
+- [ ] Update docstrings if function behavior has changed
+- [ ] Add comments for complex fix logic
+- [ ] Explain WHY, not WHAT in comments
 
 ### 5.2 Update Related Docs
-- [ ] Обновить **[../guides/](../guides/)**, если баг выявил проблему в документации
-- [ ] Обновить **[../patterns/](../patterns/)**, если нужно задокументировать новый паттерн
-- [ ] Обновить **[../tech_stack.md](../tech_stack.md)**, если баг связан с версией библиотеки
+- [ ] Update **[../guides/](../guides/)** if the bug revealed a documentation issue
+- [ ] Update **[../patterns/](../patterns/)** if a new pattern needs to be documented
+- [ ] Update **[../tech_stack.md](../tech_stack.md)** if the bug is related to a library version
 
-## 6. Завершение
+## 6. Completion
 
 ### 6.1 Task Status Update
-- [ ] Обновить статус задачи в **[../current_tasks.md](../current_tasks.md)** на "Done"
-- [ ] Добавить краткое описание решения в задачу
+- [ ] Update task status in **[../current_tasks.md](../current_tasks.md)** to "Done"
+- [ ] Add a brief description of the solution to the task
 
 ### 6.2 Commit and Push
-- [ ] Создать коммит с осмысленным сообщением:
+- [ ] Create a commit with a meaningful message:
   ```
-  fix(module): краткое описание исправления
+  fix(module): brief description of the fix
 
-  - Детали проблемы
-  - Детали решения
+  - Problem details
+  - Solution details
   - Closes #TICKET-NUMBER
   ```
-- [ ] Push ветки: `git push -u origin bugfix/TICKET-NUMBER-short-description`
+- [ ] Push the branch: `git push -u origin bugfix/TICKET-NUMBER-short-description`
 
 ### 6.3 Pull Request
-- [ ] Создать Pull Request с описанием:
-  - **Описание бага**: Что было не так?
-  - **Root cause**: Почему это произошло?
-  - **Решение**: Как исправлено?
-  - **Тестирование**: Как проверить, что баг решен?
-  - **Side effects**: Есть ли побочные эффекты?
-- [ ] Добавить скриншоты/логи, если применимо
-- [ ] Связать PR с ticket/issue
+- [ ] Create a Pull Request with description:
+  - **Bug Description**: What was wrong?
+  - **Root cause**: Why did this happen?
+  - **Solution**: How was it fixed?
+  - **Testing**: How to verify the bug is resolved?
+  - **Side effects**: Are there any side effects?
+- [ ] Add screenshots/logs if applicable
+- [ ] Link PR to ticket/issue
 
 ### 6.4 Self Review
-- [ ] Провести self-review по чек-листу из **[code_review.md](./code_review.md)**
-- [ ] Убедиться, что все критерии выполнены
+- [ ] Conduct self-review using the checklist from **[code_review.md](./code_review.md)**
+- [ ] Ensure all criteria are met
 
-## 7. Специфичные для проекта проверки
+## 7. Project-Specific Checks
 
-### Для Telegram Bot Handlers
-- [ ] Протестировать обработку некорректного ввода пользователя
-- [ ] Убедиться, что все user-facing сообщения на русском языке
-- [ ] Проверить, что correlation_id передается во все вызовы для трейсинга
-- [ ] Убедиться, что ошибки не показывают internal details пользователю
+### For Telegram Bot Handlers
+- [ ] Test handling of incorrect user input
+- [ ] Ensure all user-facing messages are in Russian
+- [ ] Verify that correlation_id is passed to all calls for tracing
+- [ ] Ensure errors don't show internal details to the user
 
-### Для External API Integration
-- [ ] Добавить/обновить retry логику для transient errors
-- [ ] Проверить timeout handling
-- [ ] Убедиться, что используются Pydantic модели для валидации response
-- [ ] Логировать все API calls с correlation_id
+### For External API Integration
+- [ ] Add/update retry logic for transient errors
+- [ ] Check timeout handling
+- [ ] Ensure Pydantic models are used for response validation
+- [ ] Log all API calls with correlation_id
 
-### Для Async Code
-- [ ] Проверить отсутствие blocking I/O в async функциях
-- [ ] Убедиться в правильном использовании async context managers
-- [ ] Проверить proper cleanup of resources (using `async with`)
-- [ ] Убедиться, что нет race conditions
+### For Async Code
+- [ ] Verify no blocking I/O in async functions
+- [ ] Ensure proper use of async context managers
+- [ ] Check proper cleanup of resources (using `async with`)
+- [ ] Ensure there are no race conditions
 
-### Для Database Operations
-- [ ] Использовать parameterized queries (никаких строковых конкатенаций)
-- [ ] Проверить, что транзакции правильно committed/rolled back
-- [ ] Убедиться в правильной обработке connection pooling
-- [ ] Добавить logging для всех DB operations
+### For Database Operations
+- [ ] Use parameterized queries (no string concatenations)
+- [ ] Verify transactions are properly committed/rolled back
+- [ ] Ensure proper handling of connection pooling
+- [ ] Add logging for all DB operations
 
-## Чек-лист готовности к merge
-- [ ] Все тесты проходят
-- [ ] Code coverage не снизился
-- [ ] Все linters проходят без ошибок
-- [ ] Документация обновлена
-- [ ] Self-review выполнен
-- [ ] Pull Request создан с полным описанием
-- [ ] Нет TODO комментариев в коде (или они задокументированы в issues)
-- [ ] Исправление решает root cause проблемы
-- [ ] Добавлены тесты для предотвращения регрессии
+## Merge Readiness Checklist
+- [ ] All tests pass
+- [ ] Code coverage hasn't decreased
+- [ ] All linters pass without errors
+- [ ] Documentation is updated
+- [ ] Self-review completed
+- [ ] Pull Request created with full description
+- [ ] No TODO comments in code (or they are documented in issues)
+- [ ] Fix addresses the root cause of the problem
+- [ ] Tests added to prevent regression

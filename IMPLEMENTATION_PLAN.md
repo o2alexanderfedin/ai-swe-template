@@ -43,34 +43,34 @@ This document provides a comprehensive, hierarchical implementation plan for set
 **Content Structure**:
 
 ```markdown
-# Memory Bank: Единый источник истины проекта
+# Memory Bank: Project's Single Source of Truth
 
-Этот банк памяти — твой главный источник информации. Перед началом любой задачи **обязательно** ознакомься с этим файлом и перейди по релевантным ссылкам.
+This memory bank is your main source of information. Before starting any task, **mandatory** familiarize yourself with this file and follow the relevant links.
 
-## Обязательная последовательность чтения перед ЛЮБОЙ задачей
+## Mandatory Reading Sequence Before ANY Task
 
-1.  **[Технический стек](./tech_stack.md)**: Узнай, какие технологии, библиотеки и версии мы используем.
-2.  **[Стандарты кодирования](./guides/coding_standards.md)**: Ознакомься с правилами форматирования, именования и лучшими практиками.
-3.  **[Текущие задачи](./current_tasks.md)**: Проверь список активных задач, чтобы понять текущий фокус команды.
+1.  **[Tech Stack](./tech_stack.md)**: Learn which technologies, libraries and versions we use.
+2.  **[Coding Standards](./guides/coding_standards.md)**: Familiarize yourself with formatting rules, naming conventions and best practices.
+3.  **[Current Tasks](./current_tasks.md)**: Check the list of active tasks to understand current team focus.
 
-## Карта системы знаний
+## Knowledge System Map
 
-### 1. О проекте (Контекст "ЗАЧЕМ")
-- **[Описание продукта](./product_brief.md)**: Бизнес-цели, целевая аудитория, ключевые функции. Обращайся сюда, чтобы понять *ЧТО* мы строим и *ДЛЯ КОГО*.
+### 1. About the Project (WHY Context)
+- **[Product Brief](./product_brief.md)**: Business goals, target audience, key features. Refer here to understand *WHAT* we're building and *FOR WHOM*.
 
-### 2. Техническая основа (Контекст "КАК")
-- **[Технический стек](./tech_stack.md)**: Полный список фреймворков, библиотек и их версий. **ЗАПРЕЩЕНО** добавлять новые зависимости без обновления этого файла.
-- **[Архитектурные паттерны](./patterns/)**: Фундаментальные решения. Изучи их перед внесением изменений в структуру модулей.
-- **[Гайды по подсистемам](./guides/)**: Детальное описание ключевых модулей (например, аутентификация, платежная система).
+### 2. Technical Foundation (HOW Context)
+- **[Tech Stack](./tech_stack.md)**: Complete list of frameworks, libraries and their versions. **FORBIDDEN** to add new dependencies without updating this file.
+- **[Architectural Patterns](./patterns/)**: Fundamental decisions. Study them before making changes to module structure.
+- **[Subsystem Guides](./guides/)**: Detailed description of key modules (e.g., authentication, payment system).
 
-### 3. Процессы и задачи (Контекст "ЧТО ДЕЛАТЬ")
-- **[Рабочие процессы (Workflows)](./workflows/)**: Пошаговые инструкции для стандартных задач. Выбери нужный workflow для твоей текущей задачи.
-  - **[Разработка новой фичи](./workflows/new_feature.md)**
-  - **[Исправление бага](./workflows/bug_fix.md)**
-- **[Спецификации (ТЗ)](./specs/)**: Детальные технические задания на новые фичи.
+### 3. Processes and Tasks (WHAT TO DO Context)
+- **[Workflows](./workflows/)**: Step-by-step instructions for standard tasks. Choose the appropriate workflow for your current task.
+  - **[New Feature Development](./workflows/new_feature.md)**
+  - **[Bug Fix](./workflows/bug_fix.md)**
+- **[Specifications](./specs/)**: Detailed technical requirements for new features.
 
 ---
-**Правило:** Если ты вносишь изменения, которые затрагивают архитектуру или добавляют новую зависимость, ты должен обновить соответствующий документ в Memory Bank.
+**Rule:** If you make changes that affect architecture or add new dependencies, you must update the corresponding document in Memory Bank.
 ```
 
 **Success Criteria**:
@@ -92,21 +92,21 @@ This document provides a comprehensive, hierarchical implementation plan for set
 **Content Structure**:
 
 ```markdown
-# Технологический стек и конвенции
+# Technology Stack and Conventions
 
 ## Core Stack
-- **Frontend**: React 18 (использовать **ТОЛЬКО** функциональные компоненты с хуками).
-- **State Management**: Redux Toolkit + RTK Query для всех асинхронных запросов.
-- **Styling**: CSS Modules. **ЗАПРЕЩЕНО** использовать inline-стили или глобальные CSS-селекторы.
+- **Frontend**: React 18 (use **ONLY** functional components with hooks).
+- **State Management**: Redux Toolkit + RTK Query for all async requests.
+- **Styling**: CSS Modules. **FORBIDDEN** to use inline styles or global CSS selectors.
 
-## Запрещенные практики
-- ❌ Использование `any` в TypeScript. Все типы должны быть явно определены.
-- ❌ Использование классовых компонентов в React.
-- ❌ Прямые DOM-манипуляции. Всегда использовать React-way.
+## Forbidden Practices
+- ❌ Using `any` in TypeScript. All types must be explicitly defined.
+- ❌ Using class components in React.
+- ❌ Direct DOM manipulations. Always use React-way.
 
-## API Конвенции
-- Все API-запросы должны проходить через единый клиент `src/api/apiClient.ts`.
-- Обработка ошибок должна соответствовать схеме, описанной в **[./patterns/error_handling.md](./patterns/error_handling.md)**.
+## API Conventions
+- All API requests must go through unified client `src/api/apiClient.ts`.
+- Error handling must follow the schema described in **[./patterns/error_handling.md](./patterns/error_handling.md)**.
 ```
 
 **Customization Notes**:
@@ -135,27 +135,27 @@ This document provides a comprehensive, hierarchical implementation plan for set
 **Content Structure**:
 
 ```markdown
-# Описание продукта
+# Product Description
 
-## Название проекта
+## Project Name
 [Your Project Name]
 
-## Цель проекта (ЗАЧЕМ)
+## Project Goal (WHY)
 [Describe the core business problem this project solves]
 
-## Целевая аудитория (ДЛЯ КОГО)
+## Target Audience (FOR WHOM)
 [Describe your target users/customers]
 
-## Ключевые функции
+## Key Features
 1. [Feature 1]
 2. [Feature 2]
 3. [Feature 3]
 
-## Бизнес-метрики успеха
+## Business Success Metrics
 - [Metric 1]
 - [Metric 2]
 
-## Конкурентные преимущества
+## Competitive Advantages
 [What makes this project unique]
 ```
 
@@ -178,17 +178,17 @@ This document provides a comprehensive, hierarchical implementation plan for set
 **Content Structure**:
 
 ```markdown
-# Текущие задачи
+# Current Tasks
 
 ## To Do
-- [ ] [FE-42] Реализовать авторизацию через Google.
-- [ ] [BE-17] Оптимизировать запросы к базе данных в отчете по продажам.
+- [ ] [FE-42] Implement Google authentication.
+- [ ] [BE-17] Optimize database queries in sales report.
 
 ## In Progress
-- [x] [FE-39] Сделать адаптивную верстку для главной страницы.
+- [x] [FE-39] Create responsive layout for main page.
 
 ## Done
-- [x] [BE-15] Внедрить кэширование для API-ответов каталога.
+- [x] [BE-15] Implement caching for catalog API responses.
 ```
 
 **Customization Notes**:
@@ -493,16 +493,16 @@ npm run test:coverage # Generate coverage report
 
 **Status:** [Planning / In Development / In Review / Done]
 
-## Аннотация
+## Summary
 [1-2 sentence summary of what this feature does and why it's needed]
 
-## Описание задачи
+## Task Description
 [Detailed description of the feature, including:
 - Current state/problem
 - Desired outcome
 - How it fits into the larger system]
 
-## Ключевые компоненты для реализации
+## Key Components for Implementation
 
 ### 1. [Component Name]
 - **Location:** `path/to/component`
@@ -513,7 +513,7 @@ npm run test:coverage # Generate coverage report
 - **Location:** `path/to/component`
 - **Purpose:** [What this component does]
 
-## Структура данных
+## Data Structure
 
 ### API Request Schema
 ```json
@@ -543,12 +543,12 @@ npm run test:coverage # Generate coverage report
 ### 2. [Endpoint Name]
 [Same structure as above]
 
-## Файлы для создания/изменения
+## Files to Create/Modify
 - [ ] `path/to/file1.ts` - [Purpose]
 - [ ] `path/to/file2.ts` - [Purpose]
 - [ ] `path/to/test.test.ts` - [Purpose]
 
-## Критерии приемки
+## Acceptance Criteria
 - [ ] [Specific testable criterion 1]
 - [ ] [Specific testable criterion 2]
 - [ ] [Specific testable criterion 3]
@@ -556,11 +556,11 @@ npm run test:coverage # Generate coverage report
 - [ ] Code follows coding standards
 - [ ] Documentation is updated
 
-## Зависимости от других компонентов
+## Dependencies on Other Components
 - [Component/Module Name]: [How it's used]
 - [Shared Utility]: Import from `path/to/utility`
 
-## Ограничения и известные проблемы
+## Constraints and Known Issues
 - [Any technical limitations]
 - [Known edge cases]
 ```
@@ -588,24 +588,24 @@ npm run test:coverage # Generate coverage report
 **Content Structure** (from article):
 
 ```markdown
-# FT-052: Разработка API для управления парком IoT-устройств (Command & Control)
+# FT-052: Development of API for IoT Device Fleet Management (Command & Control)
 
-**Эпик:** [EPIC-05: IoT Platform Core](EPIC-05-IoT-Platform-Core.md)
+**Epic:** [EPIC-05: IoT Platform Core](EPIC-05-IoT-Platform-Core.md)
 
-**Аннотация:** Реализовать центральный API-шлюз (Command & Control API), который служит единой точкой для отправки команд на парк IoT-устройств. API должен принимать команды, валидировать их, логировать и публиковать в Kafka для асинхронной доставки.
+**Summary:** Implement central API gateway (Command & Control API) that serves as a single point for sending commands to IoT device fleet. API must accept commands, validate them, log and publish to Kafka for asynchronous delivery.
 
-## Описание задачи
-Этот API заменяет старый RPC-сервис, который работал нестабильно. Новый API не доставляет команды сам, а лишь быстро регистрирует их. Специализированные воркеры будут слушать топик Kafka и отвечать за доставку.
+## Task Description
+This API replaces old RPC service that worked unstably. New API doesn't deliver commands itself, but quickly registers them. Specialized workers will listen to Kafka topic and be responsible for delivery.
 
-## Ключевые компоненты для реализации
-1.  **FastAPI Application**: Основа для API. Расположить в `services/command_control/main.py`.
-2.  **Pydantic Schemas**: Модели для валидации запросов.
-    - **Важно:** Базовые схемы, такие как `BatchCommandRequest`, уже реализованы в `core/src/schemas.py`. **Ты должен импортировать и расширять их**, а не создавать новые.
-3.  **Kafka Producer**: Для отправки команд в топик `device-commands`.
-    - **Важно:** Взаимодействие с Kafka должно осуществляться через готовый клиент, реализованный в `core/src/kafka/kafka_client.py`. **Импортируй и используй `kafka_producer` из этого модуля.**
+## Key Components for Implementation
+1.  **FastAPI Application**: Foundation for API. Place in `services/command_control/main.py`.
+2.  **Pydantic Schemas**: Models for request validation.
+    - **Important:** Basic schemas like `BatchCommandRequest` are already implemented in `core/src/schemas.py`. **You must import and extend them**, not create new ones.
+3.  **Kafka Producer**: For sending commands to `device-commands` topic.
+    - **Important:** Kafka interaction must be done through ready client implemented in `core/src/kafka/kafka_client.py`. **Import and use `kafka_producer` from this module.**
 
-## Структура события в Kafka
-Каждая команда, отправляемая в Kafka, должна соответствовать этой JSON-схеме:
+## Kafka Event Structure
+Each command sent to Kafka must conform to this JSON schema:
 ```json
 {
   "command_id": "uuid",
@@ -615,28 +615,28 @@ npm run test:coverage # Generate coverage report
 }
 ```
 
-## API Endpoints для реализации
+## API Endpoints for Implementation
 
-### 1. Отправка команды на одно устройство
+### 1. Send command to single device
 
 - **Endpoint:** `POST /commands/send`
 - **Request Body:** `SendCommandRequest(device_id: str, command_type: str, payload: dict)`
-- **Действие:** Валидировать запрос, создать запись в `CommandHistoryDB` со статусом `queued`, опубликовать событие в Kafka.
+- **Action:** Validate request, create record in `CommandHistoryDB` with status `queued`, publish event to Kafka.
 - **Response:** `202 Accepted` `{ "success": true, "command_id": "...", "status": "queued" }`
 
-### 2. Отправка команды на группу устройств
+### 2. Send command to device group
 
 - **Endpoint:** `POST /commands/send/batch`
 - **Request Body:** `BatchCommandRequest(device_ids: List[str], command_type: str, payload: dict)`
-- **Действие:** Сгенерировать `batch_id`. Для каждого `device_id` из списка выполнить те же действия, что и для одиночного эндпоинта.
+- **Action:** Generate `batch_id`. For each `device_id` from list perform same actions as for single endpoint.
 - **Response:** `202 Accepted` `{ "success": true, "batch_id": "...", "status": "queued" }`
 
-## Критерии приемки
+## Acceptance Criteria
 
-- [ ]  Вся валидация реализована с помощью Pydantic **с использованием схем из `core/src/schemas.py`**.
-- [ ]  Взаимодействие с Kafka реализовано **исключительно через клиент из `core/src/kafka/kafka_client.py`**.
-- [ ]  Все эндпоинты реализованы и возвращают корректные статусы и тела ответов.
-- [ ]  Написаны unit-тесты, проверяющие успешную отправку команды в Kafka для каждого эндпоинта.
+- [ ]  All validation implemented using Pydantic **using schemas from `core/src/schemas.py`**.
+- [ ]  Kafka interaction implemented **exclusively through client from `core/src/kafka/kafka_client.py`**.
+- [ ]  All endpoints implemented and return correct statuses and response bodies.
+- [ ]  Unit tests written verifying successful command sending to Kafka for each endpoint.
 ```
 
 **Success Criteria**:
@@ -692,22 +692,22 @@ npm run test:coverage # Generate coverage report
 **Content Structure** (from article):
 
 ```markdown
-# Процесс исправления бага
+# Bug Fix Process
 
-## 1. Подготовка и анализ
-- [ ] Создать ветку от `develop` по шаблону `bugfix/TICKET-NUMBER-short-description`.
-- [ ] Сгенерировать гипотезы о причинах бага
-- [ ] Локализовать проблему в кодовой базе. Найти все релевантные файлы.
-- [ ] Проанализировать связанные документы в `guides/` и `patterns/` для понимания контекста затронутой системы.
+## 1. Preparation and Analysis
+- [ ] Create branch from `develop` using template `bugfix/TICKET-NUMBER-short-description`.
+- [ ] Generate hypotheses about bug causes
+- [ ] Localize problem in codebase. Find all relevant files.
+- [ ] Analyze related documents in `guides/` and `patterns/` to understand context of affected system.
 
-## 2. Разработка
-- [ ] Внести исправления в код, следуя **[стандартам кодирования](../guides/coding_standards.md)**.
-- [ ] Запустить весь набор тестов (`npm test`), чтобы убедиться, что ничего не сломалось.
+## 2. Development
+- [ ] Make fixes to code, following **[coding standards](../guides/coding_standards.md)**.
+- [ ] Run entire test suite (`npm test`) to ensure nothing broke.
 
-## 3. Завершение
-- [ ] Обновить документацию, если исправление затронуло публичное поведение компонента.
-- [ ] Обновить статус задачи в **[../current_tasks.md](../current_tasks.md)**.
-- [ ] Создать Pull Request и краткое описание решения.
+## 3. Completion
+- [ ] Update documentation if fix affected public component behavior.
+- [ ] Update task status in **[../current_tasks.md](../current_tasks.md)**.
+- [ ] Create Pull Request with brief solution description.
 ```
 
 **Customization Notes**:
@@ -738,46 +738,46 @@ npm run test:coverage # Generate coverage report
 **Content Structure**:
 
 ```markdown
-# Процесс разработки новой фичи
+# New Feature Development Process
 
-## 1. Подготовка
-- [ ] Создать ветку от `develop` по шаблону `feature/TICKET-NUMBER-short-description`.
-- [ ] Прочитать спецификацию в **[../specs/](../specs/)** для понимания полного объема работ.
-- [ ] Изучить **[стандарты кодирования](../guides/coding_standards.md)** и **[архитектурные паттерны](../patterns/)**.
-- [ ] Обновить статус задачи в **[../current_tasks.md](../current_tasks.md)** на "In Progress".
+## 1. Preparation
+- [ ] Create branch from `develop` using template `feature/TICKET-NUMBER-short-description`.
+- [ ] Read specification in **[../specs/](../specs/)** to understand full scope of work.
+- [ ] Study **[coding standards](../guides/coding_standards.md)** and **[architectural patterns](../patterns/)**.
+- [ ] Update task status in **[../current_tasks.md](../current_tasks.md)** to "In Progress".
 
-## 2. Анализ и проектирование
-- [ ] Идентифицировать существующие компоненты для переиспользования.
-- [ ] Проверить **[tech_stack.md](../tech_stack.md)** на разрешенные технологии.
-- [ ] Составить список файлов для создания/изменения.
+## 2. Analysis and Design
+- [ ] Identify existing components for reuse.
+- [ ] Check **[tech_stack.md](../tech_stack.md)** for allowed technologies.
+- [ ] Create list of files to create/modify.
 
-## 3. Разработка
-- [ ] Создать необходимые модели данных/схемы.
-- [ ] Реализовать бизнес-логику согласно спецификации.
-- [ ] Следовать паттернам из **[../patterns/](../patterns/)**.
-- [ ] Переиспользовать существующие утилиты и компоненты.
+## 3. Development
+- [ ] Create necessary data models/schemas.
+- [ ] Implement business logic according to specification.
+- [ ] Follow patterns from **[../patterns/](../patterns/)**.
+- [ ] Reuse existing utilities and components.
 
-## 4. Тестирование
-- [ ] Написать unit-тесты согласно **[стратегии тестирования](../guides/testing_strategy.md)**.
-- [ ] Запустить все тесты: `npm test`
-- [ ] Проверить code coverage (минимум 80%).
-- [ ] Провести ручное тестирование ключевых сценариев.
+## 4. Testing
+- [ ] Write unit tests according to **[testing strategy](../guides/testing_strategy.md)**.
+- [ ] Run all tests: `npm test`
+- [ ] Check code coverage (minimum 80%).
+- [ ] Perform manual testing of key scenarios.
 
-## 5. Документация
-- [ ] Обновить **[../tech_stack.md](../tech_stack.md)**, если добавлены новые зависимости.
-- [ ] Создать/обновить гайд в **[../guides/](../guides/)**, если это новая подсистема.
-- [ ] Добавить комментарии к сложным участкам кода.
+## 5. Documentation
+- [ ] Update **[../tech_stack.md](../tech_stack.md)** if new dependencies added.
+- [ ] Create/update guide in **[../guides/](../guides/)** if this is new subsystem.
+- [ ] Add comments to complex code sections.
 
-## 6. Завершение
-- [ ] Запустить линтер и форматтер.
-- [ ] Обновить статус задачи в **[../current_tasks.md](../current_tasks.md)** на "Done".
-- [ ] Создать Pull Request с подробным описанием изменений.
-- [ ] Перечислить все измененные файлы и их назначение.
+## 6. Completion
+- [ ] Run linter and formatter.
+- [ ] Update task status in **[../current_tasks.md](../current_tasks.md)** to "Done".
+- [ ] Create Pull Request with detailed change description.
+- [ ] List all changed files and their purpose.
 
 ## 7. Self-Review
-- [ ] Проверить, что все критерии приемки из спецификации выполнены.
-- [ ] Убедиться, что не нарушены архитектурные принципы.
-- [ ] Проверить, что нет дублирования кода.
+- [ ] Verify all acceptance criteria from specification are met.
+- [ ] Ensure architectural principles are not violated.
+- [ ] Check for no code duplication.
 ```
 
 **Success Criteria**:
@@ -801,53 +801,53 @@ npm run test:coverage # Generate coverage report
 **Content Structure**:
 
 ```markdown
-# Процесс ревью кода
+# Code Review Process
 
-## 1. Общая проверка
-- [ ] Pull Request содержит понятное описание изменений.
-- [ ] Все измененные файлы связаны с решаемой задачей.
-- [ ] Нет закомментированного или мертвого кода.
+## 1. General Check
+- [ ] Pull Request contains clear change description.
+- [ ] All changed files are related to the task being solved.
+- [ ] No commented or dead code.
 
-## 2. Соответствие стандартам
-- [ ] Код соответствует **[стандартам кодирования](../guides/coding_standards.md)**.
-- [ ] Именование переменных, функций и файлов следует конвенциям.
-- [ ] Форматирование согласовано с настройками линтера.
+## 2. Standards Compliance
+- [ ] Code follows **[coding standards](../guides/coding_standards.md)**.
+- [ ] Variable, function and file naming follows conventions.
+- [ ] Formatting matches linter settings.
 
-## 3. Архитектура и паттерны
-- [ ] Изменения не нарушают архитектурные принципы из **[../patterns/](../patterns/)**.
-- [ ] Новые компоненты следуют установленным паттернам.
-- [ ] Нет дублирования функционала, существующего в других частях проекта.
+## 3. Architecture and Patterns
+- [ ] Changes don't violate architectural principles from **[../patterns/](../patterns/)**.
+- [ ] New components follow established patterns.
+- [ ] No duplication of functionality existing in other parts of project.
 
-## 4. Качество кода
-- [ ] Функции имеют единственную ответственность (SRP).
-- [ ] Нет чрезмерно сложных функций (>50 строк).
-- [ ] Используется обработка ошибок согласно **[../patterns/error_handling.md](../patterns/error_handling.md)**.
-- [ ] Нет "магических" чисел - используются именованные константы.
+## 4. Code Quality
+- [ ] Functions have single responsibility (SRP).
+- [ ] No overly complex functions (>50 lines).
+- [ ] Error handling used according to **[../patterns/error_handling.md](../patterns/error_handling.md)**.
+- [ ] No "magic" numbers - named constants are used.
 
-## 5. Тесты
-- [ ] Все новые функции покрыты unit-тестами.
-- [ ] Тесты следуют AAA паттерну (Arrange-Act-Assert).
-- [ ] Все тесты проходят успешно.
-- [ ] Code coverage не снизился.
+## 5. Tests
+- [ ] All new functions covered by unit tests.
+- [ ] Tests follow AAA pattern (Arrange-Act-Assert).
+- [ ] All tests pass successfully.
+- [ ] Code coverage didn't decrease.
 
-## 6. Безопасность
-- [ ] Нет хардкод паролей, токенов, API ключей.
-- [ ] Пользовательский ввод валидируется.
-- [ ] Нет SQL-инъекций или XSS уязвимостей.
+## 6. Security
+- [ ] No hardcoded passwords, tokens, API keys.
+- [ ] User input is validated.
+- [ ] No SQL injection or XSS vulnerabilities.
 
-## 7. Производительность
-- [ ] Нет очевидных проблем производительности (N+1 queries, лишние циклы).
-- [ ] Большие данные обрабатываются эффективно.
+## 7. Performance
+- [ ] No obvious performance issues (N+1 queries, unnecessary loops).
+- [ ] Large data handled efficiently.
 
-## 8. Документация
-- [ ] Обновлена документация, если изменилось публичное API.
-- [ ] Сложные алгоритмы имеют пояснительные комментарии.
-- [ ] **[../tech_stack.md](../tech_stack.md)** обновлен при добавлении зависимостей.
+## 8. Documentation
+- [ ] Documentation updated if public API changed.
+- [ ] Complex algorithms have explanatory comments.
+- [ ] **[../tech_stack.md](../tech_stack.md)** updated when dependencies added.
 
-## 9. Финальная проверка
-- [ ] Нет merge конфликтов.
-- [ ] CI/CD pipeline проходит успешно.
-- [ ] Все критерии приемки из спецификации выполнены.
+## 9. Final Check
+- [ ] No merge conflicts.
+- [ ] CI/CD pipeline passes successfully.
+- [ ] All acceptance criteria from specification are met.
 ```
 
 **Success Criteria**:
@@ -888,43 +888,43 @@ npm run test:coverage # Generate coverage report
 ```markdown
 # Claude Code Configuration
 
-## При начале ЛЮБОЙ рабочей сессии
+## At the Start of ANY Work Session
 
-**ОБЯЗАТЕЛЬНО** выполни следующие действия:
+**MANDATORY** perform the following actions:
 
-1. Прочитай файл **`.memory_bank/README.md`** полностью.
-2. Следуй инструкциям по обязательной последовательности чтения из этого файла.
-3. Перейди по ссылкам на релевантные документы в зависимости от типа задачи:
-   - Для новой фичи → изучи спецификацию в `.memory_bank/specs/`
-   - Для бага → изучи workflow `.memory_bank/workflows/bug_fix.md`
-   - Для вопросов по технологиям → проверь `.memory_bank/tech_stack.md`
+1. Read the **`.memory_bank/README.md`** file completely.
+2. Follow the mandatory reading sequence instructions from this file.
+3. Follow links to relevant documents depending on task type:
+   - For new feature → study specification in `.memory_bank/specs/`
+   - For bug → study workflow `.memory_bank/workflows/bug_fix.md`
+   - For technology questions → check `.memory_bank/tech_stack.md`
 
-## Принцип самодокументирования
+## Self-Documentation Principle
 
-**ВАЖНО**: Ты не только читаешь из Memory Bank, но и **обновляешь его**.
+**IMPORTANT**: You not only read from Memory Bank, but also **update it**.
 
-При выполнении задач ты ДОЛЖЕН:
-- Обновлять статус в `.memory_bank/current_tasks.md` (To Do → In Progress → Done)
-- Создавать/обновлять документацию в `.memory_bank/guides/` при реализации новых подсистем
-- Обновлять `.memory_bank/tech_stack.md` при добавлении новых зависимостей
-- Создавать новые паттерны в `.memory_bank/patterns/` при принятии архитектурных решений
+When performing tasks you MUST:
+- Update status in `.memory_bank/current_tasks.md` (To Do → In Progress → Done)
+- Create/update documentation in `.memory_bank/guides/` when implementing new subsystems
+- Update `.memory_bank/tech_stack.md` when adding new dependencies
+- Create new patterns in `.memory_bank/patterns/` when making architectural decisions
 
-## Запрещенные действия
+## Forbidden Actions
 
-❌ **НИКОГДА** не добавляй новые зависимости без обновления `.memory_bank/tech_stack.md`
-❌ **НИКОГДА** не нарушай паттерны из `.memory_bank/patterns/`
-❌ **НИКОГДА** не изобретай заново то, что уже существует в проекте
+❌ **NEVER** add new dependencies without updating `.memory_bank/tech_stack.md`
+❌ **NEVER** violate patterns from `.memory_bank/patterns/`
+❌ **NEVER** reinvent what already exists in the project
 
-## При потере контекста
+## When Context is Lost
 
-Если ты чувствуешь, что контекст был потерян или сжат:
-1. Используй команду `/refresh_context`
-2. Перечитай `.memory_bank/README.md`
-3. Изучи последние коммиты для понимания текущего состояния
+If you feel context was lost or compressed:
+1. Use `/refresh_context` command
+2. Re-read `.memory_bank/README.md`
+3. Study recent commits to understand current state
 
 ---
 
-**Помни**: Memory Bank - это единый источник истины. Доверяй ему больше, чем своим предположениям.
+**Remember**: Memory Bank is the single source of truth. Trust it more than your assumptions.
 ```
 
 **Success Criteria**:
@@ -1009,13 +1009,13 @@ mkdir -p ~/.config/claude/commands/
 **Content Structure** (from article):
 
 ```markdown
-Контекст мог быть утерян или сжат. Необходимо освежить память. Выполни следующие шаги:
+Context may have been lost or compressed. Need to refresh memory. Perform the following steps:
 
-1.  Перечитай `.memory_bank/README.md` полностью, чтобы понять общую структуру.
-2.  Изучи текущие задачи в `.memory_bank/current_tasks.md`, чтобы понять, над чем мы работаем.
-3.  Просмотри последние изменения в коде, чтобы быть в курсе актуального состояния.
+1.  Re-read `.memory_bank/README.md` completely to understand overall structure.
+2.  Study current tasks in `.memory_bank/current_tasks.md` to understand what we're working on.
+3.  Review recent code changes to be aware of current state.
 
-После этого выведи сообщение "Контекст обновлен" и кратко опиши текущий статус проекта и активную задачу.
+After this, output message "Context updated" and briefly describe current project status and active task.
 ```
 
 **Usage**: `/refresh_context`
@@ -1040,17 +1040,17 @@ mkdir -p ~/.config/claude/commands/
 **Content Structure** (from article):
 
 ```markdown
-Ты получил команду /m_bug. Это означает, что мы начинаем работу над исправлением бага.
+You received /m_bug command. This means we're starting work on bug fix.
 
-Твоя задача: $ARGUMENTS.
+Your task: $ARGUMENTS.
 
-Выполни следующую процедуру:
-1.  Внимательно изучи `.memory_bank/workflows/bug_fix.md`.
-2.  Следуй описанному там процессу шаг за шагом.
-3.  Задавай уточняющие вопросы на каждом этапе, если что-то неясно.
-4.  По завершении всей работы не забудь обновить `.memory_bank/current_tasks.md` и другую релевантную документацию, как указано в workflow.
+Perform the following procedure:
+1.  Carefully study `.memory_bank/workflows/bug_fix.md`.
+2.  Follow the process described there step by step.
+3.  Ask clarifying questions at each stage if something is unclear.
+4.  Upon completion of all work, don't forget to update `.memory_bank/current_tasks.md` and other relevant documentation as specified in workflow.
 
-Начинай с первого шага.
+Start with the first step.
 ```
 
 **Usage**: `/m_bug Fix login button not responding on mobile`
@@ -1076,21 +1076,21 @@ mkdir -p ~/.config/claude/commands/
 **Content Structure**:
 
 ```markdown
-Ты получил команду /m_feature. Это означает, что мы начинаем работу над новой функцией.
+You received /m_feature command. This means we're starting work on new feature.
 
-Твоя задача: $ARGUMENTS.
+Your task: $ARGUMENTS.
 
-Выполни следующую процедуру:
-1.  Найди соответствующую спецификацию в `.memory_bank/specs/`. Если ее нет, запроси у пользователя путь к спецификации.
-2.  Внимательно изучи `.memory_bank/workflows/new_feature.md`.
-3.  Следуй описанному там процессу шаг за шагом.
-4.  Обязательно проверь `.memory_bank/tech_stack.md` перед добавлением любых зависимостей.
-5.  По завершении всей работы обновь:
+Perform the following procedure:
+1.  Find corresponding specification in `.memory_bank/specs/`. If not found, request specification path from user.
+2.  Carefully study `.memory_bank/workflows/new_feature.md`.
+3.  Follow the process described there step by step.
+4.  Mandatory check `.memory_bank/tech_stack.md` before adding any dependencies.
+5.  Upon completion of all work update:
     - `.memory_bank/current_tasks.md`
-    - `.memory_bank/tech_stack.md` (если добавлены зависимости)
-    - Создай/обнови гайд в `.memory_bank/guides/` (если это новая подсистема)
+    - `.memory_bank/tech_stack.md` (if dependencies added)
+    - Create/update guide in `.memory_bank/guides/` (if new subsystem)
 
-Начинай с первого шага.
+Start with the first step.
 ```
 
 **Usage**: `/m_feature Implement user authentication`
@@ -1114,27 +1114,27 @@ mkdir -p ~/.config/claude/commands/
 **Content Structure**:
 
 ```markdown
-Ты получил команду /m_review. Это означает, что нужно провести ревью кода.
+You received /m_review command. This means code review is needed.
 
-Код для ревью: $ARGUMENTS.
+Code for review: $ARGUMENTS.
 
-Выполни следующую процедуру:
-1.  Внимательно изучи `.memory_bank/workflows/code_review.md`.
-2.  Проверь код по всем пунктам чек-листа.
-3.  Для каждого найденного нарушения или проблемы:
-    - Укажи конкретное место (файл, строка)
-    - Объясни, почему это проблема
-    - Предложи конкретное решение
-4.  Проверь соответствие:
-    - **[Стандартам кодирования](.memory_bank/guides/coding_standards.md)**
-    - **[Архитектурным паттернам](.memory_bank/patterns/)**
-    - **[Технологическому стеку](.memory_bank/tech_stack.md)**
-5.  Предоставь итоговый отчет:
-    - ✅ Что сделано хорошо
-    - ⚠️ Что нужно улучшить
-    - ❌ Что нужно исправить обязательно
+Perform the following procedure:
+1.  Carefully study `.memory_bank/workflows/code_review.md`.
+2.  Check code against all checklist items.
+3.  For each found violation or issue:
+    - Specify exact location (file, line)
+    - Explain why it's a problem
+    - Suggest specific solution
+4.  Check compliance with:
+    - **[Coding Standards](.memory_bank/guides/coding_standards.md)**
+    - **[Architectural Patterns](.memory_bank/patterns/)**
+    - **[Tech Stack](.memory_bank/tech_stack.md)**
+5.  Provide final report:
+    - ✅ What's done well
+    - ⚠️ What needs improvement
+    - ❌ What must be fixed
 
-Начинай ревью.
+Start review.
 ```
 
 **Usage**: `/m_review` or `/m_review path/to/changed/files`
@@ -1171,69 +1171,69 @@ mkdir -p ~/.config/claude/commands/
 **Content Structure**:
 
 ```markdown
-# Planning Prompt Template (для использования с Gemini)
+# Planning Prompt Template (for use with Gemini)
 
-## Контекст
-Я работаю над проектом [PROJECT_NAME]. Вот полный контекст кодовой базы (упакованный через repomix):
+## Context
+I'm working on project [PROJECT_NAME]. Here's full codebase context (packaged via repomix):
 
 [PASTE REPOMIX OUTPUT OR ATTACH FILE]
 
-## Задача
+## Task
 [DETAILED TASK DESCRIPTION]
 
-## Требования к результату
+## Result Requirements
 
-**Ты не должен писать код сразу. Твоя задача - создать детальное техническое задание.**
+**You should not write code immediately. Your task is to create detailed technical specification.**
 
-Сгенерируй подробную спецификацию в формате Markdown, которая включает:
+Generate detailed specification in Markdown format that includes:
 
-1. **Аннотация**: Краткое описание (1-2 предложения) что и зачем делаем.
+1. **Summary**: Brief description (1-2 sentences) what and why we're doing.
 
-2. **Описание задачи**:
-   - Текущее состояние/проблема
-   - Желаемый результат
-   - Как это вписывается в общую систему
+2. **Task Description**:
+   - Current state/problem
+   - Desired result
+   - How it fits into overall system
 
-3. **Ключевые компоненты для реализации**:
-   - Список всех компонентов/модулей, которые нужно создать или изменить
-   - Для каждого компонента:
-     - Расположение (путь к файлу)
-     - Назначение
-     - Важные ограничения или существующий код для переиспользования
+3. **Key Components for Implementation**:
+   - List of all components/modules that need to be created or modified
+   - For each component:
+     - Location (file path)
+     - Purpose
+     - Important constraints or existing code to reuse
 
-4. **Структура данных**:
-   - API Request/Response схемы (если применимо)
-   - Модели данных
-   - Схемы БД (если применимо)
+4. **Data Structure**:
+   - API Request/Response schemas (if applicable)
+   - Data models
+   - DB schemas (if applicable)
 
-5. **API Endpoints** (если применимо):
+5. **API Endpoints** (if applicable):
    - Method, Endpoint path
-   - Request Body структура
-   - Действие (пошагово)
-   - Response структура
+   - Request Body structure
+   - Action (step-by-step)
+   - Response structure
 
-6. **Файлы для создания/изменения**:
-   - Чек-лист файлов с описанием назначения каждого
+6. **Files to Create/Modify**:
+   - Checklist of files with purpose description for each
 
-7. **Критерии приемки**:
-   - Список конкретных, тестируемых требований
-   - Обязательно включи: тесты, соответствие стандартам, обновление документации
+7. **Acceptance Criteria**:
+   - List of specific, testable requirements
+   - Must include: tests, standards compliance, documentation update
 
-8. **Зависимости**:
-   - Какие существующие компоненты нужно использовать
-   - Откуда импортировать
-   - Важные ограничения
+8. **Dependencies**:
+   - Which existing components need to be used
+   - Where to import from
+   - Important constraints
 
-## Важные инструкции
+## Important Instructions
 
-- Анализируй существующую кодовую базу и ОБЯЗАТЕЛЬНО переиспользуй существующие компоненты
-- Указывай точные пути к файлам
-- Делай акцент на том, что НЕЛЬЗЯ делать (forbidden practices)
-- Будь максимально конкретным и детальным
+- Analyze existing codebase and MANDATORY reuse existing components
+- Specify exact file paths
+- Emphasize what NOT to do (forbidden practices)
+- Be maximally specific and detailed
 
-## Формат выхода
+## Output Format
 
-Верни результат в формате, готовом для сохранения в `.memory_bank/specs/[FEATURE-ID]-[feature-name].md`
+Return result in format ready for saving to `.memory_bank/specs/[FEATURE-ID]-[feature-name].md`
 ```
 
 **Usage**:
@@ -1370,53 +1370,53 @@ mkdir -p ~/.config/claude/commands/
 **Content Structure**:
 
 ```markdown
-# Review Checklist Generation Prompt (для Gemini)
+# Review Checklist Generation Prompt (for Gemini)
 
-## Контекст
+## Context
 
-Ранее в нашей сессии мы создали детальное техническое задание для фичи: [FEATURE_NAME]
+Earlier in our session we created detailed technical specification for feature: [FEATURE_NAME]
 
-Вот финальная спецификация:
+Here's the final specification:
 [PASTE FINAL SPEC]
 
-## Задача
+## Task
 
-На основе этой спецификации, создай детальный чек-лист для проверки выполненной работы.
+Based on this specification, create detailed checklist for verifying completed work.
 
-## Требования к чек-листу
+## Checklist Requirements
 
-Чек-лист должен включать проверки:
+Checklist should include checks for:
 
-1. **Функциональная полнота**:
-   - Каждый компонент из спецификации реализован
-   - Все endpoints работают согласно описанию
-   - Все структуры данных соответствуют схемам
+1. **Functional Completeness**:
+   - Each component from specification is implemented
+   - All endpoints work according to description
+   - All data structures match schemas
 
-2. **Критерии приемки**:
-   - Каждый критерий из секции "Критерии приемки" спецификации
+2. **Acceptance Criteria**:
+   - Each criterion from "Acceptance Criteria" section of specification
 
-3. **Переиспользование компонентов**:
-   - Все указанные существующие компоненты действительно используются
-   - Нет дублирования функционала
+3. **Component Reuse**:
+   - All specified existing components are actually used
+   - No functionality duplication
 
-4. **Технические требования**:
-   - Тесты написаны и проходят
-   - Документация обновлена
-   - Код следует стандартам
+4. **Technical Requirements**:
+   - Tests written and passing
+   - Documentation updated
+   - Code follows standards
 
-5. **Конкретные детали реализации**:
-   - Проверки специфичные для этой фичи
-   - Граничные случаи обработаны
-   - Интеграция с существующими модулями корректна
+5. **Specific Implementation Details**:
+   - Checks specific to this feature
+   - Edge cases handled
+   - Integration with existing modules is correct
 
-## Формат выхода
+## Output Format
 
-Верни чек-лист в формате Markdown с чекбоксами, готовый для передачи AI-агенту.
+Return checklist in Markdown format with checkboxes, ready for passing to AI agent.
 
-Каждый пункт должен быть:
-- Конкретным и проверяемым
-- Ссылаться на конкретные файлы/компоненты
-- Включать ожидаемое поведение
+Each item should be:
+- Specific and verifiable
+- Reference specific files/components
+- Include expected behavior
 ```
 
 **Usage**:
@@ -1442,42 +1442,42 @@ mkdir -p ~/.config/claude/commands/
 **Content Structure**:
 
 ```markdown
-Ты получил команду /m_self_review. Это означает, что нужно проверить свою собственную работу.
+You received /m_self_review command. This means you need to check your own work.
 
-Чек-лист для проверки: $ARGUMENTS
+Checklist for verification: $ARGUMENTS
 
-Выполни следующую процедуру:
+Perform the following procedure:
 
-1. **Внимательно изучи предоставленный чек-лист**.
+1. **Carefully study provided checklist**.
 
-2. **Для каждого пункта чек-листа**:
-   - Проверь соответствующий код/файл
-   - Отметь ✅ если требование выполнено
-   - Отметь ❌ если требование НЕ выполнено
-   - Добавь комментарий с объяснением
+2. **For each checklist item**:
+   - Check corresponding code/file
+   - Mark ✅ if requirement is met
+   - Mark ❌ if requirement is NOT met
+   - Add comment with explanation
 
-3. **Для каждого невыполненного требования**:
-   - Объясни, почему оно не выполнено
-   - Предложи план исправления
-   - Если это блокер - обозначь как "CRITICAL"
+3. **For each unmet requirement**:
+   - Explain why it's not done
+   - Propose fix plan
+   - If it's a blocker - mark as "CRITICAL"
 
-4. **Автоматически исправь** простые проблемы:
-   - Форматирование кода
-   - Отсутствующие импорты
-   - Простые синтаксические ошибки
+4. **Automatically fix** simple issues:
+   - Code formatting
+   - Missing imports
+   - Simple syntax errors
 
-5. **Для сложных проблем**:
-   - Опиши проблему детально
-   - Предложи варианты решения
-   - Попроси подтверждения у пользователя перед изменениями
+5. **For complex issues**:
+   - Describe problem in detail
+   - Suggest solution options
+   - Ask user for confirmation before changes
 
-6. **Итоговый отчет**:
-   - Сколько пунктов выполнено
-   - Сколько требует исправлений
-   - Список критических проблем (если есть)
-   - Оценка готовности к merge (Ready / Needs Work)
+6. **Final Report**:
+   - How many items completed
+   - How many require fixes
+   - List of critical issues (if any)
+   - Readiness assessment for merge (Ready / Needs Work)
 
-Начинай проверку.
+Start verification.
 ```
 
 **Usage**: `/m_self_review` (paste checklist from Gemini)

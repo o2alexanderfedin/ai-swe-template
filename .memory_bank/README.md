@@ -1,54 +1,54 @@
-# Memory Bank: Единый источник истины проекта
+# Memory Bank: Single Source of Truth for the Project
 
-Этот банк памяти — твой главный источник информации. Перед началом любой задачи **обязательно** ознакомься с этим файлом и перейди по релевантным ссылкам.
+This memory bank is your main source of information. Before starting any task, **mandatory** review this file and follow the relevant links.
 
-## Обязательная последовательность чтения перед ЛЮБОЙ задачей
+## Mandatory Reading Sequence Before ANY Task
 
-1. **[Технический стек](./tech_stack.md)**: Узнай, какие технологии, библиотеки и версии мы используем.
-2. **[Стандарты кодирования](./guides/coding_standards.md)**: Ознакомься с правилами форматирования, именования и лучшими практиками.
-3. **[Текущие задачи](./current_tasks.md)**: Проверь список активных задач, чтобы понять текущий фокус команды.
+1. **[Tech Stack](./tech_stack.md)**: Learn which technologies, libraries and versions we use.
+2. **[Coding Standards](./guides/coding_standards.md)**: Review formatting rules, naming conventions and best practices.
+3. **[Current Tasks](./current_tasks.md)**: Check the list of active tasks to understand the team's current focus.
 
-## Карта системы знаний
+## Knowledge System Map
 
-### 1. О проекте (Контекст "ЗАЧЕМ")
-- **[Описание продукта](./product_brief.md)**: Бизнес-цели, целевая аудитория, ключевые функции. Обращайся сюда, чтобы понять *ЧТО* мы строим и *ДЛЯ КОГО*.
+### 1. About the Project (Context "WHY")
+- **[Product Brief](./product_brief.md)**: Business goals, target audience, key features. Refer here to understand *WHAT* we are building and *FOR WHOM*.
 
-### 2. Техническая основа (Контекст "КАК")
-- **[Технический стек](./tech_stack.md)**: Полный список фреймворков, библиотек и их версий. **ЗАПРЕЩЕНО** добавлять новые зависимости без обновления этого файла.
-- **[Архитектурные паттерны](./patterns/)**: Фундаментальные решения. Изучи их перед внесением изменений в структуру модулей.
-  - **[API Standards](./patterns/api_standards.md)**: Стандарты проектирования API
-  - **[Error Handling](./patterns/error_handling.md)**: Паттерны обработки ошибок
-- **[Гайды по подсистемам](./guides/)**: Детальное описание ключевых модулей и практик.
-  - **[Coding Standards](./guides/coding_standards.md)**: Стандарты кодирования
-  - **[Testing Strategy](./guides/testing_strategy.md)**: Стратегия тестирования
+### 2. Technical Foundation (Context "HOW")
+- **[Tech Stack](./tech_stack.md)**: Complete list of frameworks, libraries and their versions. **PROHIBITED** to add new dependencies without updating this file.
+- **[Architectural Patterns](./patterns/)**: Fundamental decisions. Study them before making changes to module structure.
+  - **[API Standards](./patterns/api_standards.md)**: API design standards
+  - **[Error Handling](./patterns/error_handling.md)**: Error handling patterns
+- **[Subsystem Guides](./guides/)**: Detailed description of key modules and practices.
+  - **[Coding Standards](./guides/coding_standards.md)**: Coding standards
+  - **[Testing Strategy](./guides/testing_strategy.md)**: Testing strategy
 
-### 3. Процессы и задачи (Контекст "ЧТО ДЕЛАТЬ")
-- **[Рабочие процессы (Workflows)](./workflows/)**: Пошаговые инструкции для стандартных задач. Выбери нужный workflow для твоей текущей задачи.
-  - **[Разработка новой фичи](./workflows/new_feature.md)** (создается при необходимости)
-  - **[Исправление бага](./workflows/bug_fix.md)** (создается при необходимости)
-- **[Спецификации (ТЗ)](./specs/)**: Детальные технические задания на новые фичи.
-
----
-
-## Философия проекта
-
-**Due Diligence Bot** — это автоматизированная система для проведения комплексной проверки компаний и проектов. Наш подход:
-
-1. **AI-First**: Используем возможности LLM для анализа и структурирования данных
-2. **Асинхронность**: Все I/O операции асинхронны для максимальной производительности
-3. **Type Safety**: Строгая типизация для предотвращения ошибок на ранних этапах
-4. **Модульность**: Четкое разделение ответственности между компонентами
-
-## Правила работы
-
-**Правило 1:** Если ты вносишь изменения, которые затрагивают архитектуру или добавляют новую зависимость, ты должен обновить соответствующий документ в Memory Bank.
-
-**Правило 2:** Перед началом работы над задачей обязательно проверь `current_tasks.md` и обнови статус задачи на "In Progress".
-
-**Правило 3:** Всегда следуй паттернам из `patterns/` и стандартам из `guides/`. Если сомневаешься — спроси.
-
-**Правило 4:** Все внешние интеграции должны быть задокументированы и следовать API стандартам из `patterns/api_standards.md`.
+### 3. Processes and Tasks (Context "WHAT TO DO")
+- **[Workflows](./workflows/)**: Step-by-step instructions for standard tasks. Choose the appropriate workflow for your current task.
+  - **[New Feature Development](./workflows/new_feature.md)** (created when needed)
+  - **[Bug Fix](./workflows/bug_fix.md)** (created when needed)
+- **[Specifications (Technical Requirements)](./specs/)**: Detailed technical specifications for new features.
 
 ---
 
-**Помни**: Memory Bank - это живой документ. Обновляй его по мере развития проекта.
+## Project Philosophy
+
+**Due Diligence Bot** is an automated system for conducting comprehensive verification of companies and projects. Our approach:
+
+1. **AI-First**: We use LLM capabilities for data analysis and structuring
+2. **Asynchronous**: All I/O operations are asynchronous for maximum performance
+3. **Type Safety**: Strict typing to prevent errors in early stages
+4. **Modularity**: Clear separation of responsibilities between components
+
+## Working Rules
+
+**Rule 1:** If you make changes that affect architecture or add a new dependency, you must update the corresponding document in Memory Bank.
+
+**Rule 2:** Before starting work on a task, always check `current_tasks.md` and update the task status to "In Progress".
+
+**Rule 3:** Always follow patterns from `patterns/` and standards from `guides/`. If in doubt — ask.
+
+**Rule 4:** All external integrations must be documented and follow API standards from `patterns/api_standards.md`.
+
+---
+
+**Remember**: Memory Bank is a living document. Update it as the project evolves.

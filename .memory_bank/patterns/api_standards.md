@@ -1,14 +1,14 @@
 # API Standards
 
 ## Naming Conventions
-- Endpoints используют lowercase с подчеркиваниями: `/api/company_check`, `/api/reports/generate`
-- Resource-based URLs, не action-based
-- Версионирование API в URL: `/api/v1/...`
+- Endpoints use lowercase with underscores: `/api/company_check`, `/api/reports/generate`
+- Resource-based URLs, not action-based
+- API versioning in URL: `/api/v1/...`
 
 ## Request/Response Format
-- Все requests/responses используют JSON
+- All requests/responses use JSON
 - Date formats: ISO 8601 (YYYY-MM-DDTHH:mm:ssZ)
-- Все даты в UTC timezone
+- All dates in UTC timezone
 
 ## Standard Response Structure
 
@@ -46,8 +46,8 @@
 
 ## External API Integration Standards
 
-### Базовый класс для интеграций
-Все интеграции с внешними API должны наследоваться от базового класса:
+### Base Class for Integrations
+All integrations with external APIs must inherit from the base class:
 
 ```python
 from abc import ABC, abstractmethod
@@ -83,9 +83,9 @@ class BaseAPIIntegration(ABC):
 ```
 
 ### Retry Logic
-- Использовать экспоненциальный backoff для повторных попыток
-- Максимум 3 попытки для временных ошибок (5xx, timeout)
-- Не повторять для клиентских ошибок (4xx)
+- Use exponential backoff for retry attempts
+- Maximum 3 attempts for transient errors (5xx, timeout)
+- Do not retry for client errors (4xx)
 
 ```python
 from tenacity import retry, stop_after_attempt, wait_exponential
@@ -100,21 +100,21 @@ async def fetch_with_retry(url: str) -> Dict[str, Any]:
 ```
 
 ## Authentication
-- API ключи передаются через заголовок `Authorization: Bearer {token}`
-- Секреты хранятся в переменных окружения
-- Использовать `python-dotenv` для локальной разработки
+- API keys are passed via the `Authorization: Bearer {token}` header
+- Secrets are stored in environment variables
+- Use `python-dotenv` for local development
 
 ## Rate Limiting
-- Реализовать rate limiting для защиты от abuse
-- Использовать Redis для хранения счетчиков
-- Стандартные лимиты:
-  - 100 requests/minute для authenticated users
-  - 10 requests/minute для anonymous users
+- Implement rate limiting to protect from abuse
+- Use Redis for storing counters
+- Standard limits:
+  - 100 requests/minute for authenticated users
+  - 10 requests/minute for anonymous users
 
 ## Data Validation
-- Использовать Pydantic models для всех request/response
-- Валидировать входные данные на уровне API endpoint
-- Явно определять типы для всех полей
+- Use Pydantic models for all request/response
+- Validate input data at the API endpoint level
+- Explicitly define types for all fields
 
 ```python
 from pydantic import BaseModel, Field, validator
@@ -131,9 +131,9 @@ class CompanyCheckRequest(BaseModel):
 ```
 
 ## Logging Standards
-- Логировать все внешние API запросы
-- Включать correlation ID для трассировки
-- Не логировать sensitive данные (API keys, personal info)
+- Log all external API requests
+- Include correlation ID for tracing
+- Do not log sensitive data (API keys, personal info)
 
 ```python
 import logging
@@ -152,6 +152,6 @@ async def make_api_call(endpoint: str, correlation_id: str):
 ```
 
 ## Versioning Strategy
-- Использовать URL-based versioning: `/api/v1/`, `/api/v2/`
-- Поддерживать минимум 2 версии одновременно
-- Deprecate старые версии с предупреждением минимум за 3 месяца
+- Use URL-based versioning: `/api/v1/`, `/api/v2/`
+- Support at least 2 versions simultaneously
+- Deprecate old versions with at least 3 months warning

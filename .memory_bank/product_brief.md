@@ -1,34 +1,34 @@
-# Описание продукта
+# Product Brief
 
-## Название проекта
+## Project Name
 Due Diligence Bot
 
-## Цель проекта (ЗАЧЕМ)
-Автоматизировать процесс сбора, анализа и предоставления информации для проведения due diligence (комплексной проверки) компаний, проектов или инвестиционных возможностей. Бот должен значительно сократить время, необходимое для первичного анализа, и предоставить структурированную информацию для принятия инвестиционных или бизнес-решений.
+## Project Goal (WHY)
+Automate the process of collecting, analyzing and providing information for conducting due diligence (comprehensive verification) of companies, projects or investment opportunities. The bot should significantly reduce the time needed for initial analysis and provide structured information for making investment or business decisions.
 
-## Целевая аудитория (ДЛЯ КОГО)
-- Инвесторы и венчурные фонды, проводящие анализ потенциальных объектов инвестирования
-- Аналитики и консультанты, выполняющие due diligence для клиентов
-- Юридические и финансовые отделы компаний, оценивающие партнеров или объекты M&A
-- Бизнес-аналитики, изучающие рынок и конкурентов
+## Target Audience (FOR WHOM)
+- Investors and venture funds conducting analysis of potential investment targets
+- Analysts and consultants performing due diligence for clients
+- Legal and financial departments of companies evaluating partners or M&A targets
+- Business analysts studying the market and competitors
 
-## Ключевые функции
-1. **Автоматический сбор информации**: Агрегация данных из открытых источников, реестров, новостей, финансовых отчетов
-2. **Анализ и структурирование данных**: Обработка собранной информации и представление в удобном для анализа формате
-3. **Генерация отчетов**: Создание структурированных отчетов по результатам проверки
-4. **Мониторинг изменений**: Отслеживание изменений в статусе проверяемых объектов
-5. **Интеграция с внешними источниками данных**: Подключение к API государственных реестров, финансовых баз данных, новостных агрегаторов
+## Key Features
+1. **Automatic Information Collection**: Aggregation of data from open sources, registries, news, financial reports
+2. **Data Analysis and Structuring**: Processing collected information and presenting it in a convenient format for analysis
+3. **Report Generation**: Creating structured reports based on verification results
+4. **Change Monitoring**: Tracking changes in the status of verified objects
+5. **Integration with External Data Sources**: Connection to APIs of government registries, financial databases, news aggregators
 
-## Бизнес-метрики успеха
-- Сокращение времени на проведение первичного due diligence с нескольких дней до нескольких часов
-- Повышение полноты собираемой информации (охват различных источников данных)
-- Точность и актуальность предоставляемых данных
-- Количество успешных проверок, завершенных с помощью бота
-- Уровень удовлетворенности пользователей качеством отчетов
+## Business Success Metrics
+- Reducing time for conducting initial due diligence from several days to several hours
+- Increasing completeness of collected information (coverage of various data sources)
+- Accuracy and relevance of provided data
+- Number of successful verifications completed with the bot's help
+- User satisfaction level with report quality
 
-## Конкурентные преимущества
-- Комплексный подход к сбору информации из множества источников
-- Использование AI для анализа и структурирования данных
-- Автоматизация рутинных задач проверки
-- Возможность настройки под специфические требования пользователя
-- Интерактивный интерфейс для уточнения запросов и углубленного анализа
+## Competitive Advantages
+- Comprehensive approach to collecting information from multiple sources
+- Use of AI for data analysis and structuring
+- Automation of routine verification tasks
+- Ability to customize for specific user requirements
+- Interactive interface for clarifying queries and in-depth analysis
