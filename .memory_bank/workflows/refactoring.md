@@ -1,107 +1,107 @@
-# Процесс рефакторинга
+# Refactoring Process
 
-## Введение
+## Introduction
 
-Рефакторинг - это изменение внутренней структуры кода без изменения его внешнего поведения. Цель - улучшить читаемость, поддерживаемость, производительность или архитектуру кода.
+Refactoring is changing the internal structure of code without changing its external behavior. The goal is to improve readability, maintainability, performance, or code architecture.
 
-**Ключевой принцип**: Рефакторинг должен быть безопасным и инкрементальным. Делайте маленькие шаги, постоянно проверяйте, что ничего не сломалось.
+**Key Principle**: Refactoring should be safe and incremental. Take small steps, constantly verify that nothing is broken.
 
-## 1. Подготовка и планирование
+## 1. Preparation and Planning
 
 ### 1.1 Git Branch Setup
-- [ ] Создать ветку от `develop` по шаблону `refactor/TICKET-NUMBER-short-description`
-  - Пример: `refactor/DD-78-extract-company-validation`
-  - Следовать конвенции из **[../tech_stack.md](../tech_stack.md#version-control)**
+- [ ] Create a branch from `develop` following the template `refactor/TICKET-NUMBER-short-description`
+  - Example: `refactor/DD-78-extract-company-validation`
+  - Follow the convention from **[../tech_stack.md](../tech_stack.md#version-control)**
 
 ### 1.2 Task Tracking
-- [ ] Обновить статус задачи в **[../current_tasks.md](../current_tasks.md)** на "In Progress"
-- [ ] Добавить метку `[REFACTOR]` к задаче
+- [ ] Update task status in **[../current_tasks.md](../current_tasks.md)** to "In Progress"
+- [ ] Add `[REFACTOR]` label to the task
 
 ### 1.3 Identify Refactoring Target
-- [ ] Определить код, который требует рефакторинга
-- [ ] Классифицировать тип рефакторинга:
-  - **Extract Method**: Вынести часть кода в отдельную функцию
-  - **Extract Class**: Создать новый класс из части существующего
-  - **Rename**: Переименовать для улучшения читаемости
-  - **Remove Duplication**: Устранить дублирование кода
-  - **Simplify Conditional**: Упростить сложные условия
-  - **Optimize Performance**: Улучшить производительность
-  - **Improve Error Handling**: Улучшить обработку ошибок
-  - **Modernize Code**: Обновить до современных практик Python
+- [ ] Identify code that requires refactoring
+- [ ] Classify the type of refactoring:
+  - **Extract Method**: Extract part of code into a separate function
+  - **Extract Class**: Create a new class from part of existing one
+  - **Rename**: Rename to improve readability
+  - **Remove Duplication**: Eliminate code duplication
+  - **Simplify Conditional**: Simplify complex conditions
+  - **Optimize Performance**: Improve performance
+  - **Improve Error Handling**: Improve error handling
+  - **Modernize Code**: Update to modern Python practices
 
 ### 1.4 Understand Current Code
-- [ ] Изучить существующий код досконально:
-  - Что делает код?
-  - Какие есть зависимости?
-  - Где используется?
-  - Какие тесты покрывают этот код?
-- [ ] Проанализировать связанные документы:
+- [ ] Study existing code thoroughly:
+  - What does the code do?
+  - What are the dependencies?
+  - Where is it used?
+  - What tests cover this code?
+- [ ] Analyze related documents:
   - **[../guides/coding_standards.md](../guides/coding_standards.md)**
   - **[../patterns/](../patterns/)**
-- [ ] Определить scope изменений
+- [ ] Define scope of changes
 
 ### 1.5 Safety Check
-- [ ] Убедиться, что существующий код покрыт тестами
-- [ ] Если тестов нет - написать их ПЕРЕД рефакторингом
-- [ ] Запустить все тесты и убедиться, что они проходят
-- [ ] Зафиксировать текущее поведение как baseline
+- [ ] Ensure existing code is covered by tests
+- [ ] If no tests exist - write them BEFORE refactoring
+- [ ] Run all tests and ensure they pass
+- [ ] Record current behavior as baseline
 
-## 2. Анализ и проектирование
+## 2. Analysis and Design
 
 ### 2.1 Define Success Criteria
-- [ ] Определить конкретные цели рефакторинга:
-  - Что должно улучшиться? (читаемость, производительность, maintainability)
-  - Какие метрики использовать? (complexity, coupling, cohesion)
-  - Как измерить успех?
+- [ ] Define specific refactoring goals:
+  - What should improve? (readability, performance, maintainability)
+  - What metrics to use? (complexity, coupling, cohesion)
+  - How to measure success?
 
 ### 2.2 Plan Incremental Steps
-- [ ] Разбить рефакторинг на маленькие, безопасные шаги
-- [ ] Определить порядок изменений
-- [ ] Определить контрольные точки для проверки
-- [ ] Пример плана для Extract Method:
-  1. Выделить код в новую функцию
-  2. Добавить type hints и docstring
-  3. Заменить оригинальный код вызовом новой функции
-  4. Запустить тесты
+- [ ] Break refactoring into small, safe steps
+- [ ] Define order of changes
+- [ ] Define checkpoints for verification
+- [ ] Example plan for Extract Method:
+  1. Extract code into new function
+  2. Add type hints and docstring
+  3. Replace original code with call to new function
+  4. Run tests
   5. Commit
 
 ### 2.3 Check Existing Components
-- [ ] Проверить, нет ли уже готового решения в кодовой базе
-- [ ] Найти существующие компоненты для переиспользования
-- [ ] Проверить **[../tech_stack.md](../tech_stack.md)** на доступные библиотеки
+- [ ] Check if there's already a ready solution in the codebase
+- [ ] Find existing components to reuse
+- [ ] Check **[../tech_stack.md](../tech_stack.md)** for available libraries
 
 ### 2.4 Assess Risk
-- [ ] Оценить риск рефакторинга:
-  - **Low risk**: Локальные изменения, хорошо покрыто тестами
-  - **Medium risk**: Затрагивает несколько модулей, частично покрыто тестами
-  - **High risk**: Затрагивает core функциональность, мало тестов
-- [ ] Для high risk рефакторинга - рассмотреть разбиение на несколько PR
+- [ ] Assess refactoring risk:
+  - **Low risk**: Local changes, well covered by tests
+  - **Medium risk**: Affects several modules, partially covered by tests
+  - **High risk**: Affects core functionality, few tests
+- [ ] For high risk refactoring - consider splitting into several PRs
 
-## 3. Выполнение рефакторинга
+## 3. Performing Refactoring
 
 ### 3.1 General Principles
-- [ ] **Red-Green-Refactor** цикл:
-  1. Убедиться, что тесты проходят (Green)
-  2. Сделать маленькое изменение
-  3. Запустить тесты - они должны пройти
+- [ ] **Red-Green-Refactor** cycle:
+  1. Ensure tests pass (Green)
+  2. Make a small change
+  3. Run tests - they should pass
   4. Commit
-  5. Повторить
-- [ ] Делать маленькие, атомарные коммиты
-- [ ] Тесты должны проходить после каждого шага
-- [ ] Не добавлять новую функциональность во время рефакторинга
+  5. Repeat
+- [ ] Make small, atomic commits
+- [ ] Tests should pass after each step
+- [ ] Don't add new functionality during refactoring
 
 ### 3.2 Extract Method Refactoring
-Если нужно вынести часть кода в отдельную функцию:
+If you need to extract part of code into a separate function:
 
-- [ ] Идентифицировать блок кода для извлечения
-- [ ] Определить входные параметры и return value
-- [ ] Создать новую функцию с понятным именем
-- [ ] Добавить type hints для всех параметров и return value
-- [ ] Добавить docstring (Google style)
-- [ ] Скопировать код в новую функцию
-- [ ] Заменить оригинальный код вызовом новой функции
-- [ ] Запустить тесты
-- [ ] Пример:
+- [ ] Identify code block to extract
+- [ ] Define input parameters and return value
+- [ ] Create new function with clear name
+- [ ] Add type hints for all parameters and return value
+- [ ] Add docstring (Google style)
+- [ ] Copy code to new function
+- [ ] Replace original code with call to new function
+- [ ] Run tests
+- [ ] Example:
   ```python
   # Before
   async def process_company(company_name: str) -> Report:
@@ -142,15 +142,15 @@
   ```
 
 ### 3.3 Extract Class Refactoring
-Если класс слишком большой и делает слишком много:
+If a class is too large and does too much:
 
-- [ ] Идентифицировать группу связанных методов и данных
-- [ ] Создать новый класс с понятным именем
-- [ ] Переместить связанные методы в новый класс
-- [ ] Обновить original класс - использовать composition
-- [ ] Добавить type hints и docstrings
-- [ ] Обновить тесты
-- [ ] Пример:
+- [ ] Identify a group of related methods and data
+- [ ] Create new class with clear name
+- [ ] Move related methods to new class
+- [ ] Update original class - use composition
+- [ ] Add type hints and docstrings
+- [ ] Update tests
+- [ ] Example:
   ```python
   # Before - God Object
   class CompanyAnalyzer:
@@ -178,15 +178,15 @@
   ```
 
 ### 3.4 Remove Duplication
-Если есть повторяющийся код:
+If there's repeated code:
 
-- [ ] Найти все места с дублированием
-- [ ] Определить общую логику
-- [ ] Создать общую функцию/класс
-- [ ] Заменить все дубликаты вызовами общей функции
-- [ ] Параметризовать различия
-- [ ] Запустить тесты
-- [ ] Пример:
+- [ ] Find all places with duplication
+- [ ] Define common logic
+- [ ] Create common function/class
+- [ ] Replace all duplicates with calls to common function
+- [ ] Parameterize differences
+- [ ] Run tests
+- [ ] Example:
   ```python
   # Before - duplication
   async def fetch_company_from_source_a(inn: str) -> CompanyData:
@@ -249,12 +249,12 @@
   ```
 
 ### 3.5 Simplify Conditional Logic
-Если условия слишком сложные:
+If conditions are too complex:
 
-- [ ] Вынести сложные условия в функции с понятными именами
-- [ ] Использовать early returns для уменьшения вложенности
-- [ ] Применить pattern matching (Python 3.10+) если подходит
-- [ ] Пример:
+- [ ] Extract complex conditions into functions with clear names
+- [ ] Use early returns to reduce nesting
+- [ ] Apply pattern matching (Python 3.10+) if appropriate
+- [ ] Example:
   ```python
   # Before - complex nested conditions
   def calculate_discount(user: User, order: Order) -> Decimal:
@@ -294,13 +294,13 @@
   ```
 
 ### 3.6 Improve Async Code
-Если async код можно улучшить:
+If async code can be improved:
 
-- [ ] Заменить blocking операции на async
-- [ ] Использовать `asyncio.gather()` для параллельных операций
-- [ ] Использовать async context managers
-- [ ] Убрать race conditions
-- [ ] Пример:
+- [ ] Replace blocking operations with async
+- [ ] Use `asyncio.gather()` for parallel operations
+- [ ] Use async context managers
+- [ ] Remove race conditions
+- [ ] Example:
   ```python
   # Before - sequential async calls
   async def fetch_all_data(company: str) -> CompanyReport:
@@ -320,16 +320,16 @@
   ```
 
 ### 3.7 Modernize Code
-Если код использует устаревшие паттерны:
+If code uses outdated patterns:
 
-- [ ] Заменить старые type hints на современные (Python 3.10+):
-  - `list[str]` вместо `List[str]`
-  - `dict[str, int]` вместо `Dict[str, int]`
-  - `X | None` вместо `Optional[X]`
-- [ ] Использовать f-strings вместо `.format()` или `%`
-- [ ] Использовать dataclasses или Pydantic вместо обычных классов
-- [ ] Использовать pathlib вместо os.path
-- [ ] Пример:
+- [ ] Replace old type hints with modern ones (Python 3.10+):
+  - `list[str]` instead of `List[str]`
+  - `dict[str, int]` instead of `Dict[str, int]`
+  - `X | None` instead of `Optional[X]`
+- [ ] Use f-strings instead of `.format()` or `%`
+- [ ] Use dataclasses or Pydantic instead of regular classes
+- [ ] Use pathlib instead of os.path
+- [ ] Example:
   ```python
   # Before - old style
   from typing import List, Optional, Dict
@@ -364,172 +364,172 @@
       return results
   ```
 
-## 4. Тестирование
+## 4. Testing
 
 ### 4.1 Continuous Testing
-- [ ] Запускать тесты после каждого маленького изменения
-- [ ] Команда: `pytest -v`
-- [ ] Для async тестов: `pytest -v --asyncio-mode=auto`
-- [ ] Убедиться, что все тесты проходят
+- [ ] Run tests after each small change
+- [ ] Command: `pytest -v`
+- [ ] For async tests: `pytest -v --asyncio-mode=auto`
+- [ ] Ensure all tests pass
 
 ### 4.2 Test Coverage
-- [ ] Проверить, что test coverage не снизился
-- [ ] Команда: `pytest --cov=. --cov-report=html`
-- [ ] Убедиться, что coverage >= 80%
+- [ ] Verify test coverage hasn't decreased
+- [ ] Command: `pytest --cov=. --cov-report=html`
+- [ ] Ensure coverage >= 80%
 
 ### 4.3 Add New Tests (if needed)
-- [ ] Если рефакторинг создал новые публичные функции - добавить для них тесты
-- [ ] Если выявили untested edge cases - добавить тесты
-- [ ] Следовать **[стратегии тестирования](../guides/testing_strategy.md)**
+- [ ] If refactoring created new public functions - add tests for them
+- [ ] If untested edge cases were revealed - add tests
+- [ ] Follow **[testing strategy](../guides/testing_strategy.md)**
 
 ### 4.4 Integration Testing
-- [ ] Запустить integration тесты (если есть)
-- [ ] Протестировать вручную в development окружении
-- [ ] Для Telegram bot - протестировать в тестовом боте
+- [ ] Run integration tests (if available)
+- [ ] Test manually in development environment
+- [ ] For Telegram bot - test in the test bot
 
 ## 5. Code Quality Verification
 
 ### 5.1 Linting and Formatting
-- [ ] Запустить Black: `poetry run black .`
-- [ ] Запустить Ruff: `poetry run ruff check .`
-- [ ] Запустить mypy: `poetry run mypy .`
-- [ ] Исправить все найденные проблемы
+- [ ] Run Black: `poetry run black .`
+- [ ] Run Ruff: `poetry run ruff check .`
+- [ ] Run mypy: `poetry run mypy .`
+- [ ] Fix all found issues
 
 ### 5.2 Code Quality Metrics
-- [ ] Проверить, что рефакторинг действительно улучшил код:
-  - Уменьшилась сложность функций?
-  - Улучшилась читаемость?
-  - Уменьшилось дублирование?
-  - Улучшилась структура?
+- [ ] Verify that refactoring actually improved the code:
+  - Did function complexity decrease?
+  - Did readability improve?
+  - Did duplication decrease?
+  - Did structure improve?
 
 ### 5.3 Performance Check (if applicable)
-- [ ] Если цель рефакторинга - производительность:
-  - Измерить производительность до и после
-  - Убедиться, что есть улучшение
-  - Добавить performance тесты (если применимо)
+- [ ] If refactoring goal is performance:
+  - Measure performance before and after
+  - Ensure there's improvement
+  - Add performance tests (if applicable)
 
-## 6. Документация
+## 6. Documentation
 
 ### 6.1 Code Documentation
-- [ ] Обновить docstrings для измененных функций/классов
-- [ ] Добавить комментарии, объясняющие WHY (если нужно)
-- [ ] Удалить устаревшие комментарии
+- [ ] Update docstrings for modified functions/classes
+- [ ] Add comments explaining WHY (if needed)
+- [ ] Remove outdated comments
 
 ### 6.2 Update Memory Bank (if needed)
-- [ ] Обновить **[../guides/](../guides/)** если изменились практики
-- [ ] Обновить **[../patterns/](../patterns/)** если изменились паттерны
-- [ ] Добавить новые best practices, выявленные при рефакторинге
+- [ ] Update **[../guides/](../guides/)** if practices changed
+- [ ] Update **[../patterns/](../patterns/)** if patterns changed
+- [ ] Add new best practices revealed during refactoring
 
 ### 6.3 Document Breaking Changes (if any)
-- [ ] Если рефакторинг изменил публичное API:
-  - Задокументировать breaking changes
-  - Создать migration guide
-  - Обновить version (semantic versioning)
+- [ ] If refactoring changed public API:
+  - Document breaking changes
+  - Create migration guide
+  - Update version (semantic versioning)
 
-## 7. Завершение
+## 7. Completion
 
 ### 7.1 Self Review
-- [ ] Провести self-review:
-  - Все цели рефакторинга достигнуты?
-  - Код действительно улучшился?
-  - Не добавлена ли новая функциональность случайно?
-  - Все тесты проходят?
+- [ ] Conduct self-review:
+  - Are all refactoring goals achieved?
+  - Did the code actually improve?
+  - Was new functionality accidentally added?
+  - Do all tests pass?
 
 ### 7.2 Task Status Update
-- [ ] Обновить статус задачи в **[../current_tasks.md](../current_tasks.md)** на "Done"
-- [ ] Добавить описание выполненного рефакторинга
+- [ ] Update task status in **[../current_tasks.md](../current_tasks.md)** to "Done"
+- [ ] Add description of performed refactoring
 
 ### 7.3 Commit and Push
-- [ ] Создать осмысленные коммиты (Conventional Commits):
+- [ ] Create meaningful commits (Conventional Commits):
   ```
-  refactor(module): краткое описание рефакторинга
+  refactor(module): brief description of refactoring
 
-  - Что было улучшено
-  - Почему было сделано
-  - Метрики до/после (если применимо)
+  - What was improved
+  - Why it was done
+  - Before/after metrics (if applicable)
   ```
-- [ ] Push ветки: `git push -u origin refactor/TICKET-NUMBER-short-description`
+- [ ] Push the branch: `git push -u origin refactor/TICKET-NUMBER-short-description`
 
 ### 7.4 Pull Request
-- [ ] Создать Pull Request с описанием:
-  - **Motivation**: Почему нужен рефакторинг?
-  - **Changes**: Что изменилось?
-  - **Impact**: Как это улучшило код? (metrics, readability, etc.)
-  - **Testing**: Как проверить, что ничего не сломалось?
-  - **Breaking Changes**: Есть ли breaking changes? (должно быть "No" для pure refactoring)
-- [ ] Добавить "before/after" примеры кода
-- [ ] Связать PR с ticket/issue
+- [ ] Create Pull Request with description:
+  - **Motivation**: Why is refactoring needed?
+  - **Changes**: What changed?
+  - **Impact**: How did this improve the code? (metrics, readability, etc.)
+  - **Testing**: How to verify nothing is broken?
+  - **Breaking Changes**: Are there breaking changes? (should be "No" for pure refactoring)
+- [ ] Add "before/after" code examples
+- [ ] Link PR to ticket/issue
 
 ### 7.5 Final Check
-- [ ] Провести full review по чек-листу из **[code_review.md](./code_review.md)**
-- [ ] Убедиться, что:
-  - Внешнее поведение не изменилось
-  - Все тесты проходят
-  - Code quality улучшился
-  - Нет regression
+- [ ] Conduct full review using checklist from **[code_review.md](./code_review.md)**
+- [ ] Ensure that:
+  - External behavior hasn't changed
+  - All tests pass
+  - Code quality improved
+  - No regression
 
-## 8. Специфичные типы рефакторинга
+## 8. Specific Refactoring Types
 
 ### 8.1 Database Schema Refactoring
-Если рефакторинг затрагивает database schema:
+If refactoring affects database schema:
 
-- [ ] Создать backwards-compatible migration
-- [ ] Определить стратегию миграции данных:
-  1. Добавить новые поля/таблицы
-  2. Мигрировать данные
-  3. Обновить код для использования новой схемы
-  4. Удалить старые поля/таблицы (в отдельном release)
-- [ ] Протестировать migration на копии production данных
-- [ ] Подготовить rollback план
+- [ ] Create backwards-compatible migration
+- [ ] Define data migration strategy:
+  1. Add new fields/tables
+  2. Migrate data
+  3. Update code to use new schema
+  4. Remove old fields/tables (in separate release)
+- [ ] Test migration on production data copy
+- [ ] Prepare rollback plan
 
 ### 8.2 API Refactoring
-Если рефакторинг затрагивает публичное API:
+If refactoring affects public API:
 
-- [ ] Сохранить обратную совместимость
-- [ ] Использовать deprecation warnings для старого API
-- [ ] Документировать migration path
-- [ ] Создать migration guide для users
-- [ ] Определить timeline для удаления deprecated API
+- [ ] Maintain backwards compatibility
+- [ ] Use deprecation warnings for old API
+- [ ] Document migration path
+- [ ] Create migration guide for users
+- [ ] Define timeline for removing deprecated API
 
 ### 8.3 Performance Refactoring
-Если цель - улучшить производительность:
+If goal is to improve performance:
 
-- [ ] Измерить baseline performance (profiling)
-- [ ] Идентифицировать bottlenecks
-- [ ] Применить оптимизации
-- [ ] Измерить улучшение
-- [ ] Убедиться, что readability не пострадала значительно
-- [ ] Добавить performance тесты для предотвращения regression
+- [ ] Measure baseline performance (profiling)
+- [ ] Identify bottlenecks
+- [ ] Apply optimizations
+- [ ] Measure improvement
+- [ ] Ensure readability didn't suffer significantly
+- [ ] Add performance tests to prevent regression
 
-## 9. Anti-patterns и ошибки
+## 9. Anti-patterns and Mistakes
 
-### Чего НЕ делать при рефакторинге:
+### What NOT to do during refactoring:
 
-- [ ] ❌ **Не добавлять новую функциональность** - рефакторинг должен менять только структуру
-- [ ] ❌ **Не делать большие изменения за раз** - маленькие инкрементальные шаги
-- [ ] ❌ **Не рефакторить без тестов** - сначала напишите тесты
-- [ ] ❌ **Не менять поведение** - внешнее поведение должно остаться таким же
-- [ ] ❌ **Не оптимизировать преждевременно** - сначала убедитесь, что это реальный bottleneck
-- [ ] ❌ **Не рефакторить ради рефакторинга** - должна быть четкая цель
-- [ ] ❌ **Не пропускать тесты** - запускайте после каждого шага
+- [ ] ❌ **Don't add new functionality** - refactoring should only change structure
+- [ ] ❌ **Don't make large changes at once** - small incremental steps
+- [ ] ❌ **Don't refactor without tests** - write tests first
+- [ ] ❌ **Don't change behavior** - external behavior should remain the same
+- [ ] ❌ **Don't optimize prematurely** - first ensure it's a real bottleneck
+- [ ] ❌ **Don't refactor for refactoring's sake** - there must be a clear goal
+- [ ] ❌ **Don't skip tests** - run after each step
 
-## Чек-лист готовности к merge
+## Merge Readiness Checklist
 
-- [ ] Все тесты проходят
-- [ ] Test coverage не снизился
-- [ ] Все linters проходят
-- [ ] Type checking проходит
-- [ ] Внешнее поведение не изменилось
-- [ ] Код стал лучше (более читаемый/поддерживаемый/производительный)
-- [ ] Документация обновлена
-- [ ] Self-review выполнен
-- [ ] Pull Request создан с четким описанием
-- [ ] Нет случайно добавленной новой функциональности
-- [ ] Все цели рефакторинга достигнуты
+- [ ] All tests pass
+- [ ] Test coverage hasn't decreased
+- [ ] All linters pass
+- [ ] Type checking passes
+- [ ] External behavior hasn't changed
+- [ ] Code improved (more readable/maintainable/performant)
+- [ ] Documentation updated
+- [ ] Self-review completed
+- [ ] Pull Request created with clear description
+- [ ] No accidentally added new functionality
+- [ ] All refactoring goals achieved
 
-## Примеры успешного рефакторинга
+## Examples of Successful Refactoring
 
-### Пример: Extract Validation Logic
+### Example: Extract Validation Logic
 ```python
 # Before - validation mixed with business logic
 async def create_company_report(company_name: str, user_id: int) -> Report:
@@ -567,8 +567,8 @@ def _validate_company_name(name: str) -> None:
         raise ValidationError("Company name must be ASCII")
 ```
 
-Результат:
-- ✅ Улучшилась читаемость основной функции
-- ✅ Validation логика переиспользуема
-- ✅ Легче тестировать
-- ✅ Легче поддерживать и расширять
+Result:
+- ✅ Main function readability improved
+- ✅ Validation logic is reusable
+- ✅ Easier to test
+- ✅ Easier to maintain and extend

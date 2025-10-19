@@ -1,136 +1,136 @@
-# Процесс самопроверки (Self-Review)
+# Self-Review Process
 
-## Введение
+## Introduction
 
-Self-Review - это систематическая проверка своей собственной работы перед тем, как представить ее на code review. Это критически важный этап, который:
-- Повышает качество кода до code review
-- Экономит время reviewers
-- Помогает найти и исправить проблемы самостоятельно
-- Развивает критическое мышление
+Self-Review is a systematic check of your own work before presenting it for code review. This is a critically important stage that:
+- Improves code quality before code review
+- Saves reviewers' time
+- Helps find and fix problems independently
+- Develops critical thinking
 
-**Когда проводить Self-Review:**
-- Перед созданием Pull Request
-- После получения чек-листа от планировщика (Gemini)
-- После завершения реализации фичи или исправления бага
+**When to conduct Self-Review:**
+- Before creating a Pull Request
+- After receiving a checklist from the planner (Gemini)
+- After completing feature implementation or bug fix
 
-## 1. Подготовка к самопроверке
+## 1. Self-Review Preparation
 
-### 1.1 Сбор контекста
-- [ ] Открыть оригинальную спецификацию в **[../specs/](../specs/)**
-- [ ] Изучить критерии приемки из спецификации
-- [ ] Открыть все измененные файлы для review
-- [ ] Подготовить тестовое окружение для проверки
+### 1.1 Gather Context
+- [ ] Open the original specification in **[../specs/](../specs/)**
+- [ ] Study acceptance criteria from the specification
+- [ ] Open all modified files for review
+- [ ] Prepare test environment for verification
 
-### 1.2 Ментальная подготовка
-- [ ] Отдохнуть перед проверкой (fresh eyes)
-- [ ] Настроиться на критический анализ своей работы
-- [ ] Представить себя в роли code reviewer
-- [ ] Забыть о том, как долго работал над кодом (sunk cost fallacy)
+### 1.2 Mental Preparation
+- [ ] Rest before review (fresh eyes)
+- [ ] Set mindset for critical analysis of your work
+- [ ] Imagine yourself as a code reviewer
+- [ ] Forget about how long you worked on the code (sunk cost fallacy)
 
-## 2. Проверка выполнения критериев приемки
+## 2. Acceptance Criteria Verification
 
 ### 2.1 Functional Completeness
-- [ ] Сверить каждый пункт критериев приемки со спецификацией
-- [ ] Убедиться, что все требования выполнены
-- [ ] Проверить, что нет missing features
-- [ ] Для каждого невыполненного критерия:
-  - Объяснить причину
-  - Создать issue для отслеживания
-  - Задокументировать как known limitation
+- [ ] Compare each acceptance criteria point with the specification
+- [ ] Ensure all requirements are met
+- [ ] Verify there are no missing features
+- [ ] For each unmet criterion:
+  - Explain the reason
+  - Create an issue for tracking
+  - Document as a known limitation
 
 ### 2.2 Business Logic Verification
-- [ ] Проверить, что реализация соответствует бизнес-требованиям
-- [ ] Убедиться, что edge cases обработаны
-- [ ] Проверить, что граничные условия учтены
-- [ ] Протестировать различные user scenarios
+- [ ] Verify implementation matches business requirements
+- [ ] Ensure edge cases are handled
+- [ ] Check that boundary conditions are considered
+- [ ] Test various user scenarios
 
 ## 3. Code Quality Self-Check
 
 ### 3.1 Readability Check
-- [ ] Прочитать код как будто видишь его первый раз
-- [ ] Убедиться, что логика понятна без комментариев
-- [ ] Проверить, что имена переменных и функций самодокументирующие
-- [ ] Убедиться, что структура кода логична
-- [ ] Вопросы для себя:
-  - Понятно ли, что делает этот код?
-  - Понятно ли, ПОЧЕМУ он это делает?
-  - Нужны ли дополнительные комментарии?
+- [ ] Read the code as if seeing it for the first time
+- [ ] Ensure logic is clear without comments
+- [ ] Verify variable and function names are self-documenting
+- [ ] Ensure code structure is logical
+- [ ] Questions for yourself:
+  - Is it clear what this code does?
+  - Is it clear WHY it does this?
+  - Are additional comments needed?
 
 ### 3.2 Complexity Check
-- [ ] Найти сложные функции (>50 строк)
-- [ ] Декомпозировать длинные функции на более мелкие
-- [ ] Проверить уровень вложенности (максимум 3-4)
-- [ ] Упростить сложные условия
-- [ ] Вынести магические числа в константы
+- [ ] Find complex functions (>50 lines)
+- [ ] Decompose long functions into smaller ones
+- [ ] Check nesting level (maximum 3-4)
+- [ ] Simplify complex conditions
+- [ ] Extract magic numbers into constants
 
 ### 3.3 DRY Principle
-- [ ] Найти повторяющийся код
-- [ ] Вынести дублирование в отдельные функции
-- [ ] Проверить, нет ли дублирования существующего функционала
-- [ ] Убедиться, что переиспользуются existing components
+- [ ] Find repeated code
+- [ ] Extract duplication into separate functions
+- [ ] Check for duplication of existing functionality
+- [ ] Ensure existing components are reused
 
 ## 4. Architectural Compliance
 
 ### 4.1 Pattern Adherence
-- [ ] Проверить соответствие **[../patterns/api_standards.md](../patterns/api_standards.md)**
-- [ ] Проверить соответствие **[../patterns/error_handling.md](../patterns/error_handling.md)**
-- [ ] Убедиться, что следуем архитектурным решениям проекта
-- [ ] Проверить правильное разделение на модули:
-  - `bot/` - только Telegram handlers
+- [ ] Verify compliance with **[../patterns/api_standards.md](../patterns/api_standards.md)**
+- [ ] Verify compliance with **[../patterns/error_handling.md](../patterns/error_handling.md)**
+- [ ] Ensure we follow project architectural decisions
+- [ ] Check proper module separation:
+  - `bot/` - Telegram handlers only
   - `core/` - business logic
   - `integrations/` - external API clients
   - `data/` - data processing
 
 ### 4.2 Dependency Check
-- [ ] Убедиться, что не добавлены неразрешенные зависимости
-- [ ] Проверить **[../tech_stack.md](../tech_stack.md)** на список allowed libraries
-- [ ] Если добавлена новая зависимость:
-  - Она действительно необходима?
-  - Обновлен **[../tech_stack.md](../tech_stack.md)**?
-  - Нет более легковесной альтернативы?
+- [ ] Ensure no unauthorized dependencies were added
+- [ ] Check **[../tech_stack.md](../tech_stack.md)** for list of allowed libraries
+- [ ] If a new dependency was added:
+  - Is it truly necessary?
+  - Is **[../tech_stack.md](../tech_stack.md)** updated?
+  - Is there a more lightweight alternative?
 
 ### 4.3 Single Responsibility
-- [ ] Каждая функция делает только одну вещь
-- [ ] Каждый класс имеет одну ответственность
-- [ ] Нет "God objects" или "God functions"
+- [ ] Each function does only one thing
+- [ ] Each class has one responsibility
+- [ ] No "God objects" or "God functions"
 
 ## 5. Type Safety & Standards
 
 ### 5.1 Type Hints Verification
-- [ ] Все функции имеют type hints для parameters
-- [ ] Все функции имеют type hints для return values
-- [ ] Нет использования `Any` (или обосновано)
-- [ ] Используются правильные типы из `typing`
-- [ ] Запустить mypy: `poetry run mypy .`
-- [ ] Исправить все type checking errors
+- [ ] All functions have type hints for parameters
+- [ ] All functions have type hints for return values
+- [ ] No use of `Any` (or justified)
+- [ ] Correct types from `typing` are used
+- [ ] Run mypy: `poetry run mypy .`
+- [ ] Fix all type checking errors
 
 ### 5.2 Coding Standards Check
-- [ ] Код следует **[../guides/coding_standards.md](../guides/coding_standards.md)**
-- [ ] Naming conventions соблюдены:
-  - `snake_case` для переменных и функций
-  - `PascalCase` для классов
-  - `UPPER_SNAKE_CASE` для констант
-- [ ] Запустить Black: `poetry run black .`
-- [ ] Запустить Ruff: `poetry run ruff check .`
-- [ ] Исправить все найденные проблемы
+- [ ] Code follows **[../guides/coding_standards.md](../guides/coding_standards.md)**
+- [ ] Naming conventions are followed:
+  - `snake_case` for variables and functions
+  - `PascalCase` for classes
+  - `UPPER_SNAKE_CASE` for constants
+- [ ] Run Black: `poetry run black .`
+- [ ] Run Ruff: `poetry run ruff check .`
+- [ ] Fix all found issues
 
 ### 5.3 Documentation Check
-- [ ] Все public функции имеют docstrings (Google style)
-- [ ] Docstrings содержат:
-  - Описание функции
-  - Args с типами
+- [ ] All public functions have docstrings (Google style)
+- [ ] Docstrings contain:
+  - Function description
+  - Args with types
   - Returns
   - Raises
-- [ ] Сложные алгоритмы имеют комментарии
-- [ ] Комментарии объясняют WHY, а не WHAT
+- [ ] Complex algorithms have comments
+- [ ] Comments explain WHY, not WHAT
 
 ## 6. Async Code Review
 
 ### 6.1 Async Best Practices
-- [ ] Все I/O операции асинхронные
-- [ ] Нет blocking operations в async функциях
-- [ ] Используется `httpx.AsyncClient` вместо `requests`
-- [ ] Проверить критические ошибки:
+- [ ] All I/O operations are asynchronous
+- [ ] No blocking operations in async functions
+- [ ] `httpx.AsyncClient` is used instead of `requests`
+- [ ] Check for critical errors:
   ```python
   # BAD - blocks event loop!
   async def fetch_data():
@@ -148,18 +148,18 @@ Self-Review - это систематическая проверка своей 
   ```
 
 ### 6.2 Resource Management
-- [ ] Используются async context managers
+- [ ] Async context managers are used
 - [ ] Proper cleanup of resources
-- [ ] Нет resource leaks
-- [ ] Проверить каждый `AsyncClient`, `connection`, `file`:
-  - Используется ли `async with`?
-  - Гарантирован ли cleanup при exception?
+- [ ] No resource leaks
+- [ ] Check each `AsyncClient`, `connection`, `file`:
+  - Is `async with` used?
+  - Is cleanup guaranteed on exception?
 
 ### 6.3 Concurrency Check
-- [ ] Параллельные операции используют `asyncio.gather()`
-- [ ] Нет race conditions
-- [ ] Правильное использование locks (если есть)
-- [ ] Пример проверки:
+- [ ] Parallel operations use `asyncio.gather()`
+- [ ] No race conditions
+- [ ] Proper use of locks (if any)
+- [ ] Example check:
   ```python
   # BAD - sequential execution
   result1 = await fetch1()
@@ -172,31 +172,31 @@ Self-Review - это систематическая проверка своей 
 ## 7. Error Handling Review
 
 ### 7.1 Exception Handling
-- [ ] Следует **[../patterns/error_handling.md](../patterns/error_handling.md)**
-- [ ] Используются специфичные исключения (не голый `Exception`)
-- [ ] Нет пустых `except` блоков
-- [ ] Нет `except: pass` (silent failures)
-- [ ] Все ошибки логируются с контекстом
+- [ ] Follows **[../patterns/error_handling.md](../patterns/error_handling.md)**
+- [ ] Specific exceptions are used (not bare `Exception`)
+- [ ] No empty `except` blocks
+- [ ] No `except: pass` (silent failures)
+- [ ] All errors are logged with context
 
 ### 7.2 User-Facing Errors
-- [ ] User не видит internal error details
-- [ ] Error messages понятны пользователю
-- [ ] Error messages на русском языке (для Telegram bot)
-- [ ] Нет stack traces в user-facing messages
+- [ ] User doesn't see internal error details
+- [ ] Error messages are understandable to the user
+- [ ] Error messages in Russian (for Telegram bot)
+- [ ] No stack traces in user-facing messages
 
 ### 7.3 Logging Quality
-- [ ] Все важные операции логируются
-- [ ] Используется `correlation_id` для трейсинга
-- [ ] Логи не содержат sensitive data
-- [ ] Log levels правильные (DEBUG, INFO, WARNING, ERROR)
+- [ ] All important operations are logged
+- [ ] `correlation_id` is used for tracing
+- [ ] Logs don't contain sensitive data
+- [ ] Log levels are correct (DEBUG, INFO, WARNING, ERROR)
 
 ## 8. Security Self-Review
 
 ### 8.1 Secrets Management
-- [ ] Нет hardcoded паролей, API keys, токенов
-- [ ] Все секреты в environment variables
-- [ ] `.env` файл в `.gitignore`
-- [ ] Примеры для поиска:
+- [ ] No hardcoded passwords, API keys, tokens
+- [ ] All secrets in environment variables
+- [ ] `.env` file is in `.gitignore`
+- [ ] Examples for search:
   ```bash
   # Search for potential secrets
   git grep -i "api_key.*=" | grep -v "env"
@@ -205,242 +205,242 @@ Self-Review - это систематическая проверка своей 
   ```
 
 ### 8.2 Input Validation
-- [ ] Весь пользовательский ввод валидируется
-- [ ] Используются Pydantic модели
-- [ ] Нет возможности injection атак
-- [ ] SQL queries используют parameterization
+- [ ] All user input is validated
+- [ ] Pydantic models are used
+- [ ] No possibility of injection attacks
+- [ ] SQL queries use parameterization
 
 ### 8.3 Data Exposure
-- [ ] Логи не содержат PII или sensitive data
-- [ ] API responses не возвращают больше данных, чем нужно
-- [ ] Database queries не возвращают sensitive fields без необходимости
+- [ ] Logs don't contain PII or sensitive data
+- [ ] API responses don't return more data than necessary
+- [ ] Database queries don't return sensitive fields unnecessarily
 
 ## 9. Testing Self-Review
 
 ### 9.1 Test Coverage
-- [ ] Все новые функции покрыты тестами
-- [ ] Запустить coverage: `pytest --cov=. --cov-report=html`
-- [ ] Coverage >= 80% для нового кода
-- [ ] Критическая логика имеет 100% coverage
+- [ ] All new functions are covered by tests
+- [ ] Run coverage: `pytest --cov=. --cov-report=html`
+- [ ] Coverage >= 80% for new code
+- [ ] Critical logic has 100% coverage
 
 ### 9.2 Test Quality
-- [ ] Тесты следуют AAA паттерну (Arrange-Act-Assert)
-- [ ] Тесты независимы друг от друга
-- [ ] Тесты имеют понятные имена
-- [ ] Используются fixtures для setup/teardown
-- [ ] Проверить каждый тест:
-  - Понятно ли, что он тестирует?
-  - Тестирует ли он одну вещь?
-  - Проходит ли тест?
+- [ ] Tests follow AAA pattern (Arrange-Act-Assert)
+- [ ] Tests are independent of each other
+- [ ] Tests have clear names
+- [ ] Fixtures are used for setup/teardown
+- [ ] Check each test:
+  - Is it clear what it tests?
+  - Does it test one thing?
+  - Does the test pass?
 
 ### 9.3 Edge Cases Testing
-- [ ] Протестированы граничные случаи
-- [ ] Протестирована обработка ошибок
-- [ ] Протестирована валидация входных данных
-- [ ] Для async кода протестированы timeouts
+- [ ] Edge cases are tested
+- [ ] Error handling is tested
+- [ ] Input validation is tested
+- [ ] For async code, timeouts are tested
 
 ### 9.4 Test Execution
-- [ ] Запустить все тесты: `pytest`
-- [ ] Все тесты проходят
-- [ ] Нет warnings в тестах
-- [ ] Тесты выполняются быстро
+- [ ] Run all tests: `pytest`
+- [ ] All tests pass
+- [ ] No warnings in tests
+- [ ] Tests execute quickly
 
 ## 10. Performance Self-Review
 
 ### 10.1 Efficiency Check
-- [ ] Нет N+1 queries
-- [ ] Нет избыточных API calls
-- [ ] Используется кэширование где уместно
-- [ ] Batch операции для массовых обработок
+- [ ] No N+1 queries
+- [ ] No excessive API calls
+- [ ] Caching is used where appropriate
+- [ ] Batch operations for bulk processing
 
 ### 10.2 Resource Usage
-- [ ] Большие данные обрабатываются потоково
-- [ ] Используются generators для больших коллекций
-- [ ] Memory leaks отсутствуют
-- [ ] Connection pooling для database
+- [ ] Large data is processed in streaming fashion
+- [ ] Generators are used for large collections
+- [ ] Memory leaks are absent
+- [ ] Connection pooling for database
 
 ### 10.3 Async Optimization
-- [ ] Параллельные операции выполняются concurrently
-- [ ] Нет избыточных `await`
-- [ ] Используется `asyncio.gather()` для параллелизма
+- [ ] Parallel operations execute concurrently
+- [ ] No excessive `await` statements
+- [ ] `asyncio.gather()` is used for parallelism
 
 ## 11. Git & Version Control
 
 ### 11.1 Commit Quality
-- [ ] Коммиты имеют осмысленные сообщения
-- [ ] Следуют Conventional Commits
-- [ ] История коммитов логична
-- [ ] Нет фиксапов (или squashed)
+- [ ] Commits have meaningful messages
+- [ ] Follow Conventional Commits
+- [ ] Commit history is logical
+- [ ] No fixups (or squashed)
 
 ### 11.2 Branch Hygiene
-- [ ] Branch name следует конвенции
-- [ ] Нет merge conflicts
-- [ ] Branch up-to-date с develop
+- [ ] Branch name follows convention
+- [ ] No merge conflicts
+- [ ] Branch is up-to-date with develop
 
 ### 11.3 Changed Files Review
-- [ ] Просмотреть diff для каждого файла
-- [ ] Убедиться, что все изменения связаны с задачей
-- [ ] Нет случайных изменений (debug code, formatting)
-- [ ] Нет закомментированного кода
+- [ ] Review diff for each file
+- [ ] Ensure all changes are related to the task
+- [ ] No accidental changes (debug code, formatting)
+- [ ] No commented-out code
 
 ## 12. Documentation & Memory Bank
 
 ### 12.1 Code Documentation
-- [ ] Все public API задокументировано
-- [ ] README обновлен (если нужно)
-- [ ] API documentation обновлена (если нужно)
-- [ ] Примеры использования добавлены
+- [ ] All public API is documented
+- [ ] README is updated (if needed)
+- [ ] API documentation is updated (if needed)
+- [ ] Usage examples are added
 
 ### 12.2 Memory Bank Updates
-- [ ] Обновлен **[../tech_stack.md](../tech_stack.md)** (если добавлены зависимости)
-- [ ] Создан/обновлен guide в **[../guides/](../guides/)** (если новая подсистема)
-- [ ] Создан/обновлен pattern в **[../patterns/](../patterns/)** (если новый паттерн)
-- [ ] Обновлен **[../current_tasks.md](../current_tasks.md)** (задача в Done)
+- [ ] Updated **[../tech_stack.md](../tech_stack.md)** (if dependencies added)
+- [ ] Created/updated guide in **[../guides/](../guides/)** (if new subsystem)
+- [ ] Created/updated pattern in **[../patterns/](../patterns/)** (if new pattern)
+- [ ] Updated **[../current_tasks.md](../current_tasks.md)** (task in Done)
 
 ### 12.3 Specification Compliance
-- [ ] Реализация соответствует спецификации
-- [ ] Все acceptance criteria выполнены
-- [ ] Отклонения от spec задокументированы
+- [ ] Implementation matches specification
+- [ ] All acceptance criteria are met
+- [ ] Deviations from spec are documented
 
 ## 13. Automated Checks
 
 ### 13.1 Code Quality Tools
 ```bash
-# Запустить все инструменты последовательно
-poetry run black .                    # Форматирование
-poetry run ruff check .               # Линтинг
+# Run all tools sequentially
+poetry run black .                    # Formatting
+poetry run ruff check .               # Linting
 poetry run mypy .                     # Type checking
 ```
 
 **Checklist:**
-- [ ] Black прошел без изменений (или изменения зафиксированы)
-- [ ] Ruff не нашел проблем
-- [ ] Mypy не нашел type errors
+- [ ] Black passed without changes (or changes are committed)
+- [ ] Ruff found no issues
+- [ ] Mypy found no type errors
 
 ### 13.2 Testing Tools
 ```bash
-# Запустить все тесты с coverage
+# Run all tests with coverage
 pytest --cov=. --cov-report=html --cov-report=term
 
-# Для async кода
+# For async code
 pytest -v tests/ --asyncio-mode=auto
 ```
 
 **Checklist:**
-- [ ] Все тесты проходят
+- [ ] All tests pass
 - [ ] Coverage >= 80%
-- [ ] Нет warnings
-- [ ] Нет failed tests
+- [ ] No warnings
+- [ ] No failed tests
 
 ### 13.3 Security Scanning (Optional)
 ```bash
-# Проверка зависимостей на уязвимости
+# Check dependencies for vulnerabilities
 poetry show --outdated
 pip-audit
 
-# Поиск потенциальных проблем безопасности
+# Search for potential security issues
 bandit -r .
 ```
 
 **Checklist:**
-- [ ] Нет критичных уязвимостей в зависимостях
-- [ ] Нет security warnings от bandit
+- [ ] No critical vulnerabilities in dependencies
+- [ ] No security warnings from bandit
 
-## 14. Специфичные проверки для проекта
+## 14. Project-Specific Checks
 
 ### 14.1 Telegram Bot Features
-- [ ] Все сообщения на русском языке
-- [ ] Help тексты понятны пользователю
+- [ ] All messages in Russian
+- [ ] Help texts are clear to users
 - [ ] Graceful error handling
-- [ ] correlation_id используется везде
-- [ ] User не видит internal errors
-- [ ] Протестировано с некорректным вводом
+- [ ] correlation_id is used everywhere
+- [ ] User doesn't see internal errors
+- [ ] Tested with incorrect input
 
 ### 14.2 External API Integration
-- [ ] Responses обернуты в Pydantic модели
-- [ ] Retry mechanism реализован
-- [ ] Timeout handling реализован
-- [ ] API calls логируются с correlation_id
-- [ ] API keys из environment variables
+- [ ] Responses wrapped in Pydantic models
+- [ ] Retry mechanism implemented
+- [ ] Timeout handling implemented
+- [ ] API calls logged with correlation_id
+- [ ] API keys from environment variables
 
 ### 14.3 Database Code
-- [ ] Используются parameterized queries
-- [ ] Transaction management корректный
-- [ ] Connection pooling настроен
-- [ ] DB operations логируются
-- [ ] Indexes созданы для часто запрашиваемых полей
+- [ ] Parameterized queries are used
+- [ ] Transaction management is correct
+- [ ] Connection pooling is configured
+- [ ] DB operations are logged
+- [ ] Indexes created for frequently queried fields
 
 ### 14.4 AI/LLM Integration
-- [ ] API keys в environment variables
-- [ ] Rate limiting реализован
-- [ ] Retry mechanism реализован
-- [ ] Token usage логируется
-- [ ] Fallback механизм реализован
+- [ ] API keys in environment variables
+- [ ] Rate limiting implemented
+- [ ] Retry mechanism implemented
+- [ ] Token usage logged
+- [ ] Fallback mechanism implemented
 - [ ] User prompts sanitized
 
 ## 15. Pull Request Preparation
 
 ### 15.1 PR Description
-- [ ] Написать понятное описание изменений
-- [ ] Включить:
-  - **Контекст:** Что и зачем?
-  - **Решение:** Как реализовано?
-  - **Тестирование:** Как проверить?
-  - **Скриншоты:** (если применимо)
+- [ ] Write a clear description of changes
+- [ ] Include:
+  - **Context:** What and why?
+  - **Solution:** How is it implemented?
+  - **Testing:** How to verify?
+  - **Screenshots:** (if applicable)
 
 ### 15.2 PR Checklist
-- [ ] Все файлы reviewed
-- [ ] Все automated checks прошли
-- [ ] Все acceptance criteria выполнены
-- [ ] Documentation обновлена
-- [ ] Tests написаны и проходят
+- [ ] All files reviewed
+- [ ] All automated checks passed
+- [ ] All acceptance criteria met
+- [ ] Documentation updated
+- [ ] Tests written and passing
 
 ### 15.3 Self-Review Commit
-- [ ] Создать отдельный коммит с исправлениями после self-review
-- [ ] Сообщение коммита: `chore: self-review fixes`
+- [ ] Create a separate commit with fixes after self-review
+- [ ] Commit message: `chore: self-review fixes`
 
 ## 16. Final Readiness Check
 
 ### 16.1 Pre-Merge Checklist
-- [ ] Все тесты проходят
-- [ ] Все linters проходят
+- [ ] All tests pass
+- [ ] All linters pass
 - [ ] Code coverage >= 80%
-- [ ] Документация обновлена
-- [ ] Memory Bank обновлен
-- [ ] Нет TODO комментариев (или они в issues)
-- [ ] Нет debug code
-- [ ] Нет закомментированного кода
+- [ ] Documentation updated
+- [ ] Memory Bank updated
+- [ ] No TODO comments (or they're in issues)
+- [ ] No debug code
+- [ ] No commented-out code
 
 ### 16.2 Quality Gates
-- [ ] Код готов к production
-- [ ] Нет known bugs
-- [ ] Нет security issues
+- [ ] Code is ready for production
+- [ ] No known bugs
+- [ ] No security issues
 - [ ] Performance acceptable
-- [ ] Backwards compatible (или breaking changes документированы)
+- [ ] Backwards compatible (or breaking changes documented)
 
 ### 16.3 Confidence Check
-- [ ] Уверен в качестве кода
-- [ ] Готов защитить технические решения
-- [ ] Понимаю возможные риски
-- [ ] Готов к code review
+- [ ] Confident in code quality
+- [ ] Ready to defend technical decisions
+- [ ] Understand potential risks
+- [ ] Ready for code review
 
 ## 17. Continuous Improvement
 
 ### 17.1 Learning from Self-Review
-- [ ] Записать найденные проблемы
-- [ ] Понять, почему они возникли
-- [ ] Как предотвратить в будущем?
-- [ ] Обновить свои практики
+- [ ] Record found problems
+- [ ] Understand why they occurred
+- [ ] How to prevent in the future?
+- [ ] Update your practices
 
 ### 17.2 Patterns Recognition
-- [ ] Есть ли повторяющиеся проблемы?
-- [ ] Нужно ли обновить **[../guides/coding_standards.md](../guides/coding_standards.md)**?
-- [ ] Нужно ли создать новый pattern в **[../patterns/](../patterns/)**?
-- [ ] Можно ли автоматизировать проверку?
+- [ ] Are there recurring problems?
+- [ ] Should **[../guides/coding_standards.md](../guides/coding_standards.md)** be updated?
+- [ ] Should a new pattern be created in **[../patterns/](../patterns/)**?
+- [ ] Can the check be automated?
 
 ## Self-Review Score Card
 
-После завершения self-review, оцените готовность по каждой категории:
+After completing self-review, rate readiness for each category:
 
 ```markdown
 ## Self-Review Score
@@ -463,9 +463,9 @@ bandit -r .
 ### Overall Readiness: [Ready/Needs Work]
 ```
 
-## Шаблон Self-Review Comment
+## Self-Review Comment Template
 
-Добавить в PR как первый комментарий:
+Add to PR as first comment:
 
 ```markdown
 ## Self-Review Completed ✅
@@ -489,14 +489,14 @@ bandit -r .
 Code is ready for peer review. All self-review criteria have been met.
 ```
 
-## Заключение
+## Conclusion
 
-Self-Review - это не просто формальность, а критически важный этап, который:
-- Улучшает качество вашего кода
-- Экономит время команды
-- Развивает ваши навыки
-- Предотвращает проблемы в production
+Self-Review is not just a formality, but a critically important stage that:
+- Improves your code quality
+- Saves team time
+- Develops your skills
+- Prevents production problems
 
-**Помните:** Время, потраченное на качественный self-review, многократно окупается экономией времени на code review iterations и исправлении bugs в production.
+**Remember:** Time spent on quality self-review pays off many times over in savings on code review iterations and fixing production bugs.
 
-**Best Practice:** Проводите self-review на следующий день после завершения работы - свежий взгляд помогает найти больше проблем.
+**Best Practice:** Conduct self-review the day after completing work - a fresh perspective helps find more problems.

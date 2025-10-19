@@ -196,8 +196,8 @@ async def handle_company_check(
 
         if not company_name:
             await update.message.reply_text(
-                "Пожалуйста, укажите название компании.\n"
-                "Пример: /check ООО Ромашка"
+                "Please specify the company name.\n"
+                "Example: /check LLC Romashka"
             )
             return
 
@@ -205,7 +205,7 @@ async def handle_company_check(
         result = await fetch_company_data(company_name, correlation_id)
 
         await update.message.reply_text(
-            f"Результаты проверки:\n{format_company_data(result)}"
+            f"Check results:\n{format_company_data(result)}"
         )
 
     except ValidationError as e:
@@ -214,7 +214,7 @@ async def handle_company_check(
             extra={"correlation_id": correlation_id, "error": str(e)}
         )
         await update.message.reply_text(
-            f"Ошибка валидации: {e.message}"
+            f"Validation error: {e.message}"
         )
 
     except ExternalAPIError as e:
@@ -223,8 +223,8 @@ async def handle_company_check(
             extra={"correlation_id": correlation_id, "error": str(e)}
         )
         await update.message.reply_text(
-            "Извините, произошла ошибка при получении данных. "
-            "Пожалуйста, попробуйте позже."
+            "Sorry, an error occurred while fetching data. "
+            "Please try again later."
         )
 
     except RateLimitError as e:
@@ -233,8 +233,8 @@ async def handle_company_check(
             extra={"correlation_id": correlation_id}
         )
         await update.message.reply_text(
-            "Превышен лимит запросов. "
-            f"Попробуйте снова через {e.details.get('retry_after', 60)} секунд."
+            "Rate limit exceeded. "
+            f"Try again in {e.details.get('retry_after', 60)} seconds."
         )
 
     except Exception as e:
@@ -243,8 +243,8 @@ async def handle_company_check(
             extra={"correlation_id": correlation_id}
         )
         await update.message.reply_text(
-            "Произошла непредвиденная ошибка. "
-            "Наша команда уже уведомлена и работает над решением."
+            "An unexpected error occurred. "
+            "Our team has been notified and is working on a solution."
         )
 ```
 

@@ -40,12 +40,12 @@ Custom commands are markdown files stored in `~/.config/claude/commands/` that e
 
 **Example output**:
 ```
-Контекст обновлен
+Context updated
 
-Текущий статус проекта:
-- Проект: Due Diligence Bot
-- Активная задача: Настройка Memory Bank структуры
-- Последние изменения: Создание custom commands для AI SWE
+Current project status:
+- Project: Due Diligence Bot
+- Active task: Setting up Memory Bank structure
+- Recent changes: Creating custom commands for AI SWE
 ```
 
 ---
@@ -193,18 +193,18 @@ or
 
 **Example output**:
 ```
-✅ Что сделано хорошо:
-- Код следует установленным паттернам
-- Хорошее покрытие тестами (92%)
-- Четкие имена переменных
+✅ What was done well:
+- Code follows established patterns
+- Good test coverage (92%)
+- Clear variable names
 
-⚠️ Что нужно улучшить:
-- src/utils/parser.py:45 - функция слишком длинная (78 строк)
-- Предложение: разбить на parse_header() и parse_body()
+⚠️ What needs improvement:
+- src/utils/parser.py:45 - function too long (78 lines)
+- Suggestion: split into parse_header() and parse_body()
 
-❌ Что нужно исправить обязательно:
-- src/auth/token.py:23 - хардкод секретного ключа
-- Решение: использовать переменную окружения
+❌ What must be fixed:
+- src/auth/token.py:23 - hardcoded secret key
+- Solution: use environment variable
 ```
 
 ---
@@ -266,21 +266,21 @@ or
 
 **Example output**:
 ```
-Итоговый отчет:
-- Выполнено: 8/10 пунктов
-- Требует исправлений: 2 пункта
-- Критические проблемы: 0
+Final report:
+- Completed: 8/10 items
+- Requires fixes: 2 items
+- Critical issues: 0
 
-Оценка готовности: Needs Work
+Readiness assessment: Needs Work
 
-Детали:
-✅ API endpoint реализован
-✅ Валидация через UserSchema
-❌ Kafka integration - используется неправильный метод
-   План исправления: заменить custom_publish() на kafka_producer.send()
-✅ Unit tests написаны
-❌ CRITICAL: Error handling не следует паттернам
-   Нужно обернуть в ApplicationError класс
+Details:
+✅ API endpoint implemented
+✅ Validation via UserSchema
+❌ Kafka integration - using incorrect method
+   Fix plan: replace custom_publish() with kafka_producer.send()
+✅ Unit tests written
+❌ CRITICAL: Error handling does not follow patterns
+   Need to wrap in ApplicationError class
 ```
 
 ---
@@ -454,11 +454,11 @@ nano ~/.config/claude/commands/your_command.md
 
 2. **Write command prompt**:
 ```markdown
-Ты получил команду /your_command.
+You received the command /your_command.
 
-Твоя задача: $ARGUMENTS.
+Your task: $ARGUMENTS.
 
-Выполни следующую процедуру:
+Execute the following procedure:
 1. [Step 1]
 2. [Step 2]
 3. [Step 3]
@@ -474,19 +474,19 @@ nano ~/.config/claude/commands/your_command.md
 **File**: `~/.config/claude/commands/m_deploy.md`
 
 ```markdown
-Ты получил команду /m_deploy. Подготовка к деплою.
+You received the command /m_deploy. Preparing for deployment.
 
-Окружение: $ARGUMENTS (production/staging/development)
+Environment: $ARGUMENTS (production/staging/development)
 
-Выполни следующую процедуру:
-1. Проверь, что все тесты проходят: `npm test`
-2. Проверь, что билд успешен: `npm run build`
-3. Изучи `.memory_bank/workflows/deployment.md` (если существует)
-4. Проверь переменные окружения для указанного окружения
-5. Выведи чек-лист готовности к деплою
-6. Спроси подтверждение перед выполнением деплоя
+Execute the following procedure:
+1. Verify all tests pass: `npm test`
+2. Verify build succeeds: `npm run build`
+3. Study `.memory_bank/workflows/deployment.md` (if exists)
+4. Check environment variables for the specified environment
+5. Output deployment readiness checklist
+6. Ask for confirmation before executing deployment
 
-Не выполняй деплой без явного подтверждения пользователя.
+Do not execute deployment without explicit user confirmation.
 ```
 
 **Usage**:

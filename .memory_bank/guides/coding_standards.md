@@ -30,7 +30,7 @@
 - Tests: `test_module_name.py`: `test_company_checker.py`
 
 ### Type Hints
-**ОБЯЗАТЕЛЬНО** использовать type hints для всех функций, методов и переменных:
+**MANDATORY** to use type hints for all functions, methods and variables:
 
 ```python
 from typing import Optional, List, Dict, Any
@@ -80,12 +80,12 @@ def calculate_risk_score(
 ## Code Organization
 
 ### File Structure
-Максимальная длина файла: 500 строк. Если больше — разбить на модули.
+Maximum file length: 500 lines. If longer — split into modules.
 
 ### Function Length
-- Максимальная длина функции: 50 строк
-- Если больше — декомпозировать на меньшие функции
-- Одна функция = одна ответственность (Single Responsibility Principle)
+- Maximum function length: 50 lines
+- If longer — decompose into smaller functions
+- One function = one responsibility (Single Responsibility Principle)
 
 ### Class Organization
 ```python

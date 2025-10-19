@@ -1,47 +1,47 @@
-# Процесс ревью кода
+# Code Review Process
 
-## 1. Общая проверка
+## 1. General Check
 
 ### 1.1 Pull Request Quality
-- [ ] Pull Request содержит понятное описание изменений
-- [ ] Описание включает:
-  - Контекст: что и зачем делается
-  - Техническое решение: как реализовано
-  - Тестирование: как проверить
-  - Скриншоты/примеры (если применимо)
-- [ ] PR связан с соответствующим ticket/issue
-- [ ] Название PR следует Conventional Commits формату
-- [ ] Размер PR разумный (не более 500 строк изменений, желательно <300)
+- [ ] Pull Request contains a clear description of changes
+- [ ] Description includes:
+  - Context: what and why is being done
+  - Technical solution: how it's implemented
+  - Testing: how to verify
+  - Screenshots/examples (if applicable)
+- [ ] PR is linked to corresponding ticket/issue
+- [ ] PR title follows Conventional Commits format
+- [ ] PR size is reasonable (no more than 500 lines of changes, preferably <300)
 
 ### 1.2 Scope Check
-- [ ] Все измененные файлы связаны с решаемой задачей
-- [ ] Нет несвязанных изменений (scope creep)
-- [ ] Нет закомментированного кода
-- [ ] Нет debug prints или console.log
-- [ ] Нет мертвого кода (unused imports, functions)
+- [ ] All modified files are related to the task being solved
+- [ ] No unrelated changes (scope creep)
+- [ ] No commented-out code
+- [ ] No debug prints or console.log
+- [ ] No dead code (unused imports, functions)
 
 ### 1.3 Commit History
-- [ ] Коммиты имеют осмысленные сообщения
-- [ ] Следуют Conventional Commits формату
-- [ ] История коммитов логична и понятна
-- [ ] Нет фиксапов для опечаток (должны быть squashed)
+- [ ] Commits have meaningful messages
+- [ ] Follow Conventional Commits format
+- [ ] Commit history is logical and clear
+- [ ] No fixup commits for typos (should be squashed)
 
-## 2. Соответствие стандартам кодирования
+## 2. Coding Standards Compliance
 
 ### 2.1 Code Style
-- [ ] Код соответствует **[стандартам кодирования](../guides/coding_standards.md)**
-- [ ] Именование переменных, функций и классов следует конвенциям:
-  - `snake_case` для переменных и функций
-  - `PascalCase` для классов
-  - `UPPER_SNAKE_CASE` для констант
-- [ ] Форматирование согласовано с Black
-- [ ] Максимальная длина строки: 100 символов
+- [ ] Code complies with **[coding standards](../guides/coding_standards.md)**
+- [ ] Variable, function, and class naming follows conventions:
+  - `snake_case` for variables and functions
+  - `PascalCase` for classes
+  - `UPPER_SNAKE_CASE` for constants
+- [ ] Formatting is consistent with Black
+- [ ] Maximum line length: 100 characters
 
 ### 2.2 Type Hints
-- [ ] Все функции имеют type hints для параметров и return value
-- [ ] Используются правильные типы из `typing`
-- [ ] Нет использования `Any` (если есть - должно быть обосновано)
-- [ ] Пример:
+- [ ] All functions have type hints for parameters and return value
+- [ ] Correct types from `typing` are used
+- [ ] No use of `Any` (if present - must be justified)
+- [ ] Example:
   ```python
   # Good
   def fetch_data(url: str, timeout: int = 30) -> Dict[str, Any]:
@@ -53,15 +53,15 @@
   ```
 
 ### 2.3 Docstrings
-- [ ] Все public функции и классы имеют docstrings
-- [ ] Docstrings следуют Google style
-- [ ] Docstrings содержат:
-  - Краткое описание
-  - Args с типами и описаниями
-  - Returns с описанием
-  - Raises для исключений
-  - Example (если применимо)
-- [ ] Пример:
+- [ ] All public functions and classes have docstrings
+- [ ] Docstrings follow Google style
+- [ ] Docstrings contain:
+  - Brief description
+  - Args with types and descriptions
+  - Returns with description
+  - Raises for exceptions
+  - Example (if applicable)
+- [ ] Example:
   ```python
   async def analyze_company(
       company_name: str,
@@ -83,43 +83,43 @@
       pass
   ```
 
-## 3. Архитектура и паттерны
+## 3. Architecture and Patterns
 
 ### 3.1 Architectural Compliance
-- [ ] Изменения не нарушают архитектурные принципы из **[../patterns/](../patterns/)**
-- [ ] Новые компоненты следуют установленным паттернам
-- [ ] Правильное разделение ответственности между модулями:
-  - `bot/` - только Telegram handlers
+- [ ] Changes don't violate architectural principles from **[../patterns/](../patterns/)**
+- [ ] New components follow established patterns
+- [ ] Proper separation of responsibilities between modules:
+  - `bot/` - Telegram handlers only
   - `core/` - business logic
   - `integrations/` - external API clients
   - `data/` - data processing and storage
 
 ### 3.2 Code Reuse
-- [ ] Нет дублирования функционала, существующего в других частях проекта
-- [ ] Используются существующие Pydantic модели
-- [ ] Используются существующие utility функции
-- [ ] Переиспользуются API clients из `integrations/`
+- [ ] No duplication of functionality existing in other parts of the project
+- [ ] Existing Pydantic models are used
+- [ ] Existing utility functions are used
+- [ ] API clients from `integrations/` are reused
 
 ### 3.3 Dependency Management
-- [ ] Если добавлены новые зависимости:
-  - Они действительно необходимы
-  - Обновлен **[../tech_stack.md](../tech_stack.md)**
-  - Проверена совместимость с текущим стеком
-  - Обоснована необходимость (нет lightweight альтернатив)
+- [ ] If new dependencies were added:
+  - They are truly necessary
+  - **[../tech_stack.md](../tech_stack.md)** is updated
+  - Compatibility with current stack is verified
+  - Necessity is justified (no lightweight alternatives)
 
-## 4. Качество кода
+## 4. Code Quality
 
 ### 4.1 Single Responsibility Principle
-- [ ] Каждая функция имеет одну ответственность
-- [ ] Каждый класс имеет одну ответственность
-- [ ] Функции не превышают 50 строк
-- [ ] Файлы не превышают 500 строк
+- [ ] Each function has one responsibility
+- [ ] Each class has one responsibility
+- [ ] Functions don't exceed 50 lines
+- [ ] Files don't exceed 500 lines
 
 ### 4.2 Code Complexity
-- [ ] Нет чрезмерно сложных функций
-- [ ] Уровень вложенности не превышает 3-4
-- [ ] Сложные условия вынесены в отдельные функции с понятными именами
-- [ ] Пример:
+- [ ] No overly complex functions
+- [ ] Nesting level doesn't exceed 3-4
+- [ ] Complex conditions are extracted to separate functions with clear names
+- [ ] Example:
   ```python
   # Good
   def is_eligible_for_discount(user: User) -> bool:
@@ -138,12 +138,12 @@
   ```
 
 ### 4.3 Error Handling
-- [ ] Обработка ошибок следует **[../patterns/error_handling.md](../patterns/error_handling.md)**
-- [ ] Используются специфичные исключения (не голый `Exception`)
-- [ ] Нет пустых `except` блоков или `except: pass`
-- [ ] Все ошибки логируются с контекстом
-- [ ] User-facing ошибки не содержат internal details
-- [ ] Пример:
+- [ ] Error handling follows **[../patterns/error_handling.md](../patterns/error_handling.md)**
+- [ ] Specific exceptions are used (not bare `Exception`)
+- [ ] No empty `except` blocks or `except: pass`
+- [ ] All errors are logged with context
+- [ ] User-facing errors don't contain internal details
+- [ ] Example:
   ```python
   # Good
   try:
@@ -163,9 +163,9 @@
   ```
 
 ### 4.4 Magic Numbers and Strings
-- [ ] Нет "магических" чисел - используются именованные константы
-- [ ] Нет hardcoded strings - используются константы или config
-- [ ] Пример:
+- [ ] No "magic" numbers - named constants are used
+- [ ] No hardcoded strings - constants or config are used
+- [ ] Example:
   ```python
   # Good
   MAX_RETRIES = 3
@@ -184,11 +184,11 @@
 ## 5. Async Code Quality
 
 ### 5.1 Async Best Practices
-- [ ] Все I/O операции асинхронные
-- [ ] Нет blocking операций в async функциях
-- [ ] Используется `httpx.AsyncClient` вместо `requests`
-- [ ] Используется `aiofiles` для файловых операций
-- [ ] Пример:
+- [ ] All I/O operations are asynchronous
+- [ ] No blocking operations in async functions
+- [ ] `httpx.AsyncClient` is used instead of `requests`
+- [ ] `aiofiles` is used for file operations
+- [ ] Example:
   ```python
   # Good
   async def fetch_data(url: str) -> Dict[str, Any]:
@@ -203,10 +203,10 @@
   ```
 
 ### 5.2 Resource Management
-- [ ] Используются async context managers для ресурсов
+- [ ] Async context managers are used for resources
 - [ ] Proper cleanup of resources (clients, connections, files)
-- [ ] Нет resource leaks
-- [ ] Пример:
+- [ ] No resource leaks
+- [ ] Example:
   ```python
   # Good - automatic cleanup
   async with httpx.AsyncClient() as client:
@@ -219,10 +219,10 @@
   ```
 
 ### 5.3 Concurrency
-- [ ] Используется `asyncio.gather()` для параллельных операций
-- [ ] Нет race conditions
-- [ ] Правильное использование locks (если нужны)
-- [ ] Пример:
+- [ ] `asyncio.gather()` is used for parallel operations
+- [ ] No race conditions
+- [ ] Proper use of locks (if needed)
+- [ ] Example:
   ```python
   # Good - parallel execution
   results = await asyncio.gather(
@@ -237,19 +237,19 @@
   result3 = await fetch_data(url3)
   ```
 
-## 6. Тестирование
+## 6. Testing
 
 ### 6.1 Test Coverage
-- [ ] Все новые функции покрыты unit-тестами
-- [ ] Code coverage >= 80% для нового кода
-- [ ] Критическая бизнес-логика имеет 100% coverage
+- [ ] All new functions are covered by unit tests
+- [ ] Code coverage >= 80% for new code
+- [ ] Critical business logic has 100% coverage
 
 ### 6.2 Test Quality
-- [ ] Тесты следуют AAA паттерну (Arrange-Act-Assert)
-- [ ] Тесты независимы друг от друга
-- [ ] Тесты имеют понятные имена (`test_function_name_expected_behavior`)
-- [ ] Используются fixtures для setup/teardown
-- [ ] Пример:
+- [ ] Tests follow AAA pattern (Arrange-Act-Assert)
+- [ ] Tests are independent of each other
+- [ ] Tests have clear names (`test_function_name_expected_behavior`)
+- [ ] Fixtures are used for setup/teardown
+- [ ] Example:
   ```python
   @pytest.mark.asyncio
   async def test_fetch_company_data_returns_valid_data():
@@ -266,33 +266,33 @@
   ```
 
 ### 6.3 Test Execution
-- [ ] Все тесты проходят: `pytest`
-- [ ] Нет warnings в тестах
-- [ ] Тесты выполняются быстро (<5 минут для всего suite)
+- [ ] All tests pass: `pytest`
+- [ ] No warnings in tests
+- [ ] Tests execute quickly (<5 minutes for entire suite)
 
 ### 6.4 Edge Cases
-- [ ] Протестированы граничные случаи
-- [ ] Протестирована обработка ошибок
-- [ ] Протестирована валидация входных данных
-- [ ] Для async кода протестированы timeouts
+- [ ] Edge cases are tested
+- [ ] Error handling is tested
+- [ ] Input validation is tested
+- [ ] For async code, timeouts are tested
 
-## 7. Безопасность
+## 7. Security
 
 ### 7.1 Secrets Management
-- [ ] Нет hardcoded паролей, API keys, токенов
-- [ ] Все секреты в environment variables
-- [ ] Используется `python-dotenv` или `pydantic-settings`
-- [ ] `.env` файл в `.gitignore`
+- [ ] No hardcoded passwords, API keys, tokens
+- [ ] All secrets in environment variables
+- [ ] `python-dotenv` or `pydantic-settings` is used
+- [ ] `.env` file is in `.gitignore`
 
 ### 7.2 Input Validation
-- [ ] Весь пользовательский ввод валидируется
-- [ ] Используются Pydantic модели для валидации
-- [ ] Нет возможности injection атак
+- [ ] All user input is validated
+- [ ] Pydantic models are used for validation
+- [ ] No possibility of injection attacks
 
 ### 7.3 SQL Security
-- [ ] Используются parameterized queries
-- [ ] Нет строковых конкатенаций для SQL
-- [ ] Пример:
+- [ ] Parameterized queries are used
+- [ ] No string concatenations for SQL
+- [ ] Example:
   ```python
   # Good
   query = "SELECT * FROM companies WHERE name = %s"
@@ -304,153 +304,153 @@
   ```
 
 ### 7.4 Data Exposure
-- [ ] Логи не содержат sensitive data (API keys, passwords, PII)
-- [ ] Error messages не показывают internal details пользователям
-- [ ] User-facing сообщения не содержат stack traces
+- [ ] Logs don't contain sensitive data (API keys, passwords, PII)
+- [ ] Error messages don't show internal details to users
+- [ ] User-facing messages don't contain stack traces
 
-## 8. Производительность
+## 8. Performance
 
 ### 8.1 Efficiency
-- [ ] Нет N+1 queries
-- [ ] Нет избыточных API calls
-- [ ] Используется кэширование где уместно
-- [ ] Batch операции для массовых обработок
+- [ ] No N+1 queries
+- [ ] No excessive API calls
+- [ ] Caching is used where appropriate
+- [ ] Batch operations for bulk processing
 
 ### 8.2 Resource Usage
-- [ ] Большие данные обрабатываются потоково (не загружаются целиком в память)
-- [ ] Используются generators для больших коллекций
-- [ ] Connection pooling для database
+- [ ] Large data is processed in streaming fashion (not loaded entirely in memory)
+- [ ] Generators are used for large collections
+- [ ] Connection pooling for database
 
 ### 8.3 Async Optimization
-- [ ] Параллельные операции выполняются concurrently
-- [ ] Нет избыточных `await` (блокирующих параллелизм)
+- [ ] Parallel operations execute concurrently
+- [ ] No excessive `await` statements (blocking parallelism)
 
-## 9. Документация
+## 9. Documentation
 
 ### 9.1 Code Documentation
-- [ ] Обновлена документация, если изменилось публичное API
-- [ ] Сложные алгоритмы имеют пояснительные комментарии
-- [ ] Комментарии объясняют WHY, а не WHAT
-- [ ] TODO комментарии содержат контекст и assignee
+- [ ] Documentation is updated if public API changed
+- [ ] Complex algorithms have explanatory comments
+- [ ] Comments explain WHY, not WHAT
+- [ ] TODO comments contain context and assignee
 
 ### 9.2 Memory Bank Updates
-- [ ] **[../tech_stack.md](../tech_stack.md)** обновлен при добавлении зависимостей
-- [ ] **[../guides/](../guides/)** обновлены при добавлении новых подсистем
-- [ ] **[../patterns/](../patterns/)** обновлены при введении новых паттернов
-- [ ] **[../current_tasks.md](../current_tasks.md)** обновлен (задача в Done)
+- [ ] **[../tech_stack.md](../tech_stack.md)** is updated when dependencies are added
+- [ ] **[../guides/](../guides/)** are updated when new subsystems are added
+- [ ] **[../patterns/](../patterns/)** are updated when new patterns are introduced
+- [ ] **[../current_tasks.md](../current_tasks.md)** is updated (task in Done)
 
 ### 9.3 API Documentation
-- [ ] Новые API endpoints задокументированы
-- [ ] Примеры запросов/ответов добавлены
-- [ ] Error codes задокументированы
+- [ ] New API endpoints are documented
+- [ ] Request/response examples are added
+- [ ] Error codes are documented
 
-## 10. Специфичные для проекта проверки
+## 10. Project-Specific Checks
 
 ### 10.1 Telegram Bot Code
-- [ ] Все user-facing сообщения на русском языке
-- [ ] Добавлены help тексты для новых команд
-- [ ] Graceful error handling для user errors
-- [ ] Логирование с `correlation_id` для всех операций
-- [ ] User не видит internal error details
-- [ ] Обработка некорректного ввода пользователя
+- [ ] All user-facing messages in Russian
+- [ ] Help texts added for new commands
+- [ ] Graceful error handling for user errors
+- [ ] Logging with `correlation_id` for all operations
+- [ ] User doesn't see internal error details
+- [ ] Handling of incorrect user input
 
 ### 10.2 External API Integration
-- [ ] Все responses обернуты в Pydantic модели
-- [ ] Retry mechanism для transient errors
+- [ ] All responses wrapped in Pydantic models
+- [ ] Retry mechanism for transient errors
 - [ ] Timeout handling
-- [ ] Логирование всех API calls с `correlation_id`
-- [ ] Circuit breaker (для критичных интеграций)
-- [ ] API keys из environment variables
+- [ ] Logging of all API calls with `correlation_id`
+- [ ] Circuit breaker (for critical integrations)
+- [ ] API keys from environment variables
 
 ### 10.3 Database Code
-- [ ] Parameterized queries (нет SQL injection риска)
+- [ ] Parameterized queries (no SQL injection risk)
 - [ ] Proper transaction management
 - [ ] Connection pooling
-- [ ] Логирование всех DB operations
-- [ ] Indexes для часто запрашиваемых полей
+- [ ] Logging of all DB operations
+- [ ] Indexes for frequently queried fields
 
 ### 10.4 AI/LLM Integration
-- [ ] API keys в environment variables
-- [ ] Rate limiting реализован
-- [ ] Retry mechanism для API errors
-- [ ] Логирование LLM calls с token usage
-- [ ] Fallback для случаев недоступности API
+- [ ] API keys in environment variables
+- [ ] Rate limiting implemented
+- [ ] Retry mechanism for API errors
+- [ ] Logging of LLM calls with token usage
+- [ ] Fallback for API unavailability cases
 - [ ] User prompts sanitized
 
-## 11. Финальная проверка
+## 11. Final Check
 
 ### 11.1 CI/CD
-- [ ] Нет merge конфликтов
-- [ ] CI/CD pipeline проходит успешно
-- [ ] Все linters проходят (Black, Ruff, mypy)
-- [ ] Все тесты проходят
+- [ ] No merge conflicts
+- [ ] CI/CD pipeline passes successfully
+- [ ] All linters pass (Black, Ruff, mypy)
+- [ ] All tests pass
 
 ### 11.2 Acceptance Criteria
-- [ ] Все критерии приемки из спецификации выполнены
-- [ ] Фича работает согласно требованиям
-- [ ] Нет known bugs или limitations (или они задокументированы)
+- [ ] All acceptance criteria from specification are met
+- [ ] Feature works according to requirements
+- [ ] No known bugs or limitations (or they are documented)
 
 ### 11.3 Backwards Compatibility
-- [ ] Изменения не ломают существующую функциональность
-- [ ] API contracts не нарушены
-- [ ] Database migrations backwards compatible (если применимо)
+- [ ] Changes don't break existing functionality
+- [ ] API contracts are not violated
+- [ ] Database migrations are backwards compatible (if applicable)
 
 ### 11.4 Deployment Readiness
-- [ ] Environment variables задокументированы
-- [ ] Deployment инструкции обновлены (если нужно)
-- [ ] Database migrations готовы (если нужно)
-- [ ] Нет breaking changes (или они задокументированы)
+- [ ] Environment variables are documented
+- [ ] Deployment instructions are updated (if needed)
+- [ ] Database migrations are ready (if needed)
+- [ ] No breaking changes (or they are documented)
 
-## Чек-лист финальной готовности
+## Final Readiness Checklist
 
-- [ ] Все секции этого чек-листа пройдены
-- [ ] Код соответствует **[стандартам кодирования](../guides/coding_standards.md)**
-- [ ] Архитектурные паттерны из **[../patterns/](../patterns/)** соблюдены
-- [ ] Обработка ошибок следует **[../patterns/error_handling.md](../patterns/error_handling.md)**
-- [ ] Технологический стек соответствует **[../tech_stack.md](../tech_stack.md)**
-- [ ] Все тесты проходят с coverage >= 80%
-- [ ] Документация обновлена
-- [ ] Нет security issues
-- [ ] Нет performance problems
-- [ ] Код готов к production deployment
+- [ ] All sections of this checklist are completed
+- [ ] Code complies with **[coding standards](../guides/coding_standards.md)**
+- [ ] Architectural patterns from **[../patterns/](../patterns/)** are followed
+- [ ] Error handling follows **[../patterns/error_handling.md](../patterns/error_handling.md)**
+- [ ] Technology stack complies with **[../tech_stack.md](../tech_stack.md)**
+- [ ] All tests pass with coverage >= 80%
+- [ ] Documentation is updated
+- [ ] No security issues
+- [ ] No performance problems
+- [ ] Code is ready for production deployment
 
-## Шаблон комментария review
+## Review Comment Templates
 
-### Для одобрения (LGTM)
+### For Approval (LGTM)
 ```
 ✅ Code Review LGTM
 
-Проверено:
-- Архитектура и паттерны
-- Code quality и стандарты
-- Тесты и coverage
-- Безопасность
-- Документация
+Verified:
+- Architecture and patterns
+- Code quality and standards
+- Tests and coverage
+- Security
+- Documentation
 
-Отличная работа! 🚀
+Great work! 🚀
 ```
 
-### Для запроса изменений
+### For Requesting Changes
 ```
 ⚠️ Code Review - Changes Requested
 
-Основные замечания:
-1. [Критичная проблема 1 с reference на код]
-2. [Критичная проблема 2 с reference на код]
+Main issues:
+1. [Critical issue 1 with code reference]
+2. [Critical issue 2 with code reference]
 
-Рекомендации:
-- [Некритичная рекомендация 1]
-- [Некритичная рекомендация 2]
+Recommendations:
+- [Non-critical recommendation 1]
+- [Non-critical recommendation 2]
 
-После исправления критичных проблем готов к повторному review.
+Ready for re-review after critical issues are fixed.
 ```
 
-### Для комментариев
+### For Comments
 ```
-💬 Комментарий
+💬 Comment
 
-Вопрос/предложение по [конкретному месту кода]:
-[Детали]
+Question/suggestion regarding [specific code location]:
+[Details]
 
-Не блокирует merge, но стоит обсудить.
+Doesn't block merge, but worth discussing.
 ```

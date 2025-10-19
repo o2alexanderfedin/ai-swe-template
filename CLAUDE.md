@@ -1,54 +1,54 @@
 # Claude Code Configuration for Due Diligence Bot
 
-## При начале ЛЮБОЙ рабочей сессии
+## At the Start of ANY Work Session
 
-**ОБЯЗАТЕЛЬНО** выполни следующие действия:
+**MANDATORY** perform the following actions:
 
-1. Прочитай файл **`.memory_bank/README.md`** полностью.
-2. Следуй инструкциям по обязательной последовательности чтения из этого файла:
-   - **[Технический стек](.memory_bank/tech_stack.md)**: Узнай, какие технологии, библиотеки и версии мы используем
-   - **[Стандарты кодирования](.memory_bank/guides/coding_standards.md)**: Правила форматирования, именования и лучшие практики
-   - **[Текущие задачи](.memory_bank/current_tasks.md)**: Список активных задач и текущий фокус команды
-3. Перейди по ссылкам на релевантные документы в зависимости от типа задачи:
-   - Для новой фичи → изучи спецификацию в `.memory_bank/specs/`
-   - Для бага → изучи workflow `.memory_bank/workflows/bug_fix.md`
-   - Для вопросов по технологиям → проверь `.memory_bank/tech_stack.md`
+1. Read the **`.memory_bank/README.md`** file completely.
+2. Follow the mandatory reading sequence instructions from this file:
+   - **[Tech Stack](.memory_bank/tech_stack.md)**: Learn which technologies, libraries and versions we use
+   - **[Coding Standards](.memory_bank/guides/coding_standards.md)**: Formatting rules, naming conventions and best practices
+   - **[Current Tasks](.memory_bank/current_tasks.md)**: List of active tasks and current team focus
+3. Follow links to relevant documents depending on task type:
+   - For new features → study specification in `.memory_bank/specs/`
+   - For bugs → study workflow `.memory_bank/workflows/bug_fix.md`
+   - For technology questions → check `.memory_bank/tech_stack.md`
 
 ---
 
-## О проекте: Due Diligence Bot
+## About the Project: Due Diligence Bot
 
-**Due Diligence Bot** - это интеллектуальный Telegram-бот для автоматизированной комплексной проверки (due diligence) компаний и проектов.
+**Due Diligence Bot** - an intelligent Telegram bot for automated comprehensive due diligence of companies and projects.
 
-### Ключевые особенности проекта:
+### Key Project Features:
 
-#### 1. Архитектура бота на Python
-- Используем **Python 3.11+** с полной типизацией
-- **Telegram Bot Framework**: aiogram или python-telegram-bot
-- **Асинхронная архитектура**: все I/O операции через async/await
-- Обработчики команд и callback queries в модуле `bot/`
+#### 1. Python Bot Architecture
+- Using **Python 3.11+** with full type annotations
+- **Telegram Bot Framework**: aiogram or python-telegram-bot
+- **Asynchronous architecture**: all I/O operations via async/await
+- Command and callback query handlers in `bot/` module
 
 #### 2. AI/LLM Integration
-- **OpenAI API (GPT-4)** для анализа и генерации отчетов
-- **LangChain** для оркестрации AI-агентов
-- Все LLM вызовы должны быть обернуты в retry механизмы
-- Использовать structured outputs для парсинга ответов LLM
+- **OpenAI API (GPT-4)** for analysis and report generation
+- **LangChain** for orchestrating AI agents
+- All LLM calls must be wrapped in retry mechanisms
+- Use structured outputs for parsing LLM responses
 
 #### 3. Async/Await Patterns
-**КРИТИЧЕСКИ ВАЖНО:**
-- Все I/O операции (HTTP requests, database queries, file operations) ДОЛЖНЫ быть асинхронными
-- Используй `async def` и `await` для всех функций с I/O
-- Для HTTP запросов используй **httpx**, НЕ requests
-- Для database queries используй async drivers (asyncpg для PostgreSQL)
-- **ЗАПРЕЩЕНО** блокировать event loop синхронными вызовами
+**CRITICALLY IMPORTANT:**
+- All I/O operations (HTTP requests, database queries, file operations) MUST be asynchronous
+- Use `async def` and `await` for all functions with I/O
+- For HTTP requests use **httpx**, NOT requests
+- For database queries use async drivers (asyncpg for PostgreSQL)
+- **FORBIDDEN** to block event loop with synchronous calls
 
-Пример правильного подхода:
+Correct approach example:
 ```python
 import httpx
 from typing import Dict, Any
 
 async def fetch_company_data(company_id: str) -> Dict[str, Any]:
-    """Асинхронная загрузка данных о компании."""
+    """Asynchronously load company data."""
     async with httpx.AsyncClient() as client:
         response = await client.get(f"https://api.example.com/companies/{company_id}")
         response.raise_for_status()
@@ -56,15 +56,15 @@ async def fetch_company_data(company_id: str) -> Dict[str, Any]:
 ```
 
 #### 4. External API Integrations
-Все внешние интеграции должны:
-- Находиться в модуле `integrations/`
-- Иметь четкий интерфейс (Pydantic models для request/response)
-- Включать обработку ошибок согласно `.memory_bank/patterns/error_handling.md`
-- Использовать retry механизмы для нестабильных API
-- Иметь fallback стратегии при недоступности сервиса
-- Логировать все запросы для отладки
+All external integrations must:
+- Be located in `integrations/` module
+- Have clear interface (Pydantic models for request/response)
+- Include error handling according to `.memory_bank/patterns/error_handling.md`
+- Use retry mechanisms for unstable APIs
+- Have fallback strategies when service is unavailable
+- Log all requests for debugging
 
-Пример структуры интеграции:
+Integration structure example:
 ```python
 # integrations/company_registry.py
 from typing import Optional
@@ -72,21 +72,21 @@ from pydantic import BaseModel
 import httpx
 
 class CompanyInfo(BaseModel):
-    """Модель данных о компании."""
+    """Company data model."""
     name: str
     inn: str
     registration_date: str
     status: str
 
 class CompanyRegistryClient:
-    """Клиент для работы с реестром компаний."""
+    """Client for working with company registry."""
 
     def __init__(self, api_key: str):
         self.api_key = api_key
         self.base_url = "https://api.example.com"
 
     async def get_company(self, inn: str) -> Optional[CompanyInfo]:
-        """Получить информацию о компании по ИНН."""
+        """Get company information by INN."""
         async with httpx.AsyncClient() as client:
             response = await client.get(
                 f"{self.base_url}/companies/{inn}",
@@ -99,15 +99,15 @@ class CompanyRegistryClient:
 ```
 
 #### 5. Telegram Bot Patterns
-**При работе с Telegram ботом:**
-- Используй handlers для команд (`/start`, `/help`, `/check`)
-- Используй callback_query handlers для inline кнопок
-- Используй FSM (Finite State Machine) для сложных диалогов
-- Обрабатывай ошибки gracefully - всегда отправляй понятное сообщение пользователю
-- Используй typing indicators (`send_chat_action`) для длительных операций
-- Ограничивай размер сообщений (Telegram limit: 4096 символов)
+**When working with Telegram bot:**
+- Use handlers for commands (`/start`, `/help`, `/check`)
+- Use callback_query handlers for inline buttons
+- Use FSM (Finite State Machine) for complex dialogs
+- Handle errors gracefully - always send understandable message to user
+- Use typing indicators (`send_chat_action`) for long operations
+- Limit message size (Telegram limit: 4096 characters)
 
-Пример handler:
+Handler example:
 ```python
 from aiogram import Router, types
 from aiogram.filters import Command
@@ -116,113 +116,113 @@ router = Router()
 
 @router.message(Command("check"))
 async def handle_check_command(message: types.Message) -> None:
-    """Обработчик команды /check для запуска проверки."""
-    await message.answer("Отправляю запрос на проверку...")
-    # Логика обработки
+    """Handler for /check command to start verification."""
+    await message.answer("Sending verification request...")
+    # Processing logic
 ```
 
 #### 6. Data Processing & Storage
-- **PostgreSQL** для хранения структурированных данных (компании, отчеты, пользователи)
-- **Redis** для кэширования и очередей задач
-- Все database models должны быть в `data/models.py`
-- Используй миграции (Alembic) для изменений схемы БД
-- Валидация данных через Pydantic перед сохранением
+- **PostgreSQL** for storing structured data (companies, reports, users)
+- **Redis** for caching and task queues
+- All database models must be in `data/models.py`
+- Use migrations (Alembic) for database schema changes
+- Data validation via Pydantic before saving
 
 ---
 
-## Принцип самодокументирования
+## Self-Documentation Principle
 
-**ВАЖНО**: Ты не только читаешь из Memory Bank, но и **обновляешь его**.
+**IMPORTANT**: You not only read from Memory Bank, but also **update it**.
 
-При выполнении задач ты ДОЛЖЕН:
-- Обновлять статус в `.memory_bank/current_tasks.md` (To Do → In Progress → Done)
-- Создавать/обновлять документацию в `.memory_bank/guides/` при реализации новых подсистем
-- Обновлять `.memory_bank/tech_stack.md` при добавлении новых зависимостей
-- Создавать новые паттерны в `.memory_bank/patterns/` при принятии архитектурных решений
-- Добавлять спецификации в `.memory_bank/specs/` для новых фич
+When performing tasks you MUST:
+- Update status in `.memory_bank/current_tasks.md` (To Do → In Progress → Done)
+- Create/update documentation in `.memory_bank/guides/` when implementing new subsystems
+- Update `.memory_bank/tech_stack.md` when adding new dependencies
+- Create new patterns in `.memory_bank/patterns/` when making architectural decisions
+- Add specifications in `.memory_bank/specs/` for new features
 
 ---
 
-## Workflow Selection: Выбор правильного процесса
+## Workflow Selection: Choosing the Right Process
 
-Перед началом любой задачи определи её тип и выбери соответствующий workflow:
+Before starting any task, determine its type and choose the corresponding workflow:
 
-### 1. Новая функция (Feature)
-**Когда использовать**: Добавление новой возможности в бота
+### 1. New Feature
+**When to use**: Adding new capability to the bot
 **Workflow**: `.memory_bank/workflows/new_feature.md`
-**Примеры**:
-- Добавление новой команды бота
-- Интеграция с новым внешним API
-- Создание нового типа отчета
+**Examples**:
+- Adding new bot command
+- Integration with new external API
+- Creating new report type
 
-### 2. Исправление бага (Bug Fix)
-**Когда использовать**: Что-то работает не так, как ожидается
+### 2. Bug Fix
+**When to use**: Something doesn't work as expected
 **Workflow**: `.memory_bank/workflows/bug_fix.md`
-**Примеры**:
-- Бот не отвечает на команду
-- Ошибка при обработке данных
-- Неправильная логика в существующей функции
+**Examples**:
+- Bot doesn't respond to command
+- Error in data processing
+- Incorrect logic in existing function
 
 ### 3. Code Review
-**Когда использовать**: Проверка качества кода перед merge
+**When to use**: Quality check before merge
 **Workflow**: `.memory_bank/workflows/code_review.md`
-**Что проверять**:
-- Соответствие coding standards
-- Правильное использование async/await
-- Обработка ошибок
+**What to check**:
+- Compliance with coding standards
+- Correct async/await usage
+- Error handling
 - Type hints
-- Тесты
+- Tests
 
 ---
 
-## Запрещенные действия
+## Forbidden Actions
 
-**НИКОГДА** не делай следующее:
+**NEVER** do the following:
 
-1. **Не добавляй новые зависимости** без обновления `.memory_bank/tech_stack.md`
-2. **Не нарушай паттерны** из `.memory_bank/patterns/`
-3. **Не изобретай заново** то, что уже существует в проекте
-4. **Не используй `Any`** в type hints - всегда указывай конкретные типы
-5. **Не делай синхронные I/O** в асинхронном коде
-6. **Не храни секреты** в коде - только через environment variables
-7. **Не пиши SQL вручную** - используй ORM или параметризованные запросы
-8. **Не игнорируй ошибки** через пустые `except` блоки
-
----
-
-## Обязательные проверки перед началом работы
-
-Перед написанием кода ВСЕГДА проверь:
-
-1. **Технический стек** (`.memory_bank/tech_stack.md`):
-   - Какие библиотеки разрешены для этой задачи?
-   - Какие практики запрещены?
-
-2. **Существующие компоненты**:
-   - Может ли эта функциональность уже существовать?
-   - Какие модули можно переиспользовать?
-
-3. **Паттерны** (`.memory_bank/patterns/`):
-   - Как правильно обрабатывать ошибки в этом проекте?
-   - Какие API стандарты использовать?
-
-4. **Текущие задачи** (`.memory_bank/current_tasks.md`):
-   - Не конфликтует ли моя задача с другими?
-   - Нужно ли обновить статус?
+1. **Don't add new dependencies** without updating `.memory_bank/tech_stack.md`
+2. **Don't violate patterns** from `.memory_bank/patterns/`
+3. **Don't reinvent** what already exists in the project
+4. **Don't use `Any`** in type hints - always specify concrete types
+5. **Don't do synchronous I/O** in asynchronous code
+6. **Don't store secrets** in code - only via environment variables
+7. **Don't write SQL manually** - use ORM or parameterized queries
+8. **Don't ignore errors** through empty `except` blocks
 
 ---
 
-## При потере контекста
+## Mandatory Checks Before Starting Work
 
-Если ты чувствуешь, что контекст был потерян или сжат:
+Before writing code ALWAYS check:
 
-1. Используй команду `/refresh_context` (если доступна)
-2. Перечитай `.memory_bank/README.md`
-3. Изучи последние коммиты для понимания текущего состояния:
+1. **Tech Stack** (`.memory_bank/tech_stack.md`):
+   - Which libraries are allowed for this task?
+   - Which practices are forbidden?
+
+2. **Existing Components**:
+   - Does this functionality already exist?
+   - Which modules can be reused?
+
+3. **Patterns** (`.memory_bank/patterns/`):
+   - How to properly handle errors in this project?
+   - Which API standards to use?
+
+4. **Current Tasks** (`.memory_bank/current_tasks.md`):
+   - Does my task conflict with others?
+   - Need to update status?
+
+---
+
+## When Context is Lost
+
+If you feel context was lost or compressed:
+
+1. Use `/refresh_context` command (if available)
+2. Re-read `.memory_bank/README.md`
+3. Study recent commits to understand current state:
    ```bash
    git log --oneline -10
    ```
-4. Проверь текущий статус проекта:
+4. Check current project status:
    ```bash
    git status
    ```
@@ -231,21 +231,21 @@ async def handle_check_command(message: types.Message) -> None:
 
 ## Type Safety Requirements
 
-Все функции ДОЛЖНЫ иметь полные type hints:
+All functions MUST have complete type hints:
 
 ```python
 from typing import Dict, List, Optional, Any
 from pydantic import BaseModel
 
-# ПРАВИЛЬНО
+# CORRECT
 async def process_company(
     company_id: str,
     include_details: bool = False
 ) -> Dict[str, Any]:
-    """Обработка данных компании."""
+    """Process company data."""
     ...
 
-# НЕПРАВИЛЬНО (отсутствуют type hints)
+# INCORRECT (missing type hints)
 async def process_company(company_id, include_details=False):
     ...
 ```
@@ -254,20 +254,20 @@ async def process_company(company_id, include_details=False):
 
 ## Testing Requirements
 
-Для каждой новой функции ты ДОЛЖЕН:
-1. Написать unit тесты в `tests/`
-2. Использовать `pytest` и `pytest-asyncio`
-3. Покрытие кода минимум 80%
-4. Тестировать edge cases и error handling
+For each new function you MUST:
+1. Write unit tests in `tests/`
+2. Use `pytest` and `pytest-asyncio`
+3. Minimum 80% code coverage
+4. Test edge cases and error handling
 
-Пример теста:
+Test example:
 ```python
 import pytest
 from unittest.mock import AsyncMock
 
 @pytest.mark.asyncio
 async def test_fetch_company_data():
-    """Тест получения данных о компании."""
+    """Test fetching company data."""
     # Arrange
     company_id = "test_123"
 
@@ -283,7 +283,7 @@ async def test_fetch_company_data():
 
 ## Error Handling Requirements
 
-Все внешние вызовы должны иметь обработку ошибок:
+All external calls must have error handling:
 
 ```python
 import logging
@@ -292,7 +292,7 @@ from typing import Optional
 logger = logging.getLogger(__name__)
 
 async def safe_api_call(url: str) -> Optional[dict]:
-    """Безопасный вызов внешнего API."""
+    """Safe external API call."""
     try:
         async with httpx.AsyncClient() as client:
             response = await client.get(url, timeout=10.0)
@@ -310,14 +310,14 @@ async def safe_api_call(url: str) -> Optional[dict]:
 
 ## Logging Standards
 
-- Используй `logging` module, НЕ `print()`
-- Уровни логирования:
-  - `DEBUG`: Детальная информация для отладки
-  - `INFO`: Общая информация о работе
-  - `WARNING`: Предупреждения (что-то не так, но работает)
-  - `ERROR`: Ошибки (функциональность нарушена)
-  - `CRITICAL`: Критические ошибки (система не может работать)
-- Всегда включай контекст в лог-сообщения
+- Use `logging` module, NOT `print()`
+- Logging levels:
+  - `DEBUG`: Detailed information for debugging
+  - `INFO`: General information about operation
+  - `WARNING`: Warnings (something wrong but works)
+  - `ERROR`: Errors (functionality broken)
+  - `CRITICAL`: Critical errors (system cannot work)
+- Always include context in log messages
 
 ```python
 logger.info(f"Processing company {company_id}, user {user_id}")
@@ -328,13 +328,13 @@ logger.error(f"Failed to fetch data for {company_id}: {error}")
 
 ## Environment Configuration
 
-Все конфигурационные параметры должны быть в `.env` файле:
+All configuration parameters must be in `.env` file:
 
 ```python
 from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
-    """Настройки приложения."""
+    """Application settings."""
     telegram_bot_token: str
     openai_api_key: str
     database_url: str
@@ -346,42 +346,42 @@ class Settings(BaseSettings):
 settings = Settings()
 ```
 
-**НИКОГДА** не коммить `.env` файл в git!
+**NEVER** commit `.env` file to git!
 
 ---
 
 ## Git Workflow
 
-1. **Именование веток**:
-   - `feature/add-company-search` - новая функция
-   - `bugfix/fix-telegram-handler` - исправление бага
-   - `docs/update-readme` - документация
+1. **Branch Naming**:
+   - `feature/add-company-search` - new feature
+   - `bugfix/fix-telegram-handler` - bug fix
+   - `docs/update-readme` - documentation
 
-2. **Commit messages** (Conventional Commits):
+2. **Commit Messages** (Conventional Commits):
    - `feat: add company search endpoint`
    - `fix: handle timeout in API calls`
    - `docs: update API documentation`
    - `refactor: simplify error handling`
    - `test: add tests for company service`
 
-3. **Перед коммитом**:
-   - Запусти тесты: `pytest`
-   - Проверь форматирование: `black .`
-   - Проверь типы: `mypy .`
-   - Проверь линтинг: `ruff check .`
+3. **Before Committing**:
+   - Run tests: `pytest`
+   - Check formatting: `black .`
+   - Check types: `mypy .`
+   - Check linting: `ruff check .`
 
 ---
 
 ## Performance Considerations
 
-1. **Используй connection pooling** для database и HTTP clients
-2. **Кэшируй** частые запросы в Redis
-3. **Используй batch operations** где возможно
-4. **Ограничивай concurrent requests** к внешним API
-5. **Используй indices** в database queries
+1. **Use connection pooling** for database and HTTP clients
+2. **Cache** frequent requests in Redis
+3. **Use batch operations** where possible
+4. **Limit concurrent requests** to external APIs
+5. **Use indices** in database queries
 
 ---
 
-**Помни**: Memory Bank - это единый источник истины. Доверяй ему больше, чем своим предположениям.
+**Remember**: Memory Bank is the single source of truth. Trust it more than your assumptions.
 
-**Главный принцип**: Если не уверен - спроси у пользователя или перечитай документацию в Memory Bank.
+**Main Principle**: If unsure - ask the user or re-read documentation in Memory Bank.

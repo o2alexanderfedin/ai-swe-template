@@ -1,31 +1,31 @@
-# Технологический стек и конвенции
+# Technology Stack and Conventions
 
 ## Core Stack
-- **Backend Framework**: Python 3.11+ (современный, type-safe подход)
-- **Bot Framework**: Python Telegram Bot / aiogram (для интеграции с Telegram)
+- **Backend Framework**: Python 3.11+ (modern, type-safe approach)
+- **Bot Framework**: Python Telegram Bot / aiogram (for Telegram integration)
 - **AI/LLM Integration**:
-  - OpenAI API (GPT-4) для анализа и генерации отчетов
-  - LangChain для оркестрации AI-агентов
+  - OpenAI API (GPT-4) for analysis and report generation
+  - LangChain for AI agent orchestration
 - **Database**:
-  - PostgreSQL для хранения структурированных данных
-  - Redis для кэширования и очередей задач
+  - PostgreSQL for structured data storage
+  - Redis for caching and task queues
 - **Web Scraping**:
-  - BeautifulSoup4 / lxml для парсинга
-  - Selenium для динамических страниц
+  - BeautifulSoup4 / lxml for parsing
+  - Selenium for dynamic pages
 - **API Integration**:
-  - httpx для асинхронных HTTP-запросов
-  - pydantic для валидации данных
+  - httpx for asynchronous HTTP requests
+  - pydantic for data validation
 
 ## Development Tools
 - **Dependency Management**: Poetry
 - **Code Quality**:
-  - black (форматирование)
-  - ruff (линтинг)
+  - black (formatting)
+  - ruff (linting)
   - mypy (type checking)
 - **Testing**:
-  - pytest для unit и integration тестов
-  - pytest-asyncio для асинхронных тестов
-- **Environment**: python-dotenv для управления конфигурацией
+  - pytest for unit and integration tests
+  - pytest-asyncio for asynchronous tests
+- **Environment**: python-dotenv for configuration management
 
 ## Project Structure
 ```
@@ -38,34 +38,34 @@ due_diligence_bot/
 └── tests/            # Test suite
 ```
 
-## Запрещенные практики
-- Использование `Any` в type hints. Все типы должны быть явно определены
-- Синхронные I/O операции в асинхронном коде (блокирование event loop)
-- Хранение секретов и API ключей в коде (использовать .env файлы)
-- Прямые SQL-запросы без параметризации (SQL injection риск)
-- Игнорирование ошибок через `pass` или пустые `except` блоки
+## Prohibited Practices
+- Using `Any` in type hints. All types must be explicitly defined
+- Synchronous I/O operations in asynchronous code (blocking event loop)
+- Storing secrets and API keys in code (use .env files)
+- Direct SQL queries without parameterization (SQL injection risk)
+- Ignoring errors through `pass` or empty `except` blocks
 
-## API Конвенции
-- Все внешние API-запросы должны проходить через модули в `integrations/`
-- Обработка ошибок должна соответствовать схеме, описанной в **[./patterns/error_handling.md](./patterns/error_handling.md)**
-- Все API responses должны быть обернуты в Pydantic модели для валидации
-- Использовать retry механизмы для нестабильных внешних API
+## API Conventions
+- All external API requests must go through modules in `integrations/`
+- Error handling must follow the scheme described in **[./patterns/error_handling.md](./patterns/error_handling.md)**
+- All API responses must be wrapped in Pydantic models for validation
+- Use retry mechanisms for unstable external APIs
 
 ## Coding Standards
-- Использовать async/await для всех I/O операций
-- Следовать PEP 8 для стиля кода
-- Максимальная длина строки: 100 символов
-- Использовать type hints для всех функций и методов
-- Документировать public API через docstrings (Google style)
+- Use async/await for all I/O operations
+- Follow PEP 8 for code style
+- Maximum line length: 100 characters
+- Use type hints for all functions and methods
+- Document public API through docstrings (Google style)
 
 ## Environment Variables
-Обязательные переменные окружения:
-- `TELEGRAM_BOT_TOKEN` - токен Telegram бота
-- `OPENAI_API_KEY` - ключ для OpenAI API
-- `DATABASE_URL` - строка подключения к PostgreSQL
-- `REDIS_URL` - строка подключения к Redis
+Mandatory environment variables:
+- `TELEGRAM_BOT_TOKEN` - Telegram bot token
+- `OPENAI_API_KEY` - OpenAI API key
+- `DATABASE_URL` - PostgreSQL connection string
+- `REDIS_URL` - Redis connection string
 
 ## Version Control
-- Использовать semantic versioning (MAJOR.MINOR.PATCH)
-- Conventional Commits для сообщений коммитов
+- Use semantic versioning (MAJOR.MINOR.PATCH)
+- Conventional Commits for commit messages
 - Branch naming: `feature/`, `bugfix/`, `hotfix/`, `docs/`
