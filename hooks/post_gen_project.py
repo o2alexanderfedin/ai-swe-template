@@ -134,7 +134,7 @@ Language: {LANGUAGE}
 Framework: {{ cookiecutter.framework }}
 
 🤖 Generated with AI SWE Template
-https://github.com/o2alexanderfedin/due_diligence_bot
+https://github.com/o2alexanderfedin/ai-swe-template
 """,
             ],
             check=True,
@@ -164,7 +164,7 @@ def print_next_steps():
     print("\n📚 Documentation:")
     print("  - Memory Bank: cat .memory_bank/README.md")
     print("  - Quick start: cat QUICK_START.md")
-    print("  - Template: https://github.com/o2alexanderfedin/due_diligence_bot")
+    print("  - Template: https://github.com/o2alexanderfedin/ai-swe-template")
     print("\n🚀 Happy coding with AI assistance!\n")
 
 

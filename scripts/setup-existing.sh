@@ -87,7 +87,7 @@ read -p "Framework (optional): " FRAMEWORK
 echo ""
 echo -e "${GREEN}Downloading AI SWE Template files...${NC}"
 
-TEMPLATE_URL="https://raw.githubusercontent.com/o2alexanderfedin/due_diligence_bot/main"
+TEMPLATE_URL="https://raw.githubusercontent.com/o2alexanderfedin/ai-swe-template/main"
 
 # Create temporary directory
 TMP_DIR=$(mktemp -d)
@@ -248,7 +248,7 @@ Language: $LANG
 Framework: $FRAMEWORK
 
 🤖 Generated with AI SWE Template
-https://github.com/o2alexanderfedin/due_diligence_bot
+https://github.com/o2alexanderfedin/ai-swe-template
 " || echo -e "${YELLOW}Commit created (or already exists)${NC}"
 fi
 
@@ -270,7 +270,7 @@ echo "  3. Update .memory_bank/current_tasks.md with your tasks"
 echo "  4. In Claude Code, run: /refresh_context"
 echo ""
 echo "Documentation:"
-echo "  - Quick start: https://github.com/o2alexanderfedin/due_diligence_bot#readme"
+echo "  - Quick start: https://github.com/o2alexanderfedin/ai-swe-template#readme"
 echo "  - Memory Bank guide: cat .memory_bank/README.md"
 echo ""
 echo -e "${BLUE}Happy coding with AI assistance! 🤖${NC}"

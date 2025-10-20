@@ -1,6 +1,6 @@
 # AI Software Engineering Template
 
-[![GitHub Template](https://img.shields.io/badge/template-Use%20this%20template-brightgreen)](https://github.com/o2alexanderfedin/due_diligence_bot/generate)
+[![GitHub Template](https://img.shields.io/badge/template-Use%20this%20template-brightgreen)](https://github.com/o2alexanderfedin/ai-swe-template/generate)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![AI SWE](https://img.shields.io/badge/AI-Software%20Engineering-purple)](AI_SWE_article.md)
 [![Setup Time](https://img.shields.io/badge/setup-2%20minutes-green)]()
@@ -21,7 +21,7 @@ Choose your path based on your needs:
 Create a new project in one command:
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/due_diligence_bot/main/scripts/quick-start.sh | \
+curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/ai-swe-template/main/scripts/quick-start.sh | \
   bash -s my-project --lang python --framework fastapi
 ```
 
@@ -44,7 +44,7 @@ Retrofit AI SWE methodology into your existing codebase:
 
 ```bash
 cd your-existing-project
-curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/due_diligence_bot/main/scripts/setup-existing.sh -o setup.sh
+curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/ai-swe-template/main/scripts/setup-existing.sh -o setup.sh
 chmod +x setup.sh && ./setup.sh
 ```
 
@@ -57,7 +57,7 @@ For full customization:
 pip install cookiecutter
 
 # Create project
-cookiecutter gh:o2alexanderfedin/due_diligence_bot
+cookiecutter gh:o2alexanderfedin/ai-swe-template
 ```
 
 ### ✨ What You Get
@@ -106,12 +106,7 @@ This template implements the **AI SWE (Software Engineering) methodology** - a s
 
 ## About This Repository
 
-This repository serves **dual purposes**:
-
-1. **Production Template** - Use it to start new projects or enhance existing ones
-2. **Reference Implementation** - See AI SWE methodology in action with a real project
-
-**Reference Project**: Due Diligence Bot - An intelligent Telegram bot for automated comprehensive company and project verification (due diligence), powered by AI and implementing the AI SWE (Software Engineering) methodology.
+This is a **production-ready template** for implementing the AI Software Engineering (AI SWE) methodology in any project. It provides a complete, systematic approach to AI-assisted development with persistent context, enforced patterns, and documented workflows.
 
 ### Learn More
 
@@ -140,7 +135,7 @@ cd YOUR_PROJECT
 ```bash
 cd your-existing-project
 # Download and run setup script
-curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/due_diligence_bot/main/scripts/setup-existing.sh -o setup.sh
+curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/ai-swe-template/main/scripts/setup-existing.sh -o setup.sh
 chmod +x setup.sh && ./setup.sh
 ```
 
@@ -234,32 +229,29 @@ ls ~/.config/claude/commands/
 
 ---
 
-## Reference Implementation: Due Diligence Bot
+## Example Use Cases
 
-> **Note**: The sections below describe the reference implementation included in this template. When you use this template for your project, this content will be replaced with your project-specific information during setup.
+This template works for any software project. Here are some examples:
 
-### Overview
+### Web Applications
+- **Frontend**: React, Vue, Angular with TypeScript
+- **Backend**: Node.js, Python, Go APIs
+- **Full-stack**: Next.js, Django, Rails
 
-Due Diligence Bot automates the process of collecting, analyzing, and reporting information for investment decisions, business partnerships, and M&A due diligence. It combines web scraping, external API integrations, and AI-powered analysis to deliver structured reports in hours instead of days.
+### APIs & Microservices
+- **REST APIs**: FastAPI, Express, Gin, Axum
+- **GraphQL**: Apollo, Hasura
+- **gRPC**: Protocol Buffers services
 
-### Key Features
+### Data & ML Projects
+- **Data Engineering**: ETL pipelines, data processing
+- **Machine Learning**: Model training, deployment
+- **AI Applications**: LLM integrations, AI agents
 
-- **Automated Data Collection**: Aggregates information from registries, news sources, and financial databases
-- **AI-Powered Analysis**: Uses GPT-4 and LangChain for intelligent data structuring
-- **Structured Reporting**: Generates comprehensive PDF reports with findings and recommendations
-- **Change Monitoring**: Tracks status changes in monitored entities
-- **Interactive Interface**: Telegram bot for easy access and interaction
-
-### Technology Stack
-
-- **Backend**: Python 3.11+ with full type safety
-- **Bot Framework**: aiogram (Telegram)
-- **AI/LLM**: OpenAI GPT-4, LangChain
-- **Database**: PostgreSQL (structured data), Redis (caching/queues)
-- **Testing**: pytest, pytest-asyncio
-- **Code Quality**: black, ruff, mypy
-
-For complete tech stack details, see [.memory_bank/tech_stack.md](.memory_bank/tech_stack.md)
+### CLI Tools & Libraries
+- **Command-line tools**: Go, Rust, Python CLIs
+- **SDKs & Libraries**: Published packages
+- **DevOps Tools**: Infrastructure automation
 
 ---
 
@@ -309,70 +301,35 @@ For detailed command documentation, see [COMMANDS_DOCUMENTATION.md](COMMANDS_DOC
 
 ---
 
-## Getting Started
+## Getting Started with Your Project
 
-### Prerequisites
+After setup, your project will have:
 
-- Python 3.11+
-- Poetry (dependency management)
-- PostgreSQL 14+
-- Redis 7+
-- Telegram Bot Token
-- OpenAI API Key
-
-### Installation
-
-1. **Clone repository**:
+1. **Memory Bank** (`.memory_bank/`):
    ```bash
-   git clone <repository-url>
-   cd due_diligence_bot
+   cat .memory_bank/README.md           # Start here
+   cat .memory_bank/product_brief.md    # Your business context
+   cat .memory_bank/tech_stack.md       # Your tech decisions
    ```
 
-2. **Install dependencies**:
+2. **Custom Commands** (`.claude/commands/`):
    ```bash
-   poetry install
+   ls .claude/commands/
+   # Shows: m_bug.md, m_feature.md, m_review.md, m_refactor.md, refresh_context.md
    ```
 
-3. **Configure environment**:
-   ```bash
-   cp .env.example .env
-   # Edit .env with your credentials:
-   # - TELEGRAM_BOT_TOKEN
-   # - OPENAI_API_KEY
-   # - DATABASE_URL
-   # - REDIS_URL
-   ```
+3. **Workflows** (`.memory_bank/workflows/`):
+   - `new_feature.md` - Feature development process
+   - `bug_fix.md` - Bug fixing workflow
+   - `code_review.md` - Review checklist
+   - `self_review.md` - Self-validation
+   - `refactoring.md` - Refactoring guidelines
 
-4. **Setup database**:
-   ```bash
-   poetry run alembic upgrade head
-   ```
-
-5. **Run bot**:
-   ```bash
-   poetry run python -m bot
-   ```
-
-### For Developers: AI SWE Setup
-
-1. **Read Memory Bank**:
-   ```bash
-   cat .memory_bank/README.md
-   ```
-
-2. **Read Claude Code Configuration**:
+4. **Project Configuration** (`CLAUDE.md`):
    ```bash
    cat CLAUDE.md
+   # Claude Code instructions for your project
    ```
-
-3. **Verify Custom Commands**:
-   ```bash
-   ls ~/.config/claude/commands/
-   # Should show: m_bug.md, m_feature.md, m_review.md, m_self_review.md, refresh_context.md
-   ```
-
-4. **Review Complete Setup**:
-   See [AI_SWE_SETUP_VALIDATION.md](AI_SWE_SETUP_VALIDATION.md) for comprehensive validation report
 
 ---
 
@@ -421,10 +378,10 @@ For detailed workflows, see [.memory_bank/workflows/](.memory_bank/workflows/)
 
 ---
 
-## Project Structure
+## Repository Structure
 
 ```
-due_diligence_bot/
+ai-swe-template/
 ├── .memory_bank/           # AI SWE Memory Bank (single source of truth)
 │   ├── README.md          # Navigation hub
 │   ├── product_brief.md   # Business context
@@ -435,12 +392,10 @@ due_diligence_bot/
 │   ├── workflows/         # Task workflows
 │   └── specs/             # Feature specifications
 │
-├── bot/                   # Telegram bot handlers
-├── core/                  # Business logic
-├── integrations/          # External API integrations
-├── data/                  # Data models and storage
-├── reports/               # Report generation
-├── tests/                 # Test suite
+├── scripts/               # Setup and utility scripts
+├── templates/             # Language-specific templates
+├── hooks/                 # Cookiecutter hooks
+├── .github/workflows/     # GitHub Actions
 │
 ├── CLAUDE.md              # Claude Code configuration
 ├── COMMANDS_DOCUMENTATION.md  # Custom commands guide
@@ -484,58 +439,45 @@ test(integration): add tests for company service
 
 ---
 
-## Testing
+## Testing Your Project
 
-### Run Tests
+The template includes testing guidelines in `.memory_bank/guides/testing_strategy.md`. Customize for your stack:
 
+**Python projects**:
 ```bash
-# All tests
-poetry run pytest
-
-# With coverage
-poetry run pytest --cov=. --cov-report=html
-
-# Specific test file
-poetry run pytest tests/test_bot.py
-
-# Async tests
-poetry run pytest -v tests/test_async.py
+pytest
+pytest --cov=. --cov-report=html
 ```
 
-### Coverage Requirements
+**JavaScript/TypeScript projects**:
+```bash
+npm test
+npm run test:coverage
+```
 
-- Minimum 80% coverage for new code
-- All public APIs must have tests
-- Use AAA pattern (Arrange-Act-Assert)
+**Go projects**:
+```bash
+go test ./...
+go test -cover ./...
+```
 
-See [.memory_bank/guides/testing_strategy.md](.memory_bank/guides/testing_strategy.md) for details
+**Rust projects**:
+```bash
+cargo test
+cargo tarpaulin
+```
 
 ---
 
 ## Code Quality
 
-### Before Committing
+All language templates include code quality standards in `.memory_bank/guides/coding_standards.md`.
 
-```bash
-# Format code
-poetry run black .
-
-# Lint
-poetry run ruff check .
-
-# Type check
-poetry run mypy .
-```
-
-### Standards
-
-- Follow PEP 8
-- Use type hints for all functions
-- Maximum line length: 100 characters
-- Use async/await for all I/O operations
-- Document public APIs with docstrings (Google style)
-
-See [.memory_bank/guides/coding_standards.md](.memory_bank/guides/coding_standards.md) for complete standards
+**Before committing**, run your language's tools:
+- Python: `black`, `ruff`, `mypy`
+- JavaScript/TypeScript: `prettier`, `eslint`, `tsc`
+- Go: `gofmt`, `golangci-lint`
+- Rust: `rustfmt`, `clippy`
 
 ---
 
