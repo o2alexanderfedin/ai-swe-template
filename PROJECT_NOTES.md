@@ -103,8 +103,16 @@ Implementation roadmap from TEMPLATE_STRATEGY.md:
 
 ---
 
+## Acknowledgments
+
+Special thanks to **Denis Kiselev** ([@Deksden](https://t.me/Deksden)) for co-authoring the AI SWE methodology and mentoring the development of this approach. His insights and guidance were instrumental in transforming chaotic "vibe coding" into the systematic AI Software Engineering methodology implemented in this template.
+
+The original methodology is detailed in the article: [AI Software Engineering: От хаоса Vibe Coding к системной разработке с AI-агентами](https://habr.com/ru/articles/934806/)
+
+---
+
 **Status**: Production-ready template with complete documentation
 **Template Strategy**: Fully implemented per TEMPLATE_STRATEGY.md
-**Version**: 0.9.0 (pending)
+**Version**: 1.0.1
 **Last Updated**: 2025-10-19
 **Ready for**: Public release and community use
