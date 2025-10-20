@@ -2,8 +2,6 @@
 
 ## AI SWE Methodology Template
 
-I love what we have now! I think that we need to make a template out of this.
-
 This project serves as a complete reference implementation of the AI Software Engineering (AI SWE) methodology based on the article: https://habr.com/ru/articles/934806/
 
 ### What Makes This a Great Template
@@ -39,17 +37,54 @@ See `FILE_INDEX.md` for complete file listing and organization.
 
 See `QUICK_START.md` for daily workflow and command reference.
 
+### Template Strategy
+
+**See [TEMPLATE_STRATEGY.md](./TEMPLATE_STRATEGY.md) for the complete implementation plan.**
+
+This document contains:
+- Comprehensive strategy for making this a reusable template
+- Three usage modes (new projects, existing projects, power users)
+- Smart setup script specifications
+- Language-specific variant support
+- Update handling strategies
+- Complete implementation roadmap
+
+**Recommended Approach**: GitHub Template + Smart Setup Script
+- One-click initialization
+- Works for new AND existing projects
+- Full customization available
+- 2-minute setup for most users
+
 ### Future Enhancements
 
-- [ ] Create GitHub template repository
-- [ ] Add language-specific templates (Python, JavaScript, Go, etc.)
-- [ ] Add industry-specific adaptations (FinTech, HealthTech, etc.)
-- [ ] Create setup wizard for new projects
-- [ ] Add CI/CD pipeline templates
-- [ ] Create Docker configuration examples
+Implementation roadmap is detailed in TEMPLATE_STRATEGY.md:
+
+**Phase 1: Core Template**
+- [ ] Add placeholder variables to all files
+- [ ] Create `scripts/setup.sh` for interactive setup
+- [ ] Mark repository as GitHub Template
+
+**Phase 2: Language Variants**
+- [ ] Python-specific template
+- [ ] JavaScript/TypeScript template
+- [ ] Go template
+- [ ] Rust template
+
+**Phase 3: Advanced Features**
+- [ ] Setup script for existing projects
+- [ ] One-liner quick-start script
+- [ ] Cookiecutter support
+- [ ] GitHub Action for template sync
+
+**Phase 4: Polish**
+- [ ] Comprehensive documentation
+- [ ] Video walkthrough
+- [ ] Example projects
+- [ ] Community feedback
 
 ---
 
-**Status**: Production-ready template
-**Version**: 0.3.0
+**Status**: Production-ready reference implementation
+**Template Strategy**: Documented in TEMPLATE_STRATEGY.md
+**Version**: 0.5.0
 **Last Updated**: 2025-10-19
