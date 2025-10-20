@@ -5,7 +5,7 @@
 [![AI SWE](https://img.shields.io/badge/AI-Software%20Engineering-purple)](AI_SWE_article.md)
 [![Setup Time](https://img.shields.io/badge/setup-2%20minutes-green)]()
 [![Languages](https://img.shields.io/badge/languages-Python%20%7C%20JS%20%7C%20Go%20%7C%20Rust-blue)]()
-[![Version](https://img.shields.io/badge/version-1.0.1-blue)]()
+[![Version](https://img.shields.io/badge/version-1.0.2-blue)]()
 
 
 > A production-ready template for systematic AI-assisted development using the AI SWE methodology.
