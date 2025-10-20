@@ -1,15 +1,15 @@
 # Technology Stack and Conventions
 
 ## Core Stack
-- **Backend Framework**: Python 3.11+ (modern, type-safe approach)
-- **Bot Framework**: Python Telegram Bot / aiogram (for Telegram integration)
-- **AI/LLM Integration**:
+- **Primary Language**: {{LANGUAGE}}
+- **Framework**: {{FRAMEWORK}}
+- **AI/LLM Integration** (if applicable):
   - OpenAI API (GPT-4) for analysis and report generation
   - LangChain for AI agent orchestration
 - **Database**:
   - PostgreSQL for structured data storage
   - Redis for caching and task queues
-- **Web Scraping**:
+- **Web Scraping** (if applicable):
   - BeautifulSoup4 / lxml for parsing
   - Selenium for dynamic pages
 - **API Integration**:
@@ -29,12 +29,12 @@
 
 ## Project Structure
 ```
-due_diligence_bot/
-├── bot/              # Telegram bot handlers
+{{PROJECT_NAME}}/
+├── bot/              # Telegram bot handlers (or main application logic)
 ├── core/             # Business logic
 ├── integrations/     # External API integrations
 ├── data/             # Data processing and storage
-├── reports/          # Report generation
+├── reports/          # Report generation (if applicable)
 └── tests/            # Test suite
 ```
 

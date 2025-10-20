@@ -32,7 +32,9 @@ This memory bank is your main source of information. Before starting any task, *
 
 ## Project Philosophy
 
-**Due Diligence Bot** is an automated system for conducting comprehensive verification of companies and projects. Our approach:
+**{{PROJECT_NAME}}** - {{PROJECT_DESC}}
+
+Our approach:
 
 1. **AI-First**: We use LLM capabilities for data analysis and structuring
 2. **Asynchronous**: All I/O operations are asynchronous for maximum performance
