@@ -5,7 +5,7 @@
 [![AI SWE](https://img.shields.io/badge/AI-Software%20Engineering-purple)](AI_SWE_article.md)
 [![Setup Time](https://img.shields.io/badge/setup-2%20minutes-green)]()
 [![Languages](https://img.shields.io/badge/languages-Python%20%7C%20JS%20%7C%20Go%20%7C%20Rust-blue)]()
-[![Version](https://img.shields.io/badge/version-0.8.0-blue)]()
+[![Version](https://img.shields.io/badge/version-1.0.1-blue)]()
 
 
 > A production-ready template for systematic AI-assisted development using the AI SWE methodology.
@@ -558,8 +558,14 @@ All language templates include code quality standards in `.memory_bank/guides/co
 
 ## Acknowledgments
 
+### Methodology Author
+
+Special thanks to **Denis Kiselev** ([@Deksden](https://t.me/Deksden)) for co-authoring the AI SWE methodology and mentoring the development of this approach. His insights and guidance were instrumental in transforming chaotic "vibe coding" into the systematic AI Software Engineering methodology implemented in this template.
+
+### Original Article
+
 This project implements the **AI SWE methodology** as described in the article:
-- [Original Article](https://habr.com/ru/articles/934806/) (Russian)
+- **[AI Software Engineering: От хаоса Vibe Coding к системной разработке с AI-агентами](https://habr.com/ru/articles/934806/)** (Russian)
 - English Translation: [AI_SWE_article.md](AI_SWE_article.md)
 
 ### Tools Used
