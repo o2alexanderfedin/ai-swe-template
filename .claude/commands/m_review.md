@@ -1,3 +1,9 @@
+---
+description: Conduct code review following Memory Bank standards and checklists
+argument-hint: [file paths to review]
+allowed-tools: Read(*), Grep(*), Glob(*)
+---
+
 You received the command /m_review. This means you need to conduct a code review.
 
 Code for review: $ARGUMENTS.

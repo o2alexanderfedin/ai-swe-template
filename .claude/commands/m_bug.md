@@ -1,3 +1,9 @@
+---
+description: Execute bug fix workflow following Memory Bank standards
+argument-hint: [bug description]
+allowed-tools: Read(*), Edit(*), Write(*), Bash(*), Grep(*), Glob(*), TodoWrite(*)
+---
+
 You received the command /m_bug. This means we are starting work on fixing a bug.
 
 Your task: $ARGUMENTS.

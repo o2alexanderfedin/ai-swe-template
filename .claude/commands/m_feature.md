@@ -1,3 +1,9 @@
+---
+description: Execute new feature development workflow following Memory Bank standards
+argument-hint: [feature description]
+allowed-tools: Read(*), Edit(*), Write(*), Bash(*), Grep(*), Glob(*), TodoWrite(*)
+---
+
 You received the command /m_feature. This means we are starting work on a new feature.
 
 Your task: $ARGUMENTS.
