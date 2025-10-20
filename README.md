@@ -1,43 +1,76 @@
 # AI Software Engineering Template
 
-[![GitHub Template](https://img.shields.io/badge/template-Use%20this%20template-brightgreen)](https://github.com/USER/REPO/generate)
+[![GitHub Template](https://img.shields.io/badge/template-Use%20this%20template-brightgreen)](https://github.com/o2alexanderfedin/due_diligence_bot/generate)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![AI SWE](https://img.shields.io/badge/AI-Software%20Engineering-purple)](AI_SWE_article.md)
+[![Setup Time](https://img.shields.io/badge/setup-2%20minutes-green)]()
+[![Languages](https://img.shields.io/badge/languages-Python%20%7C%20JS%20%7C%20Go%20%7C%20Rust-blue)]()
+[![Version](https://img.shields.io/badge/version-0.8.0-blue)]()
+
 
 > A production-ready template for systematic AI-assisted development using the AI SWE methodology.
 
 ---
 
-## Quick Start
+## 🚀 Quick Start
 
-### For New Projects
+Choose your path based on your needs:
+
+### Method 1: One-Liner (Fastest)
+
+Create a new project in one command:
+
+```bash
+curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/due_diligence_bot/main/scripts/quick-start.sh | \
+  bash -s my-project --lang python --framework fastapi
+```
+
+**Ready to code in 2 minutes!**
+
+### Method 2: GitHub Template (Most Popular)
 
 1. Click **"Use this template"** button above
 2. Clone your new repository
-3. Run the setup script:
+3. Run setup:
    ```bash
    ./scripts/setup.sh
    ```
-4. Answer a few questions (2 minutes)
-5. Start developing with AI assistance!
+4. Answer questions (2 minutes)
+5. Start coding!
 
-### For Existing Projects
+### Method 3: Add to Existing Project
 
-Add AI SWE methodology to your existing codebase:
+Retrofit AI SWE methodology into your existing codebase:
 
 ```bash
 cd your-existing-project
-curl -sSL https://raw.githubusercontent.com/USER/REPO/main/scripts/setup-existing.sh | bash
+curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/due_diligence_bot/main/scripts/setup-existing.sh -o setup.sh
+chmod +x setup.sh && ./setup.sh
 ```
 
-### What You Get
+### Method 4: Power Users (Cookiecutter)
 
-- **Complete Memory Bank system**: 13 files, 3,500+ lines of structured knowledge
-- **Custom slash commands**: 5 commands for systematic workflows
-- **Three-phase workflow**: Planning (Gemini) → Execution (Claude Code) → Review
-- **Language-specific templates**: Python, JavaScript, Go, Rust
-- **Git flow integration**: Automated branch and commit management
-- **Comprehensive documentation**: Guides, patterns, and workflows
+For full customization:
+
+```bash
+# Install cookiecutter if needed
+pip install cookiecutter
+
+# Create project
+cookiecutter gh:o2alexanderfedin/due_diligence_bot
+```
+
+### ✨ What You Get
+
+- ✅ **Complete Memory Bank system**: 13 files, 3,500+ lines of structured knowledge
+- ✅ **Custom slash commands**: 5 commands (`/m_feature`, `/m_bug`, `/m_review`, etc.)
+- ✅ **Three-phase workflow**: Planning → Execution → Review (systematic development)
+- ✅ **Language-specific templates**: Python, JavaScript/TypeScript, Go, Rust
+- ✅ **Git flow integration**: Automated branch and commit management
+- ✅ **Smart setup scripts**: New projects, existing projects, one-liners
+- ✅ **Cookiecutter support**: Full customization for power users
+- ✅ **Auto-sync workflow**: GitHub Action for template updates (optional)
+- ✅ **Comprehensive docs**: 27 files, ~270KB of guides, patterns, workflows
 
 ---
 
@@ -106,9 +139,9 @@ cd YOUR_PROJECT
 **Option B: Existing Project**
 ```bash
 cd your-existing-project
-# Download setup script
-curl -O https://raw.githubusercontent.com/USER/REPO/main/scripts/setup-existing.sh
-chmod +x setup-existing.sh
+# Download and run setup script
+curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/due_diligence_bot/main/scripts/setup-existing.sh -o setup.sh
+chmod +x setup.sh && ./setup.sh
 ```
 
 #### 2. Run Setup Script (1-2 minutes)
