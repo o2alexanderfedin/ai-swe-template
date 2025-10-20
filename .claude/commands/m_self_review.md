@@ -1,3 +1,9 @@
+---
+description: Execute self-review against provided checklist with automated fixes
+argument-hint: <checklist items>
+allowed-tools: Read(*), Edit(*), Write(*), Bash(*), Grep(*), Glob(*)
+---
+
 You received the command /m_self_review. This means you need to check your own work.
 
 Checklist for verification: $ARGUMENTS

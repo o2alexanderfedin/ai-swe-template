@@ -1,3 +1,8 @@
+---
+description: Refresh AI agent context by re-reading Memory Bank and project status
+allowed-tools: Read(*), Bash(git*)
+---
+
 Context may have been lost or compressed. It is necessary to refresh memory. Execute the following steps:
 
 1.  Re-read `.memory_bank/README.md` completely to understand the overall structure.
