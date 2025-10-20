@@ -9,7 +9,7 @@ Get started with AI-assisted development in **2 minutes**.
 ### New Project (One Command)
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/due_diligence_bot/main/scripts/quick-start.sh | \
+curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/ai-swe-template/main/scripts/quick-start.sh | \
   bash -s my-project --lang python --framework fastapi
 ```
 
@@ -23,7 +23,7 @@ That's it! Your project is ready with:
 
 ```bash
 cd your-project
-curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/due_diligence_bot/main/scripts/setup-existing.sh -o setup.sh
+curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/ai-swe-template/main/scripts/setup-existing.sh -o setup.sh
 chmod +x setup.sh && ./setup.sh
 ```
 
@@ -46,20 +46,20 @@ Choose the method that fits your workflow:
 
 **Non-Interactive (fastest):**
 ```bash
-curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/due_diligence_bot/main/scripts/quick-start.sh | \
+curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/ai-swe-template/main/scripts/quick-start.sh | \
   bash -s my-api --lang python --framework fastapi --desc "My awesome API"
 ```
 
 **Interactive:**
 ```bash
-curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/due_diligence_bot/main/scripts/quick-start.sh | \
+curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/ai-swe-template/main/scripts/quick-start.sh | \
   bash -s my-api
 # Runs setup.sh interactively
 ```
 
 **All Options:**
 ```bash
-curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/due_diligence_bot/main/scripts/quick-start.sh | \
+curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/ai-swe-template/main/scripts/quick-start.sh | \
   bash -s PROJECT_NAME \
     --lang LANGUAGE \           # python, javascript, go, rust
     --framework FRAMEWORK \      # fastapi, express, gin, axum, etc.
@@ -96,7 +96,7 @@ Done! Start coding with `/refresh_context` in Claude Code.
 
 2. **Download and run setup:**
    ```bash
-   curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/due_diligence_bot/main/scripts/setup-existing.sh -o setup.sh
+   curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/ai-swe-template/main/scripts/setup-existing.sh -o setup.sh
    chmod +x setup.sh
    ./setup.sh
    ```
@@ -116,7 +116,7 @@ Done! Start coding with `/refresh_context` in Claude Code.
 
 2. **Generate project:**
    ```bash
-   cookiecutter gh:o2alexanderfedin/due_diligence_bot
+   cookiecutter gh:o2alexanderfedin/ai-swe-template
    ```
 
 3. **Answer detailed prompts:**
@@ -281,7 +281,7 @@ Commands are installed in two places:
 
 ```bash
 # Create project
-curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/due_diligence_bot/main/scripts/quick-start.sh | \
+curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/ai-swe-template/main/scripts/quick-start.sh | \
   bash -s my-api --lang python --framework fastapi
 
 cd my-api
@@ -299,7 +299,7 @@ claude
 
 ```bash
 # Create project
-curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/due_diligence_bot/main/scripts/quick-start.sh | \
+curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/ai-swe-template/main/scripts/quick-start.sh | \
   bash -s my-app --lang javascript --framework express
 
 cd my-app
@@ -317,7 +317,7 @@ claude
 
 ```bash
 # Create project
-curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/due_diligence_bot/main/scripts/quick-start.sh | \
+curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/ai-swe-template/main/scripts/quick-start.sh | \
   bash -s my-service --lang go --framework gin
 
 cd my-service
@@ -335,7 +335,7 @@ claude
 
 ```bash
 # Create project
-curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/due_diligence_bot/main/scripts/quick-start.sh | \
+curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/ai-swe-template/main/scripts/quick-start.sh | \
   bash -s my-app --lang rust --framework axum
 
 cd my-app
@@ -551,4 +551,4 @@ Happy coding! 🚀
 
 **Version**: 0.8.0
 **Last Updated**: 2025-10-19
-**Template**: [github.com/o2alexanderfedin/due_diligence_bot](https://github.com/o2alexanderfedin/due_diligence_bot)
+**Template**: [github.com/o2alexanderfedin/ai-swe-template](https://github.com/o2alexanderfedin/ai-swe-template)

@@ -3,10 +3,10 @@
 # One-liner installer for new projects
 #
 # Usage:
-#   curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/due_diligence_bot/main/scripts/quick-start.sh | bash -s my-project
+#   curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/ai-swe-template/main/scripts/quick-start.sh | bash -s my-project
 #
 # Or with all options:
-#   curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/due_diligence_bot/main/scripts/quick-start.sh | bash -s my-project --lang python --framework fastapi
+#   curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/ai-swe-template/main/scripts/quick-start.sh | bash -s my-project --lang python --framework fastapi
 
 set -e  # Exit on error
 
@@ -56,7 +56,7 @@ while [[ $# -gt 0 ]]; do
             echo "  quick-start.sh my-app --lang javascript --framework express"
             echo ""
             echo "One-liner install:"
-            echo "  curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/due_diligence_bot/main/scripts/quick-start.sh | bash -s my-project"
+            echo "  curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/ai-swe-template/main/scripts/quick-start.sh | bash -s my-project"
             exit 0
             ;;
         *)
@@ -91,7 +91,7 @@ fi
 
 # Clone template repository
 echo -e "${BLUE}Cloning AI SWE Template...${NC}"
-git clone --depth 1 https://github.com/o2alexanderfedin/due_diligence_bot.git "$PROJECT_NAME"
+git clone --depth 1 https://github.com/o2alexanderfedin/ai-swe-template.git "$PROJECT_NAME"
 
 cd "$PROJECT_NAME"
 

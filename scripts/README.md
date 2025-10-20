@@ -175,7 +175,7 @@ Database (postgresql/mongodb/redis/none): postgresql
 ```bash
 # Download and run for existing project
 cd your-existing-project
-curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/due_diligence_bot/main/scripts/setup-existing.sh -o setup-existing.sh
+curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/ai-swe-template/main/scripts/setup-existing.sh -o setup-existing.sh
 chmod +x setup-existing.sh
 ./setup-existing.sh
 
@@ -285,10 +285,10 @@ Next steps:
 
 ```bash
 # One-liner (downloads and runs)
-curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/due_diligence_bot/main/scripts/quick-start.sh | bash -s my-project
+curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/ai-swe-template/main/scripts/quick-start.sh | bash -s my-project
 
 # With options (non-interactive)
-curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/due_diligence_bot/main/scripts/quick-start.sh | \
+curl -sSL https://raw.githubusercontent.com/o2alexanderfedin/ai-swe-template/main/scripts/quick-start.sh | \
   bash -s my-project --lang python --framework fastapi --desc "My API project"
 
 # Or download and run locally
