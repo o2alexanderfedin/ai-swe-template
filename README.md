@@ -560,12 +560,13 @@ All language templates include code quality standards in `.memory_bank/guides/co
 
 ### Methodology Author
 
-Special thanks to **Denis Kiselev** ([@Deksden](https://t.me/Deksden)) for co-authoring the AI SWE methodology and mentoring the development of this approach. His insights and guidance were instrumental in transforming chaotic "vibe coding" into the systematic AI Software Engineering methodology implemented in this template.
+Special thanks to **Denis Kiselev** ([@Deksden](https://t.me/Deksden)) for co-authoring the AI SWE methodology and mentoring the development of this approach.<br/>
+His insights and guidance were instrumental in transforming chaotic "vibe coding" into the systematic AI Software Engineering methodology implemented in this template.
 
 ### Original Article
 
-This project implements the **AI SWE methodology** as described in the article:
-- **[AI Software Engineering: От хаоса Vibe Coding к системной разработке с AI-агентами](https://habr.com/ru/articles/934806/)** (Russian)
+This project implements the **AI SWE methodology** as described in the article:<br/>
+- **[AI Software Engineering: От хаоса Vibe Coding к системной разработке с AI-агентами](https://habr.com/ru/articles/934806/)** (Russian)<br/>
 - English Translation: [AI_SWE_article.md](AI_SWE_article.md)
 
 ### Tools Used
