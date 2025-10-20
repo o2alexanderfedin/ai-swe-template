@@ -24,3 +24,6 @@ Thumbs.db
 dist/
 build/
 *.log
+
+# Downloaded articles and temporary files
+article_raw.html
