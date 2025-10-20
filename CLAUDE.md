@@ -1,4 +1,4 @@
-# Claude Code Configuration for Due Diligence Bot
+# Claude Code Configuration for {{PROJECT_NAME}}
 
 ## At the Start of ANY Work Session
 
@@ -16,19 +16,19 @@
 
 ---
 
-## About the Project: Due Diligence Bot
+## About the Project: {{PROJECT_NAME}}
 
-**Due Diligence Bot** - an intelligent Telegram bot for automated comprehensive due diligence of companies and projects.
+**{{PROJECT_NAME}}** - {{PROJECT_DESC}}
 
 ### Key Project Features:
 
-#### 1. Python Bot Architecture
-- Using **Python 3.11+** with full type annotations
-- **Telegram Bot Framework**: aiogram or python-telegram-bot
+#### 1. {{LANGUAGE}} Architecture
+- Using **{{LANGUAGE}}** with full type annotations
+- **Framework**: {{FRAMEWORK}}
 - **Asynchronous architecture**: all I/O operations via async/await
-- Command and callback query handlers in `bot/` module
+- Command and callback query handlers in `bot/` module (or main application logic)
 
-#### 2. AI/LLM Integration
+#### 2. AI/LLM Integration (if applicable)
 - **OpenAI API (GPT-4)** for analysis and report generation
 - **LangChain** for orchestrating AI agents
 - All LLM calls must be wrapped in retry mechanisms
@@ -98,14 +98,14 @@ class CompanyRegistryClient:
             return CompanyInfo(**response.json())
 ```
 
-#### 5. Telegram Bot Patterns
-**When working with Telegram bot:**
-- Use handlers for commands (`/start`, `/help`, `/check`)
-- Use callback_query handlers for inline buttons
-- Use FSM (Finite State Machine) for complex dialogs
+#### 5. Application-Specific Patterns
+**When working with the application:**
+- Use handlers for commands (`/start`, `/help`, `/check`) if applicable
+- Use callback_query handlers for inline buttons (Telegram bots)
+- Use FSM (Finite State Machine) for complex dialogs if applicable
 - Handle errors gracefully - always send understandable message to user
-- Use typing indicators (`send_chat_action`) for long operations
-- Limit message size (Telegram limit: 4096 characters)
+- Use typing indicators (`send_chat_action`) for long operations if applicable
+- Limit message size (Telegram limit: 4096 characters) if applicable
 
 Handler example:
 ```python

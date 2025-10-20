@@ -1,10 +1,10 @@
 # Product Brief
 
 ## Project Name
-Due Diligence Bot
+{{PROJECT_NAME}}
 
 ## Project Goal (WHY)
-Automate the process of collecting, analyzing and providing information for conducting due diligence (comprehensive verification) of companies, projects or investment opportunities. The bot should significantly reduce the time needed for initial analysis and provide structured information for making investment or business decisions.
+{{PROJECT_DESC}}
 
 ## Target Audience (FOR WHOM)
 - Investors and venture funds conducting analysis of potential investment targets
