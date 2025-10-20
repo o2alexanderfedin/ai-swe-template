@@ -1,0 +1,60 @@
+{
+  "project_name": "My AI Project",
+  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+  "project_desc": "A new project built with AI Software Engineering methodology",
+  "language": [
+    "python",
+    "javascript",
+    "typescript",
+    "go",
+    "rust",
+    "other"
+  ],
+  "framework": "",
+  "_framework_suggestions": {
+    "python": "FastAPI, Django, Flask, etc.",
+    "javascript": "Express, NestJS, etc.",
+    "typescript": "NestJS, Next.js, Express, etc.",
+    "go": "Gin, Echo, Chi, Fiber",
+    "rust": "Actix, Axum, Rocket"
+  },
+  "use_ai_features": "y",
+  "ai_provider": [
+    "openai",
+    "anthropic",
+    "both",
+    "none"
+  ],
+  "database": [
+    "postgresql",
+    "mongodb",
+    "mysql",
+    "sqlite",
+    "redis",
+    "none"
+  ],
+  "use_docker": "y",
+  "use_ci_cd": "y",
+  "ci_platform": [
+    "github_actions",
+    "gitlab_ci",
+    "circleci",
+    "none"
+  ],
+  "author_name": "Your Name",
+  "author_email": "your.email@example.com",
+  "github_username": "",
+  "license": [
+    "MIT",
+    "Apache-2.0",
+    "BSD-3-Clause",
+    "GPL-3.0",
+    "Proprietary"
+  ],
+  "init_git": "y",
+  "init_git_flow": "y",
+  "_template_version": "0.7.0",
+  "_extensions": [
+    "jinja2_time.TimeExtension"
+  ]
+}

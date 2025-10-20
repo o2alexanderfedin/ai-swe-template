@@ -1,0 +1,185 @@
+name: Template Sync
+
+# This workflow syncs improvements from the AI SWE Template repository
+# to projects that were created from the template.
+#
+# Usage:
+#   1. Keep this file in your project (optional - delete if you don't want updates)
+#   2. Runs weekly on Sunday, or trigger manually
+#   3. Creates a PR with template updates for review
+#   4. Review and merge the PR to get latest improvements
+
+on:
+  schedule:
+    # Run weekly on Sunday at midnight UTC
+    - cron: '0 0 * * 0'
+
+  workflow_dispatch:
+    # Allow manual trigger from Actions tab
+    inputs:
+      dry_run:
+        description: 'Dry run (show changes without creating PR)'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  sync-template:
+    name: Sync AI SWE Template Updates
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for merging
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Add template remote
+        run: |
+          if ! git remote | grep -q '^template$'; then
+            git remote add template https://github.com/o2alexanderfedin/due_diligence_bot.git
+          fi
+          git fetch template main
+
+      - name: Check for template updates
+        id: check_updates
+        run: |
+          # Get latest commit from template
+          TEMPLATE_COMMIT=$(git rev-parse template/main)
+          echo "template_commit=$TEMPLATE_COMMIT" >> $GITHUB_OUTPUT
+
+          # Check if we've already synced this
+          if git log --all --grep="Template sync: $TEMPLATE_COMMIT" --oneline | grep -q .; then
+            echo "updates_available=false" >> $GITHUB_OUTPUT
+            echo "No new template updates available"
+          else
+            echo "updates_available=true" >> $GITHUB_OUTPUT
+            echo "New template updates available"
+          fi
+
+      - name: Create sync branch
+        if: steps.check_updates.outputs.updates_available == 'true'
+        run: |
+          BRANCH_NAME="template-sync-$(date +%Y%m%d)"
+          git checkout -b "$BRANCH_NAME"
+          echo "SYNC_BRANCH=$BRANCH_NAME" >> $GITHUB_ENV
+
+      - name: Merge template updates
+        if: steps.check_updates.outputs.updates_available == 'true'
+        id: merge
+        continue-on-error: true
+        run: |
+          # Try to merge template updates
+          # This may have conflicts - that's okay, we'll create a PR for manual resolution
+          git merge template/main --allow-unrelated-histories \
+            -m "chore: Sync AI SWE template updates
+
+          Template sync: ${{ steps.check_updates.outputs.template_commit }}
+
+          Automated synchronization of improvements from AI SWE Template.
+          Review changes carefully before merging.
+
+          🤖 Automated by template-sync workflow" || echo "MERGE_CONFLICTS=true" >> $GITHUB_ENV
+
+      - name: Check for changes
+        if: steps.check_updates.outputs.updates_available == 'true'
+        id: changes
+        run: |
+          if git diff --quiet HEAD origin/main; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Push sync branch
+        if: |
+          steps.check_updates.outputs.updates_available == 'true' &&
+          steps.changes.outputs.has_changes == 'true' &&
+          github.event.inputs.dry_run != 'true'
+        run: |
+          git push origin "$SYNC_BRANCH"
+
+      - name: Create Pull Request
+        if: |
+          steps.check_updates.outputs.updates_available == 'true' &&
+          steps.changes.outputs.has_changes == 'true' &&
+          github.event.inputs.dry_run != 'true'
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ env.SYNC_BRANCH }}
+          title: "chore: Sync AI SWE template updates"
+          body: |
+            ## 🔄 Template Synchronization
+
+            This PR synchronizes improvements from the [AI SWE Template](https://github.com/o2alexanderfedin/due_diligence_bot).
+
+            ### What's included
+
+            - Updated Memory Bank patterns and workflows
+            - Improved documentation
+            - New features and enhancements
+            - Bug fixes from template
+
+            ### Template commit
+
+            `${{ steps.check_updates.outputs.template_commit }}`
+
+            ### Review checklist
+
+            - [ ] Review all file changes carefully
+            - [ ] Ensure no project-specific customizations are overwritten
+            - [ ] Test that Memory Bank still works correctly
+            - [ ] Verify slash commands still function
+            - [ ] Update any custom patterns/workflows if needed
+
+            ${{ env.MERGE_CONFLICTS == 'true' && '⚠️ **Note**: This merge has conflicts. Review and resolve them manually before merging.' || '' }}
+
+            ### How to handle conflicts
+
+            If there are conflicts:
+            1. Check out this branch locally
+            2. Resolve conflicts, preferring your customizations
+            3. Test thoroughly
+            4. Push updated changes
+
+            ### Opting out
+
+            If you don't want automatic template syncs:
+            - Delete `.github/workflows/template-sync.yml`
+            - Or disable the workflow in Actions settings
+
+            ---
+
+            🤖 Automated by template-sync workflow
+          labels: |
+            dependencies
+            automated
+            template-sync
+          assignees: ${{ github.repository_owner }}
+
+      - name: Summary
+        if: always()
+        run: |
+          if [ "${{ steps.check_updates.outputs.updates_available }}" = "false" ]; then
+            echo "✅ No template updates available"
+          elif [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            echo "ℹ️ Dry run completed - no PR created"
+            echo "Changes would be synced from template"
+          elif [ "${{ steps.changes.outputs.has_changes }}" = "false" ]; then
+            echo "ℹ️ Template fetched but no changes detected"
+          else
+            echo "✅ Template sync PR created successfully"
+            if [ "$MERGE_CONFLICTS" = "true" ]; then
+              echo "⚠️ Manual conflict resolution required"
+            fi
+          fi
