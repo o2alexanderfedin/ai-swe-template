@@ -81,7 +81,7 @@ This document provides a comprehensive validation of the AI SWE (Software Engine
 ### Complete File Tree
 
 ```
-/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/
+~/Projects/hapyy/due_diligence_bot/
 │
 ├── .git/                          # Git repository
 ├── .gitignore                     # Git ignore rules

@@ -1678,7 +1678,7 @@ project_root/
 
 ## References
 
-- **Original Article**: `/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/AI_SWE_article.md`
+- **Original Article**: `~/Projects/hapyy/due_diligence_bot/AI_SWE_article.md`
 - **Cline Memory Bank Docs**: https://docs.cline.bot/prompting/cline-memory-bank
 - **Repomix**: https://github.com/yamadashy/repomix
 - **Claude Code**: https://claude.com/claude-code

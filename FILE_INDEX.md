@@ -12,57 +12,57 @@
 
 | File | Path | Purpose |
 |------|------|---------|
-| Quick Start Guide | `/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/QUICK_START.md` | Daily workflow cheat sheet |
-| Project README | `/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/README.md` | Project overview and setup |
-| Memory Bank Hub | `/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/.memory_bank/README.md` | **START HERE for any task** |
+| Quick Start Guide | `~/Projects/hapyy/due_diligence_bot/QUICK_START.md` | Daily workflow cheat sheet |
+| Project README | `~/Projects/hapyy/due_diligence_bot/README.md` | Project overview and setup |
+| Memory Bank Hub | `~/Projects/hapyy/due_diligence_bot/.memory_bank/README.md` | **START HERE for any task** |
 
 ### 2. Core Documentation
 
 | File | Path | Size | Purpose |
 |------|------|------|---------|
-| README.md | `/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/README.md` | 11KB | Comprehensive project documentation |
-| QUICK_START.md | `/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/QUICK_START.md` | 7KB | Quick reference guide |
-| AI_SWE_SETUP_VALIDATION.md | `/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/AI_SWE_SETUP_VALIDATION.md` | 32KB | Complete setup validation report |
-| COMMANDS_DOCUMENTATION.md | `/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/COMMANDS_DOCUMENTATION.md` | 15KB | Custom commands reference |
-| IMPLEMENTATION_PLAN.md | `/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/IMPLEMENTATION_PLAN.md` | 58KB | Detailed setup implementation |
-| CLAUDE.md | `/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/CLAUDE.md` | 16KB | Claude Code configuration |
-| AI_SWE_article.md | `/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/AI_SWE_article.md` | 46KB | Original methodology article |
+| README.md | `~/Projects/hapyy/due_diligence_bot/README.md` | 11KB | Comprehensive project documentation |
+| QUICK_START.md | `~/Projects/hapyy/due_diligence_bot/QUICK_START.md` | 7KB | Quick reference guide |
+| AI_SWE_SETUP_VALIDATION.md | `~/Projects/hapyy/due_diligence_bot/AI_SWE_SETUP_VALIDATION.md` | 32KB | Complete setup validation report |
+| COMMANDS_DOCUMENTATION.md | `~/Projects/hapyy/due_diligence_bot/COMMANDS_DOCUMENTATION.md` | 15KB | Custom commands reference |
+| IMPLEMENTATION_PLAN.md | `~/Projects/hapyy/due_diligence_bot/IMPLEMENTATION_PLAN.md` | 58KB | Detailed setup implementation |
+| CLAUDE.md | `~/Projects/hapyy/due_diligence_bot/CLAUDE.md` | 16KB | Claude Code configuration |
+| AI_SWE_article.md | `~/Projects/hapyy/due_diligence_bot/AI_SWE_article.md` | 46KB | Original methodology article |
 
 ### 3. Memory Bank Files
 
 #### Core Files
 | File | Path | Purpose |
 |------|------|---------|
-| Navigation Hub | `/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/.memory_bank/README.md` | Entry point - mandatory reading |
-| Product Brief | `/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/.memory_bank/product_brief.md` | Business context and goals |
-| Tech Stack | `/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/.memory_bank/tech_stack.md` | Technology decisions |
-| Current Tasks | `/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/.memory_bank/current_tasks.md` | Task tracking |
+| Navigation Hub | `~/Projects/hapyy/due_diligence_bot/.memory_bank/README.md` | Entry point - mandatory reading |
+| Product Brief | `~/Projects/hapyy/due_diligence_bot/.memory_bank/product_brief.md` | Business context and goals |
+| Tech Stack | `~/Projects/hapyy/due_diligence_bot/.memory_bank/tech_stack.md` | Technology decisions |
+| Current Tasks | `~/Projects/hapyy/due_diligence_bot/.memory_bank/current_tasks.md` | Task tracking |
 
 #### Guides
 | File | Path | Purpose |
 |------|------|---------|
-| Coding Standards | `/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/.memory_bank/guides/coding_standards.md` | Code organization and style |
-| Testing Strategy | `/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/.memory_bank/guides/testing_strategy.md` | Testing approach and requirements |
+| Coding Standards | `~/Projects/hapyy/due_diligence_bot/.memory_bank/guides/coding_standards.md` | Code organization and style |
+| Testing Strategy | `~/Projects/hapyy/due_diligence_bot/.memory_bank/guides/testing_strategy.md` | Testing approach and requirements |
 
 #### Patterns
 | File | Path | Purpose |
 |------|------|---------|
-| API Standards | `/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/.memory_bank/patterns/api_standards.md` | API design patterns |
-| Error Handling | `/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/.memory_bank/patterns/error_handling.md` | Error handling patterns |
+| API Standards | `~/Projects/hapyy/due_diligence_bot/.memory_bank/patterns/api_standards.md` | API design patterns |
+| Error Handling | `~/Projects/hapyy/due_diligence_bot/.memory_bank/patterns/error_handling.md` | Error handling patterns |
 
 #### Workflows
 | File | Path | Purpose |
 |------|------|---------|
-| New Feature | `/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/.memory_bank/workflows/new_feature.md` | Feature development workflow |
-| Bug Fix | `/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/.memory_bank/workflows/bug_fix.md` | Bug fixing workflow |
-| Code Review | `/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/.memory_bank/workflows/code_review.md` | Code review checklist |
-| Self Review | `/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/.memory_bank/workflows/self_review.md` | Self-review process |
-| Refactoring | `/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/.memory_bank/workflows/refactoring.md` | Refactoring guidelines |
+| New Feature | `~/Projects/hapyy/due_diligence_bot/.memory_bank/workflows/new_feature.md` | Feature development workflow |
+| Bug Fix | `~/Projects/hapyy/due_diligence_bot/.memory_bank/workflows/bug_fix.md` | Bug fixing workflow |
+| Code Review | `~/Projects/hapyy/due_diligence_bot/.memory_bank/workflows/code_review.md` | Code review checklist |
+| Self Review | `~/Projects/hapyy/due_diligence_bot/.memory_bank/workflows/self_review.md` | Self-review process |
+| Refactoring | `~/Projects/hapyy/due_diligence_bot/.memory_bank/workflows/refactoring.md` | Refactoring guidelines |
 
 #### Specs Directory
 | Directory | Path | Purpose |
 |-----------|------|---------|
-| Specs | `/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/.memory_bank/specs/` | Feature specifications (empty, ready for use) |
+| Specs | `~/Projects/hapyy/due_diligence_bot/.memory_bank/specs/` | Feature specifications (empty, ready for use) |
 
 ### 4. Custom Commands
 
@@ -133,7 +133,7 @@
 ## Complete File Tree
 
 ```
-/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/
+~/Projects/hapyy/due_diligence_bot/
 │
 ├── README.md                          # Project overview (398 lines)
 ├── QUICK_START.md                     # Quick reference (254 lines)
@@ -239,43 +239,43 @@ For easy copy-paste in terminals and scripts:
 
 ### Root Documentation
 ```
-/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/README.md
-/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/QUICK_START.md
-/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/AI_SWE_SETUP_VALIDATION.md
-/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/COMMANDS_DOCUMENTATION.md
-/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/IMPLEMENTATION_PLAN.md
-/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/CLAUDE.md
-/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/AI_SWE_article.md
-/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/FILE_INDEX.md
+~/Projects/hapyy/due_diligence_bot/README.md
+~/Projects/hapyy/due_diligence_bot/QUICK_START.md
+~/Projects/hapyy/due_diligence_bot/AI_SWE_SETUP_VALIDATION.md
+~/Projects/hapyy/due_diligence_bot/COMMANDS_DOCUMENTATION.md
+~/Projects/hapyy/due_diligence_bot/IMPLEMENTATION_PLAN.md
+~/Projects/hapyy/due_diligence_bot/CLAUDE.md
+~/Projects/hapyy/due_diligence_bot/AI_SWE_article.md
+~/Projects/hapyy/due_diligence_bot/FILE_INDEX.md
 ```
 
 ### Memory Bank Core
 ```
-/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/.memory_bank/README.md
-/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/.memory_bank/product_brief.md
-/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/.memory_bank/tech_stack.md
-/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/.memory_bank/current_tasks.md
+~/Projects/hapyy/due_diligence_bot/.memory_bank/README.md
+~/Projects/hapyy/due_diligence_bot/.memory_bank/product_brief.md
+~/Projects/hapyy/due_diligence_bot/.memory_bank/tech_stack.md
+~/Projects/hapyy/due_diligence_bot/.memory_bank/current_tasks.md
 ```
 
 ### Memory Bank Guides
 ```
-/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/.memory_bank/guides/coding_standards.md
-/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/.memory_bank/guides/testing_strategy.md
+~/Projects/hapyy/due_diligence_bot/.memory_bank/guides/coding_standards.md
+~/Projects/hapyy/due_diligence_bot/.memory_bank/guides/testing_strategy.md
 ```
 
 ### Memory Bank Patterns
 ```
-/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/.memory_bank/patterns/api_standards.md
-/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/.memory_bank/patterns/error_handling.md
+~/Projects/hapyy/due_diligence_bot/.memory_bank/patterns/api_standards.md
+~/Projects/hapyy/due_diligence_bot/.memory_bank/patterns/error_handling.md
 ```
 
 ### Memory Bank Workflows
 ```
-/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/.memory_bank/workflows/new_feature.md
-/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/.memory_bank/workflows/bug_fix.md
-/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/.memory_bank/workflows/code_review.md
-/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/.memory_bank/workflows/self_review.md
-/Users/alexanderfedin/Projects/hapyy/due_diligence_bot/.memory_bank/workflows/refactoring.md
+~/Projects/hapyy/due_diligence_bot/.memory_bank/workflows/new_feature.md
+~/Projects/hapyy/due_diligence_bot/.memory_bank/workflows/bug_fix.md
+~/Projects/hapyy/due_diligence_bot/.memory_bank/workflows/code_review.md
+~/Projects/hapyy/due_diligence_bot/.memory_bank/workflows/self_review.md
+~/Projects/hapyy/due_diligence_bot/.memory_bank/workflows/refactoring.md
 ```
 
 ### Custom Commands
